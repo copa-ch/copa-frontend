@@ -17,6 +17,7 @@
 		"vuex": "^3.0.1"
 	},
 	"devDependencies": {
+		"@semantic-release/changelog": "^3.0.4",
 		"@vue/cli-plugin-eslint": "^4.0.0",
 		"@vue/cli-plugin-pwa": "^4.0.0",
 		"@vue/cli-plugin-router": "^4.0.0",
