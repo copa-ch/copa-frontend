@@ -1,0 +1,13 @@
+@charset "UTF-8";
+
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700&display=swap');
+
+// Import Bulma's core
+@import '~bulma/sass/utilities/_all';
+
+$family-secondary: 'Lato', sans-serif;
+$weight-bold: 800;
+
+// Import Bulma and Buefy styles
+@import '~bulma';
+@import '~buefy/src/scss/buefy';

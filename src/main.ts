@@ -1,13 +1,50 @@
-import Vue from "vue";
-import App from "./App.vue";
-import "./registerServiceWorker";
-import router from "./router";
-import store from "./store";
+/* ============
+ * Main File
+ * ============
+ *
+ * Will initialize the application.
+ */
 
-Vue.config.productionTip = false;
+import Vue from 'vue'
+import './styles/styles.scss'
+import { appConfig } from '@/config/app.config'
+
+/* ============
+ * Plugins
+ * ============
+ *
+ * Import and bootstrap the plugins.
+ * The order is important!
+ */
+import '@/plugins/logdown.plugin'
+import '@/plugins/fontawesome.plugin'
+import '@/plugins/buefy.plugin'
+import '@/plugins/axios.plugin'
+import '@/plugins/vuex.plugin'
+import '@/plugins/vuelidate.plugin'
+import { i18n } from '@/plugins/i18n.plugin'
+import { router } from '@/plugins/vue-router.plugin'
+
+/* ============
+ * Main App
+ * ============
+ *
+ * Last but not least, we import the main application.
+ */
+import App from './app/App.vue'
+import './registerServiceWorker'
+import { store } from './app/store'
+
+Vue.config.productionTip = false
 
 new Vue({
+  i18n,
   router,
   store,
-  render: h => h(App)
-}).$mount("#app");
+  render: h => h(App),
+}).$mount('#app')
+
+const log = Vue.$createLogger('main')
+log.info(`The environment is ${appConfig.env}.`)
+log.info(`The version is ${appConfig.version}.`)
+log.info(`The language is set to ${i18n.locale}.`)
