@@ -1,3 +1,11 @@
+# [1.1.0](https://github.com/hirsch88/copa-app/compare/v1.0.1...v1.1.0) (2019-10-21)
+
+
+### Features
+
+* Add basic plugins ([bcb3934](https://github.com/hirsch88/copa-app/commit/bcb3934ba911e14c5a57a7c456455b2cdf26908b))
+* Add icons ([c746321](https://github.com/hirsch88/copa-app/commit/c74632195a255c7aec8db8960111018ce2b47a18))
+
 ## [1.0.1](https://github.com/hirsch88/copa-app/compare/v1.0.0...v1.0.1) (2019-10-20)
 
 
