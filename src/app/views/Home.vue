@@ -1,18 +1,31 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../../assets/logo.svg" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
-  </div>
+  <section id="id">
+    <section class="hero is-dark is-bold">
+      <div class="hero-body">
+        <div class="container">
+          <p class="title">{{ $t('home.title') }}</p>
+          <p class="subtitle">{{ $t('home.subtitle') }}</p>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="container">
+        <CreateTournamentForm />
+      </div>
+    </section>
+  </section>
 </template>
 
-<script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator'
+import CreateTournamentForm from '../components/CreateTournamentForm.vue'
 
-export default {
-  name: 'home',
+@Component({
   components: {
-    HelloWorld,
+    CreateTournamentForm,
   },
-}
+})
+export default class Home extends Vue {}
 </script>
+
+<style lang="sass" scoped></style>
