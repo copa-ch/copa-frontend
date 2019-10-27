@@ -1,5 +1,5 @@
-import { FormState } from '@/app/models/FormState'
-import { FormState } from '@/app/models/FormState'
+import { States } from '@/app/models/States'
+import { States } from '@/app/models/States'
 <template>
   <div class="columns">
     <div class="column is-two-thirds padded">
@@ -51,7 +51,7 @@ import { FormState } from '@/app/models/FormState'
 <script lang="ts">
   import { Component, Vue } from 'vue-property-decorator'
   import { email, minLength, required } from 'vuelidate/lib/validators'
-  import { FormState } from '@/app/models/FormState'
+  import { RequestState } from '@/app/models/States'
   import { API } from '@/app/api'
 
   @Component({
@@ -65,7 +65,7 @@ import { FormState } from '@/app/models/FormState'
     name = ''
     owner = ''
     email = ''
-    submitStatus: FormState = FormState.PRISTINE
+    submitStatus: RequestState = RequestState.PRISTINE
 
     getFieldType(fieldName: string) {
       return this.$v[fieldName].$error
@@ -82,14 +82,14 @@ import { FormState } from '@/app/models/FormState'
     async submitForm() {
       this.$v.$touch()
       if (!this.$v.$invalid) {
-        this.submitStatus = FormState.PENDING
-
+        this.submitStatus = RequestState.PENDING
         const createdTournament = await API.Tournament.create({
           name: this.name,
           owner: this.owner,
           email: this.email,
         })
-        console.log('createdTournament', createdTournament)
+        this.submitStatus = RequestState.SUCCESSFUL
+        await this.$router.push({ name: 'tournament-admin', params: { id: createdTournament.adminId } })
       }
     }
   }

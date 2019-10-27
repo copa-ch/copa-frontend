@@ -7,6 +7,17 @@ export default {
     title: 'Create your tournament today!',
     subtitle: 'With COPA, managing your tournaments becomes simple & fast',
   },
+  notFound: {
+    title: '404',
+    subtitle: 'This is not the Tournament your are looking for.',
+  },
+  admin: {
+    invite: {
+      title: 'Invite participants',
+      message: 'Everyone with the link can create a team – no account required.',
+      copy: 'copy',
+    },
+  },
   createTournament: {
     title: 'Create Your Tournament',
     name: {

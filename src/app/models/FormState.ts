@@ -1,6 +1,0 @@
-export enum FormState {
-  PRISTINE = 'PRISTINE',
-  FAILED = 'FAILED',
-  PENDING = 'PENDING',
-  SUCCESSFUL = 'SUCCESSFUL',
-}

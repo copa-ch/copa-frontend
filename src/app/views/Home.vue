@@ -1,5 +1,5 @@
 <template>
-  <section id="id">
+  <section id="home">
     <section class="hero is-dark is-bold">
       <div class="hero-body">
         <div class="container">
@@ -18,7 +18,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
-import CreateTournamentForm from '../components/CreateTournamentForm.vue'
+import CreateTournamentForm from '../components/forms/CreateTournamentForm.vue'
 
 @Component({
   components: {
@@ -27,5 +27,3 @@ import CreateTournamentForm from '../components/CreateTournamentForm.vue'
 })
 export default class Home extends Vue {}
 </script>
-
-<style lang="sass" scoped></style>

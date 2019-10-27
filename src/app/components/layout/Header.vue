@@ -3,7 +3,7 @@
     <div class="container">
       <div class="navbar-brand">
         <a class="navbar-item">
-          <img src="../../assets/logo.png" alt="COPA: Tournament MGMT Tool" width="112" height="28" />
+          <img src="../../../assets/logo.png" alt="COPA: Tournament MGMT Tool" width="112" height="28" />
         </a>
 
         <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">

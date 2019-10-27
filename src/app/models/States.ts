@@ -1,0 +1,13 @@
+export enum FormState {
+  PRISTINE = 'PRISTINE',
+  FAILED = 'FAILED',
+  PENDING = 'PENDING',
+  SUCCESSFUL = 'SUCCESSFUL',
+}
+
+export enum RequestState {
+  PRISTINE = 'PRISTINE',
+  FAILED = 'FAILED',
+  PENDING = 'PENDING',
+  SUCCESSFUL = 'SUCCESSFUL',
+}
