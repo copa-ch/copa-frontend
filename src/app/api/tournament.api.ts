@@ -4,8 +4,8 @@ import { classToPlain, plainToClass } from 'class-transformer'
 import { CreateTournamentRequest } from '@/app/models/CreateTournamentRequest'
 import { Tournament } from '@/app/models/Tournament'
 import { defaultApiConfig } from '@/config/api.config'
-import { Team } from '@/app/models/Team'
 import { TournamentTeamApi } from '@/app/api/tournament-team.api'
+import { UpdateTournamentRequest } from '@/app/models/UpdateTournamentRequest'
 
 export class TournamentApi {
 
@@ -30,6 +30,25 @@ export class TournamentApi {
       url: `${this.config.url}/${hashId}`,
     })
     return plainToClass(Tournament, response.data)
+  }
+
+  public async update(hashId: string, updateTournamentRequest: UpdateTournamentRequest) {
+    const data = classToPlain(updateTournamentRequest)
+    const response = await Vue.$http.request({
+      ...this.config,
+      url: `${this.config.url}/${hashId}`,
+      method: 'PUT',
+      data,
+    })
+    return plainToClass(Tournament, response.data)
+  }
+
+  public async delete(hashId: string) {
+    await Vue.$http.request({
+      ...this.config,
+      url: `${this.config.url}/${hashId}`,
+      method: 'DELETE',
+    })
   }
 
   public of(tournamentId: string) {

@@ -1,6 +1,6 @@
 <template>
   <section>
-    <table class="table is-fullwidth" style="width: 100%">
+    <table class="table is-fullwidth is-bordered is-striped is-hoverable" style="width: 100%">
       <thead>
       <tr>
         <th class="is-center" width="80px"><abbr title="Position">Pos</abbr></th>
@@ -8,7 +8,7 @@
       </tr>
       </thead>
       <tbody>
-      <tr class="has-background-grey-light">
+      <tr class="has-background-grey-lighter">
         <th colspan="2" style="vertical-align: center">
           <TournamentAdminAddTeamControl :tournament="tournament" @addTeam="loadTeams()" />
         </th>
@@ -26,8 +26,8 @@
         <th colspan="2" class="is-center">
           <div class="hero">
             <div class="hero-body">
-              <h1 class="title">No Teams</h1>
-              <h1 class="subtitle">Create some teams to fill your tournament</h1>
+              <h1 class="title is-4">No Teams</h1>
+              <h1 class="subtitle is-6">Create some teams to fill your tournament</h1>
             </div>
           </div>
         </th>

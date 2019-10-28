@@ -1,51 +1,51 @@
-import { States } from '@/app/models/States'
-import { States } from '@/app/models/States'
 <template>
-  <div class="columns">
-    <div class="column is-two-thirds padded">
-      <h4 class="title is-4">{{ $t('createTournament.title') }}</h4>
+  <section>
+    <b-field :label="$t('createTournament.name.label')"
+             :type="getFieldType('name')"
+             :message="getFieldMessage('name')">
+      <b-input
+        v-model="name"
+        icon="trophy"
+        :placeholder="$t('createTournament.name.placeholder')"
+        expanded
+      ></b-input>
+    </b-field>
 
-      <b-field :label="$t('createTournament.name.label')"
-               :type="getFieldType('name')"
-               :message="getFieldMessage('name')">
-        <b-input
-          v-model="name"
-          icon="trophy"
-          :placeholder="$t('createTournament.name.placeholder')"
-          expanded
-        ></b-input>
-      </b-field>
+    <br>
 
-      <b-field :label="$t('createTournament.owner.label')"
-               :type="getFieldType('owner')"
-               :message="getFieldMessage('owner')">
-        <b-input
-          v-model="owner"
-          icon="user"
-          :placeholder="$t('createTournament.owner.placeholder')"
-          expanded
-        ></b-input>
-      </b-field>
+    <b-field :label="$t('createTournament.owner.label')"
+             :type="getFieldType('owner')"
+             :message="getFieldMessage('owner')">
+      <b-input
+        v-model="owner"
+        icon="user"
+        :placeholder="$t('createTournament.owner.placeholder')"
+        expanded
+      ></b-input>
+    </b-field>
 
-      <b-field :label="$t('createTournament.email.label')"
-               :type="getFieldType('email')"
-               :message="getFieldMessage('email')">
-        <b-input
-          v-model="email"
-          icon="envelope"
-          type="email"
-          :placeholder="$t('createTournament.email.placeholder')"
-          expanded
-        ></b-input>
-      </b-field>
+    <br>
 
-      <b-field>
-        <p class="control">
-          <button class="button is-primary" @click="submitForm()">{{ $t('createTournament.submitButton') }}</button>
-        </p>
-      </b-field>
-    </div>
-  </div>
+    <b-field :label="$t('createTournament.email.label')"
+             :type="getFieldType('email')"
+             :message="getFieldMessage('email')">
+      <b-input
+        v-model="email"
+        icon="envelope"
+        type="email"
+        :placeholder="$t('createTournament.email.placeholder')"
+        expanded
+      ></b-input>
+    </b-field>
+
+    <br>
+
+    <b-field>
+      <p class="control">
+        <button class="button is-primary" @click="submitForm()">{{ $t('createTournament.submitButton') }}</button>
+      </p>
+    </b-field>
+  </section>
 </template>
 
 <script lang="ts">

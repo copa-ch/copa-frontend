@@ -10,7 +10,7 @@
           <b-input expanded :disabled="true" type="text" icon="link" :value="visitorLink">
           </b-input>
           <p class="control">
-            <button class="button is-warning" v-clipboard="() => visitorLink">
+            <button class="button is-primary" v-clipboard="() => visitorLink">
               {{ $t('admin.invite.copy') }}
             </button>
           </p>

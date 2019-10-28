@@ -20,13 +20,10 @@ $weight-bold: 800;
   text-align: center !important;
 }
 
-.view-content {
-  padding: 0;
+.padded-container {
+  padding: 3rem 1.5rem;
 
-  @include mobile() {
-    padding: 0.5rem 0.75rem
-  }
-  @include tablet-only() {
-    padding: 0.5rem 0.75rem
+  @include desktop() {
+    padding: 3rem 0;
   }
 }

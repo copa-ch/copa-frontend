@@ -6,8 +6,12 @@
     <section v-if="!wasNotFound">
       <TournamentHeading :tournament="tournament">
         <InviteNotification v-if="isInvitationVisible" @close="() => isInvitationVisible = false"/>
-        <b-button v-if="!isInvitationVisible" type="is-info" inverted outlined
-                  @click="() => isInvitationVisible = true">Invite
+        <b-button v-if="!isInvitationVisible"
+                  type="is-info"
+                  inverted
+                  outlined
+                  @click="() => isInvitationVisible = true">
+          Invite
         </b-button>
       </TournamentHeading>
 

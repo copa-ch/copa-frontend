@@ -17,6 +17,7 @@ import { appConfig } from '@/config/app.config'
  * The order is important!
  */
 import '@/plugins/logdown.plugin'
+import '@/plugins/eventbus.plugin'
 import '@/plugins/fontawesome.plugin'
 import '@/plugins/buefy.plugin'
 import '@/plugins/axios.plugin'

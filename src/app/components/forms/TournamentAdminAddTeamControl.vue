@@ -9,7 +9,7 @@
              @keypress.enter.native="addTeam()"></b-input>
     <p class="control">
       <b-button icon-left="plus"
-                type="is-warning"
+                type="is-primary"
                 @click="addTeam()"
                 :disabled="isLoading">
         Add Team

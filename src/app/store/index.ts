@@ -9,12 +9,14 @@
 import Vuex from 'vuex'
 import createLogger from 'vuex/dist/logger'
 import { TournamentStoreModule, TournamentStoreState } from '@/app/store/TournamentStore'
+import { AdminTabStoreModule, AdminTabStoreState } from '@/app/store/AdminTabStore'
 
 /**
  * Define your Store here
  */
 export interface Store {
   tournament: TournamentStoreState
+  adminTab: AdminTabStoreState
 }
 
 const debug = process.env.NODE_ENV !== 'production'
@@ -24,6 +26,7 @@ export const store = new Vuex.Store<Store>({
    * Assign the modules to the store.
    */
   modules: {
+    adminTab: AdminTabStoreModule,
     tournament: TournamentStoreModule,
   },
 
