@@ -6,12 +6,20 @@ import { Tournament } from '@/app/models/Tournament'
 import { defaultApiConfig } from '@/config/api.config'
 import { TournamentTeamApi } from '@/app/api/tournament-team.api'
 import { UpdateTournamentRequest } from '@/app/models/UpdateTournamentRequest'
+import { TournamentScheduleApi } from '@/app/api/tournament-schedule.api'
 
 export class TournamentApi {
 
   private readonly config: AxiosRequestConfig = {
     ...defaultApiConfig,
     url: 'tournament',
+  }
+
+  public of(tournamentId: string) {
+    return {
+      Team: new TournamentTeamApi(tournamentId),
+      Schedule: new TournamentScheduleApi(tournamentId),
+    }
   }
 
   public async create(createTournamentRequest: CreateTournamentRequest) {
@@ -49,12 +57,6 @@ export class TournamentApi {
       url: `${this.config.url}/${hashId}`,
       method: 'DELETE',
     })
-  }
-
-  public of(tournamentId: string) {
-    return {
-      Team: new TournamentTeamApi(tournamentId),
-    }
   }
 
 }

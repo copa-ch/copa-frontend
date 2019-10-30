@@ -101,6 +101,10 @@ import { RequestState } from '@/app/models/States'
       return this.state === RequestState.PENDING
     }
 
+    mounted() {
+      this.onTournamentUpdate()
+    }
+
     @Watch('tournament')
     onTournamentUpdate() {
       this.name = this.tournament.name
