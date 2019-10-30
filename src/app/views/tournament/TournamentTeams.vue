@@ -27,11 +27,6 @@
   export default class TournamentTeams extends Vue {
     @Getter(TournamentStoreGetters.Tournament)
     tournament!: Tournament
-
-    mounted() {
-      console.log('aksldjflksd')
-    }
-
   }
 </script>
 
