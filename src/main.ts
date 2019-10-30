@@ -17,11 +17,13 @@ import { appConfig } from '@/config/app.config'
  * The order is important!
  */
 import '@/plugins/logdown.plugin'
+import '@/plugins/eventbus.plugin'
 import '@/plugins/fontawesome.plugin'
 import '@/plugins/buefy.plugin'
 import '@/plugins/axios.plugin'
 import '@/plugins/vuex.plugin'
 import '@/plugins/vuelidate.plugin'
+import '@/plugins/clipboard.plugin'
 import { i18n } from '@/plugins/i18n.plugin'
 import { router } from '@/plugins/vue-router.plugin'
 

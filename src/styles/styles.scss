@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 @import url('https://fonts.googleapis.com/css?family=Lato:400,700&display=swap');
-
+@import 'variables.scss';
 // Import Bulma's core
 @import '~bulma/sass/utilities/_all';
 
@@ -11,3 +11,19 @@ $weight-bold: 800;
 // Import Bulma and Buefy styles
 @import '~bulma';
 @import '~buefy/src/scss/buefy';
+
+.padded {
+  padding: 3rem 1.5rem;
+}
+
+.is-center {
+  text-align: center !important;
+}
+
+.padded-container {
+  padding: 3rem 1.5rem;
+
+  @include desktop() {
+    padding: 3rem 0;
+  }
+}
