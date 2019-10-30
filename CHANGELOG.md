@@ -1,3 +1,12 @@
+# [1.2.0](https://github.com/hirsch88/copa-app/compare/v1.1.0...v1.2.0) (2019-10-30)
+
+
+### Features
+
+* Add generate tab ([6a96395](https://github.com/hirsch88/copa-app/commit/6a963955dad515febb90632c1078e84fbc747f60))
+* add tournament options and delete ([9aa0cf2](https://github.com/hirsch88/copa-app/commit/9aa0cf2ff903768b3d9893e15c729791eaabccc4))
+* Add tournament teams page ([5980f42](https://github.com/hirsch88/copa-app/commit/5980f422c32f506c6b4cb978547c7df2a04b631e))
+
 # [1.1.0](https://github.com/hirsch88/copa-app/compare/v1.0.1...v1.1.0) (2019-10-21)
 
 
