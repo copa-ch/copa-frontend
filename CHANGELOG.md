@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/hirsch88/copa-app/compare/v1.2.0...v1.3.0) (2019-10-31)
+
+
+### Features
+
+* **game:** adjust improved endpoint ([eb3d010](https://github.com/hirsch88/copa-app/commit/eb3d010677a4be0bfb8578cdf6d177f20f2c0830))
+
 # [1.2.0](https://github.com/hirsch88/copa-app/compare/v1.1.0...v1.2.0) (2019-10-30)
 
 
