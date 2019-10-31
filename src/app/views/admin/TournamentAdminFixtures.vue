@@ -39,7 +39,7 @@
       TournamentAdminTabs,
     },
   })
-  export default class TournamentAdminGenerate extends Vue {
+  export default class TournamentAdminFixtures extends Vue {
 
     state: RequestState = RequestState.PRISTINE
     games: Game[] = []

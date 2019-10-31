@@ -1,43 +1,37 @@
 import { RequestState } from '@/app/models/States'
 <template>
   <section v-if="tournament">
-    <b-field :label="$t('createTournament.name.label')"
-             :type="getFieldType('name')"
-             :message="getFieldMessage('name')">
-      <b-input
-        v-model="name"
-        icon="trophy"
-        :placeholder="$t('createTournament.name.placeholder')"
-        expanded
-      ></b-input>
-    </b-field>
+    <div class="columns is-multiline">
+      <div class="column is-half">
+        <b-field :label="$t('createTournament.name.label')"
+                 :type="getFieldType('name')"
+                 :message="getFieldMessage('name')">
+          <b-input
+            v-model="name"
+            icon="trophy"
+            :placeholder="$t('createTournament.name.placeholder')"
+            expanded
+          ></b-input>
+        </b-field>
+      </div>
+    </div>
 
     <br>
 
-    <b-field :label="$t('createTournament.owner.label')"
-             :type="getFieldType('owner')"
-             :message="getFieldMessage('owner')">
-      <b-input
-        v-model="owner"
-        icon="user"
-        :placeholder="$t('createTournament.owner.placeholder')"
-        expanded
-      ></b-input>
-    </b-field>
-
-    <br>
-
-    <b-field :label="$t('createTournament.email.label')"
-             :type="getFieldType('email')"
-             :message="getFieldMessage('email')">
-      <b-input
-        v-model="email"
-        icon="envelope"
-        type="email"
-        :placeholder="$t('createTournament.email.placeholder')"
-        expanded
-      ></b-input>
-    </b-field>
+    <div class="columns is-multiline">
+      <div class="column is-half">
+        <b-field :label="$t('createTournament.owner.label')"
+                 :type="getFieldType('owner')"
+                 :message="getFieldMessage('owner')">
+          <b-input
+            v-model="owner"
+            icon="user"
+            :placeholder="$t('createTournament.owner.placeholder')"
+            expanded
+          ></b-input>
+        </b-field>
+      </div>
+    </div>
 
     <br>
 
@@ -82,14 +76,12 @@ import { RequestState } from '@/app/models/States'
     validations: {
       name: { required, minLength: minLength(1) },
       owner: { required, minLength: minLength(1) },
-      email: { required, minLength: minLength(1), email },
     },
   })
   export default class TournamentOptionsForm extends Vue {
     state: RequestState = RequestState.PRISTINE
     name = ''
     owner = ''
-    email = ''
 
     @Getter(TournamentStoreGetters.Tournament)
     tournament!: Tournament
@@ -137,7 +129,6 @@ import { RequestState } from '@/app/models/States'
         await API.Tournament.update(this.$route.params.id, {
           name: this.name,
           owner: this.owner,
-          email: this.email,
           state: this.tournament.state,
         })
         await this.loadTournament(this.$route.params.id)

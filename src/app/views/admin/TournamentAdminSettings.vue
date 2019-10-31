@@ -20,7 +20,7 @@
       TournamentAdminTabs,
     },
   })
-  export default class TournamentAdminConfig extends Vue {
+  export default class TournamentAdminSettings extends Vue {
 
     @Action(AdminTabStoreActions.ActivateTab)
     activateTab!: (tabIndex: number) => Promise<void>

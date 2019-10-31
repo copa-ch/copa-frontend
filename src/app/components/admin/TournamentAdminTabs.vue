@@ -3,19 +3,19 @@
     <li :class="{ 'is-active': isActive(0) }">
       <router-link :to="{ name: 'admin-teams' }">
         <span class="icon is-small"><font-awesome-icon icon="users"/></span>
-        <span>Manage Teams</span>
-      </router-link>
-    </li>
-    <li :class="{ 'is-active': isActive(1) }">
-      <router-link :to="{ name: 'admin-config' }">
-        <span class="icon is-small"><font-awesome-icon icon="trophy"/></span>
-        <span>Tournaments Options</span>
+        <span>Teams</span>
       </router-link>
     </li>
     <li :class="{ 'is-active': isActive(2) }">
-      <router-link :to="{ name: 'admin-generate' }">
+      <router-link :to="{ name: 'admin-fixtures' }">
+        <span class="icon is-small"><font-awesome-icon icon="network-wired"/></span>
+        <span>Fixtures</span>
+      </router-link>
+    </li>
+    <li :class="{ 'is-active': isActive(1) }">
+      <router-link :to="{ name: 'admin-settings' }">
         <span class="icon is-small"><font-awesome-icon icon="cogs"/></span>
-        <span>Generate Fixtures</span>
+        <span>Settings</span>
       </router-link>
     </li>
   </ul>

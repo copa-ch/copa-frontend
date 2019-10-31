@@ -7,6 +7,19 @@ $warning: #E67700;
 $danger: #E64980;
 $success: #63E6BE;
 $info: #5C7CFA;
-
+/**
+ * Font
+ */
 $family-sans-serif: 'Lato', sans-serif;
 $weight-bold: 800;
+/**
+ * Responsiveness
+ */
+// 960, 1152, and 1344 have been chosen because they are divisible by both 12 and 16
+$gap: 32px;
+$tablet: 769px;
+$desktop: 960px + (2 * $gap);
+$widescreen: 960px + (2 * $gap);
+$widescreen-enabled: true;
+$fullhd: 960px + (2 * $gap);
+$fullhd-enabled: true;
