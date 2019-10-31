@@ -6,7 +6,7 @@ import { Tournament } from '@/app/models/Tournament'
 import { defaultApiConfig } from '@/config/api.config'
 import { TournamentTeamApi } from '@/app/api/tournament-team.api'
 import { UpdateTournamentRequest } from '@/app/models/UpdateTournamentRequest'
-import { TournamentScheduleApi } from '@/app/api/tournament-schedule.api'
+import { TournamentGameApi } from '@/app/api/tournament-game.api'
 
 export class TournamentApi {
 
@@ -18,7 +18,7 @@ export class TournamentApi {
   public of(tournamentId: string) {
     return {
       Team: new TournamentTeamApi(tournamentId),
-      Schedule: new TournamentScheduleApi(tournamentId),
+      Game: new TournamentGameApi(tournamentId),
     }
   }
 

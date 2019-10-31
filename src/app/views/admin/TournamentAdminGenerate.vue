@@ -58,7 +58,7 @@
 
     async generate() {
       this.state = RequestState.PENDING
-      this.games = await API.Tournament.of(this.$route.params.id).Schedule.generate()
+      this.games = await API.Tournament.of(this.$route.params.id).Game.generate()
       const initialRounds = this.games
         .map(game => game.round)
         .filter((item, index, arr) => arr.indexOf(item) === index)
