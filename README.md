@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="" target="blank"><img src="src/assets/logo.svg" width="320" alt="COPA Logo" /></a>
+  <a href="" target="blank"><img src="src/assets/logo.png" width="320" alt="COPA Logo" /></a>
 </p>
 
 ## Project setup
