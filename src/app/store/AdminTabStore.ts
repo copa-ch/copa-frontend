@@ -1,10 +1,6 @@
-import { ActionContext, Module } from 'vuex'
-import { AdminTabStoreActions, AdminTabStoreGetters } from '@/app/store/types/AdminTabStoreTypes'
-import { TournamentStoreActions } from '@/app/store/types'
-import { Failed, Requested, Successful } from '@/app/store/utils/action.utils'
-import { API } from '@/app/api'
-import { RequestState } from '@/app/models/States'
-import { TournamentStoreState } from '@/app/store/TournamentStore'
+import { ActionContext, Module } from "vuex"
+import { Successful } from "@/app/store/utils/action.utils"
+import { AdminTabStoreGetters, AdminTabStoreActions } from "./accessors"
 
 // -------------------------------------------------------------------------
 // Define Store State
@@ -14,7 +10,10 @@ export interface AdminTabStoreState {
   activatedTab: number
 }
 
-type AdminTabActionContext = ActionContext<AdminTabStoreState, AdminTabStoreState>
+type AdminTabActionContext = ActionContext<
+  AdminTabStoreState,
+  AdminTabStoreState
+>
 
 // -------------------------------------------------------------------------
 // Define Store Module
@@ -36,7 +35,7 @@ export const AdminTabStoreModule: Module<AdminTabStoreState, any> = {
     },
   },
   // -------------------------------------------------------------------------
-  // Define actions
+  // Define actionss
   // -------------------------------------------------------------------------
   actions: {
     async [AdminTabStoreActions.ActivateTab](
@@ -50,7 +49,10 @@ export const AdminTabStoreModule: Module<AdminTabStoreState, any> = {
   // Define mutations
   // -------------------------------------------------------------------------
   mutations: {
-    [Successful(AdminTabStoreActions.ActivateTab)](state: AdminTabStoreState, activatedTab: number): void {
+    [Successful(AdminTabStoreActions.ActivateTab)](
+      state: AdminTabStoreState,
+      activatedTab: number,
+    ): void {
       state.activatedTab = activatedTab
     },
   },

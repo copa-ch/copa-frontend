@@ -5,7 +5,6 @@ import { defaultApiConfig } from '@/config/api.config'
 import { Game } from '@/app/models/Game'
 
 export class TournamentGameApi {
-
   private readonly config: AxiosRequestConfig = {}
 
   constructor(private tournamentId: string) {
@@ -13,6 +12,14 @@ export class TournamentGameApi {
       ...defaultApiConfig,
       url: `tournament/${tournamentId}/game`,
     }
+  }
+
+  async findAll(): Promise<Game[]> {
+    const response = await Vue.$http.request({
+      ...this.config,
+      method: 'GET',
+    })
+    return (response.data as any[]).map(row => plainToClass(Game, row))
   }
 
   async generate(): Promise<Game[]> {
@@ -23,5 +30,4 @@ export class TournamentGameApi {
     })
     return (response.data as any[]).map(row => plainToClass(Game, row))
   }
-
 }

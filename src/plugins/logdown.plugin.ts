@@ -24,7 +24,8 @@ export const Logger: PluginObject<any> = {
     window.localStorage.debug = appConfig.logEnabled ? `${PREFIX}:*` : 'none'
 
     const logdownOptions = Object.assign({}, defaultOptions, options)
-    const createLogger = (prefix: string) => logdown(`${PREFIX}:${prefix}`, logdownOptions)
+    const createLogger = (prefix: string) =>
+      logdown(`${PREFIX}:${prefix}`, logdownOptions)
 
     VueInstance.$createLogger = createLogger
 

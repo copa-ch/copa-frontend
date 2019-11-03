@@ -11,14 +11,14 @@
 </template>
 
 <script lang="ts">
-  import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Component, Prop, Vue } from 'vue-property-decorator'
 
-  @Component
-  export default class Hero extends Vue {
-    @Prop({ default: '' }) title!: string
-    @Prop({ default: '' }) subtitle!: string
-    @Prop({ default: '' }) type!: string
-  }
+@Component
+export default class Hero extends Vue {
+  @Prop({ default: '' }) title!: string
+  @Prop({ default: '' }) subtitle!: string
+  @Prop({ default: '' }) type!: string
+}
 </script>
 
 <style lang="scss" scoped></style>

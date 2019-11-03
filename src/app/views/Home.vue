@@ -15,12 +15,11 @@
             <div class="columns is-centered">
               <div class="column is-two-thirds-tablet is-half-desktop">
                 <div class="box">
-                  <CreateTournamentForm/>
+                  <CreateTournamentForm />
                 </div>
               </div>
             </div>
           </section>
-
         </div>
       </div>
     </section>
@@ -28,16 +27,15 @@
 </template>
 
 <script lang="ts">
-  import { Component, Vue } from 'vue-property-decorator'
-  import CreateTournamentForm from '../components/forms/CreateTournamentForm.vue'
-  import Header from '@/app/components/layout/Header.vue'
+import { Component, Vue } from 'vue-property-decorator'
+import CreateTournamentForm from '../components/forms/CreateTournamentForm.vue'
+import Header from '@/app/components/layout/Header.vue'
 
-  @Component({
-    components: {
-      Header,
-      CreateTournamentForm,
-    },
-  })
-  export default class Home extends Vue {
-  }
+@Component({
+  components: {
+    Header,
+    CreateTournamentForm,
+  },
+})
+export default class Home extends Vue {}
 </script>
