@@ -1,4 +1,4 @@
-export class Tournament{
+export class Tournament {
   public id!: string
   public name!: string
   public owner!: string
@@ -6,4 +6,3 @@ export class Tournament{
   public visitorId!: string
   public state!: string
 }
-

@@ -1,21 +1,27 @@
-import { ActionContext, Module } from 'vuex'
-import { Tournament } from '@/app/models/Tournament'
-import { RequestState } from '@/app/models/States'
-import { TournamentStoreActions, TournamentStoreGetters } from '@/app/store/types'
-import { Failed, Requested, Successful } from '@/app/store/utils/action.utils'
-import { API } from '@/app/api'
+import { ActionContext, Module, ActionTree } from "vuex"
+import { Tournament } from "@/app/models/Tournament"
+import { RequestState } from "@/app/models/States"
+import {
+  TournamentStoreActions,
+  TournamentStoreGetters,
+} from "@/app/store/accessors"
+import { Failed, Requested, Successful } from "@/app/store/utils/action.utils"
+import { API } from "@/app/api"
 
 // -------------------------------------------------------------------------
 // Define Store State
 // -------------------------------------------------------------------------
 
 export interface TournamentStoreState {
-  error?: any;
-  tournament?: Tournament;
-  getRequestState: RequestState;
+  error?: any
+  tournament?: Tournament
+  tournamentState: RequestState
 }
 
-type TournamentActionContext = ActionContext<TournamentStoreState, TournamentStoreState>
+type TournamentActionContext = ActionContext<
+  TournamentStoreState,
+  TournamentStoreState
+>
 
 // -------------------------------------------------------------------------
 // Define Store Module
@@ -28,7 +34,7 @@ export const TournamentStoreModule: Module<TournamentStoreState, any> = {
   state: {
     error: undefined,
     tournament: undefined,
-    getRequestState: RequestState.PRISTINE,
+    tournamentState: RequestState.PRISTINE,
   },
   // -------------------------------------------------------------------------
   // Define getters
@@ -37,30 +43,32 @@ export const TournamentStoreModule: Module<TournamentStoreState, any> = {
     [TournamentStoreGetters.Tournament](state: TournamentStoreState) {
       return state.tournament
     },
+
     [TournamentStoreGetters.VisitorLink](state: TournamentStoreState) {
       if (state && state.tournament) {
         return `${location.origin}/tournament/${state.tournament.visitorId}`
       }
-      return ''
+      return ""
     },
-    [TournamentStoreGetters.TournamentState](state: TournamentStoreState) {
-      return state.getRequestState
+
+    [TournamentStoreGetters.State](state: TournamentStoreState) {
+      return state.tournamentState
     },
   },
   // -------------------------------------------------------------------------
   // Define actions
   // -------------------------------------------------------------------------
   actions: {
-    async [TournamentStoreActions.LoadTournament](
+    async [TournamentStoreActions.Load](
       { commit, state }: TournamentActionContext,
       id: string,
     ): Promise<void> {
-      commit(Requested(TournamentStoreActions.LoadTournament))
+      commit(Requested(TournamentStoreActions.Load))
       try {
         const tournament = await API.Tournament.findOne(id)
-        commit(Successful(TournamentStoreActions.LoadTournament), tournament)
+        commit(Successful(TournamentStoreActions.Load), tournament)
       } catch (error) {
-        commit(Failed(TournamentStoreActions.LoadTournament), error)
+        commit(Failed(TournamentStoreActions.Load), error)
         throw error
       }
     },
@@ -69,21 +77,26 @@ export const TournamentStoreModule: Module<TournamentStoreState, any> = {
   // Define mutations
   // -------------------------------------------------------------------------
   mutations: {
-    [Requested(TournamentStoreActions.LoadTournament)](state: TournamentStoreState): void {
-      state.getRequestState = RequestState.PENDING
+    [Requested(TournamentStoreActions.Load)](
+      state: TournamentStoreState,
+    ): void {
+      state.tournamentState = RequestState.PENDING
       state.error = undefined
     },
 
-    [Successful(TournamentStoreActions.LoadTournament)](
+    [Successful(TournamentStoreActions.Load)](
       state: TournamentStoreState,
       tournament: Tournament,
     ): void {
-      state.getRequestState = RequestState.SUCCESSFUL
+      state.tournamentState = RequestState.SUCCESSFUL
       state.tournament = tournament
     },
 
-    [Failed(TournamentStoreActions.LoadTournament)](state: TournamentStoreState, error: any): void {
-      state.getRequestState = RequestState.FAILED
+    [Failed(TournamentStoreActions.Load)](
+      state: TournamentStoreState,
+      error: any,
+    ): void {
+      state.tournamentState = RequestState.FAILED
       state.error = error
     },
   },

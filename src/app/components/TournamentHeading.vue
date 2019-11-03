@@ -19,15 +19,15 @@
 </template>
 
 <script lang="ts">
-  import { Component, Prop, Vue } from 'vue-property-decorator'
-  import { Tournament } from '@/app/models/Tournament'
-  import Header from '@/app/components/layout/Header.vue'
-  import TournamentAdminTabs from '@/app/components/admin/TournamentAdminTabs.vue'
+import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Tournament } from '@/app/models/Tournament'
+import Header from '@/app/components/layout/Header.vue'
+import TournamentAdminTabs from '@/app/components/admin/TournamentAdminTabs.vue'
 
-  @Component({
-    components: { TournamentAdminTabs, Header },
-  })
-  export default class TournamentHeading extends Vue {
-    @Prop() tournament!: Tournament
-  }
+@Component({
+  components: { TournamentAdminTabs, Header },
+})
+export default class TournamentHeading extends Vue {
+  @Prop() tournament!: Tournament
+}
 </script>
