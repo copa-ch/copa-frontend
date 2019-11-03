@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/hirsch88/copa-app/compare/v1.3.0...v1.4.0) (2019-11-03)
+
+
+### Features
+
+* **admin:** auto generate when teams are changed ([852f122](https://github.com/hirsch88/copa-app/commit/852f122e2272c75a8b820fd6d2b56eacb7c8956b))
+
 # [1.3.0](https://github.com/hirsch88/copa-app/compare/v1.2.0...v1.3.0) (2019-10-31)
 
 
