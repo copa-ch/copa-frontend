@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/hirsch88/copa-app/compare/v1.4.0...v1.5.0) (2019-11-04)
+
+
+### Features
+
+* add start tournament and a empty ranking page ([ab9b460](https://github.com/hirsch88/copa-app/commit/ab9b460fe8eddf5947265361c6bd670a50b5aea1))
+
 # [1.4.0](https://github.com/hirsch88/copa-app/compare/v1.3.0...v1.4.0) (2019-11-03)
 
 
