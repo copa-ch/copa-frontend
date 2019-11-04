@@ -14,11 +14,21 @@ export default {
     subtitle: 'This is not the Tournament your are looking for.',
   },
   admin: {
+    ranking: {
+      title: 'Ranking',
+
+    },
+    start: {
+      title: 'Let\'s start your Tournament',
+      message: 'Starting your tournament will close the team registration. After that you can enter the results of the games.',
+      action: 'Start Tournament',
+    },
     invite: {
       title: 'Invite participants',
       message:
         'Everyone with the link can create a team – no account required.',
       copy: 'copy',
+      action: 'Invite participants',
     },
     fixtures: {
       title: 'Fixtures',

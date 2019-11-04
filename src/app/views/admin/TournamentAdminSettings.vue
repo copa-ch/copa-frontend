@@ -13,6 +13,7 @@ import { Events } from '@/app/constants/events'
 import TournamentOptionsForm from '@/app/components/forms/TournamentOptionsForm.vue'
 import { Action } from 'vuex-class'
 import { AdminTabStoreActions } from '@/app/store/accessors'
+import { AdminTabs } from '@/app/constants/tabs'
 
 @Component({
   components: {
@@ -22,10 +23,10 @@ import { AdminTabStoreActions } from '@/app/store/accessors'
 })
 export default class TournamentAdminSettings extends Vue {
   @Action(AdminTabStoreActions.ActivateTab)
-  activateTab!: (tabIndex: number) => Promise<void>
+  activateTab!: (tab: AdminTabs) => Promise<void>
 
   mounted() {
-    this.activateTab(1)
+    this.activateTab(AdminTabs.Settings)
   }
 }
 </script>

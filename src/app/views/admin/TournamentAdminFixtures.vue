@@ -4,6 +4,7 @@
     <h1 class="subtitle">{{ $t('admin.fixtures.subtitle') }}</h1>
 
     <b-button
+      v-if="tournament && tournament.isOpen()"
       type="is-primary"
       :disabled="isPending"
       :loading="isPending"
@@ -27,12 +28,15 @@ import {
   AdminTabStoreActions,
   FixtruesStoreActions,
   FixtruesStoreGetters,
+  TournamentStoreGetters,
 } from '@/app/store/accessors'
 import { Action, Getter } from 'vuex-class'
 import { RequestState } from '@/app/models/States'
 import { API } from '@/app/api'
 import { Game } from '@/app/models/Game'
 import GameRow from '@/app/components/GameRow.vue'
+import { AdminTabs } from '@/app/constants/tabs'
+import { Tournament } from '../../models/Tournament'
 
 @Component({
   components: {
@@ -47,8 +51,11 @@ export default class TournamentAdminFixtures extends Vue {
   @Getter(FixtruesStoreGetters.State)
   state!: RequestState
 
+  @Getter(TournamentStoreGetters.Tournament)
+  tournament!: Tournament
+
   @Action(AdminTabStoreActions.ActivateTab)
-  activateTab!: (tabIndex: number) => Promise<void>
+  activateTab!: (tab: AdminTabs) => Promise<void>
 
   @Action(FixtruesStoreActions.Load)
   loadFixtures!: (tournamentHash: string) => Promise<void>
@@ -61,7 +68,7 @@ export default class TournamentAdminFixtures extends Vue {
   }
 
   mounted() {
-    this.activateTab(2)
+    this.activateTab(AdminTabs.Fixtures)
     this.loadFixtures(this.$route.params.id)
   }
 

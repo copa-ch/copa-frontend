@@ -1,14 +1,12 @@
 <template>
   <section id="teams-admin" class="container padded-container">
-    <h1 class="title">{{ $t('admin.teams.title') }}</h1>
-    <h1 class="subtitle">{{ $t('admin.teams.subtitle') }}</h1>
-    <TournamentTeamTable :tournament="tournament" style="max-width: 500px" />
+    <h1 class="title">{{ $t('admin.ranking.title') }}</h1>
+    <h1 class="subtitle">{{ $t('admin.ranking.subtitle') }}</h1>
   </section>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
-import TournamentTeamTable from '@/app/components/TournamentTeamTable.vue'
 import TournamentAdminTabs from '@/app/components/admin/TournamentAdminTabs.vue'
 import { Action, Getter } from 'vuex-class'
 import {
@@ -21,11 +19,10 @@ import { AdminTabs } from '@/app/constants/tabs'
 
 @Component({
   components: {
-    TournamentTeamTable,
     TournamentAdminTabs,
   },
 })
-export default class TournamentAdminTeams extends Vue {
+export default class TournamentAdminRanking extends Vue {
   @Getter(TournamentStoreGetters.Tournament)
   tournament!: Tournament
 
@@ -33,7 +30,7 @@ export default class TournamentAdminTeams extends Vue {
   activateTab!: (tab: AdminTabs) => Promise<void>
 
   mounted() {
-    this.activateTab(AdminTabs.Teams)
+    this.activateTab(AdminTabs.Ranking)
   }
 }
 </script>

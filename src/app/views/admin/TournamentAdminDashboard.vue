@@ -4,14 +4,26 @@
 
     <section v-if="!wasNotFound">
       <TournamentHeading :tournament="tournament">
-        <InviteNotification v-if="isInvitationVisible" @close="() => isInvitationVisible = false" />
-        <b-button
-          v-if="!isInvitationVisible"
-          type="is-info"
-          inverted
-          outlined
-          @click="() => isInvitationVisible = true"
-        >Invite</b-button>
+        <section v-if="tournament && tournament.isOpen()">
+          <InviteNotification
+            v-if="isInvitationVisible"
+            @close="() => isInvitationVisible = false"
+          />
+          <StartNotification v-if="isStartingVisible" @close="() => isStartingVisible = false" />
+          <div class="buttons is-flex is-centered">
+            <b-button
+              v-if="!isInvitationVisible && !isStartingVisible"
+              type="is-info"
+              inverted
+              @click="() => isInvitationVisible = true"
+            >{{ $t('admin.invite.action') }}</b-button>
+            <b-button
+              v-if="!isInvitationVisible && !isStartingVisible"
+              type="is-primary"
+              @click="() => isStartingVisible = true"
+            >{{ $t('admin.start.action') }}</b-button>
+          </div>
+        </section>
       </TournamentHeading>
 
       <router-view></router-view>
@@ -27,6 +39,7 @@ import { Tournament } from '@/app/models/Tournament'
 import { RequestState } from '@/app/models/States'
 import NotFoundHero from '@/app/components/NotFoundHero.vue'
 import InviteNotification from '@/app/components/admin/InviteNotification.vue'
+import StartNotification from '@/app/components/admin/StartNotification.vue'
 import TournamentHeading from '@/app/components/TournamentHeading.vue'
 import { Action, Getter } from 'vuex-class'
 import {
@@ -38,11 +51,13 @@ import {
   components: {
     NotFoundHero,
     InviteNotification,
+    StartNotification,
     TournamentHeading,
   },
 })
 export default class TournamentAdminDashboard extends Vue {
   isInvitationVisible = false
+  isStartingVisible = false
 
   @Getter(TournamentStoreGetters.Tournament)
   tournament!: Tournament
