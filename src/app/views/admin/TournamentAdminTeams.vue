@@ -1,7 +1,7 @@
 <template>
   <section id="teams-admin" class="container padded-container">
-    <h1 class="title">Manage Teams</h1>
-    <h1 class="subtitle">Add, update & remove your teams here</h1>
+    <h1 class="title">{{ $t('admin.teams.title') }}</h1>
+    <h1 class="subtitle">{{ $t('admin.teams.subtitle') }}</h1>
     <TournamentTeamTable :tournament="tournament" style="max-width: 500px" />
   </section>
 </template>

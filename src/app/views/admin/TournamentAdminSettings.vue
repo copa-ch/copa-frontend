@@ -1,7 +1,7 @@
 <template>
   <section id="config-admin" class="container padded-container">
-    <h1 class="title">Tournaments Options</h1>
-    <h1 class="subtitle">Update your tournament options here</h1>
+    <h1 class="title">{{ $t('admin.settings.title') }}</h1>
+    <h1 class="subtitle">{{ $t('admin.settings.subtitle') }}</h1>
     <TournamentOptionsForm></TournamentOptionsForm>
   </section>
 </template>

@@ -13,6 +13,7 @@ import {
   faPlus,
   faSave,
   faNetworkWired,
+  faHardHat,
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
@@ -29,6 +30,7 @@ library.add(
   faPlus,
   faSave,
   faNetworkWired,
+  faHardHat,
 )
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
