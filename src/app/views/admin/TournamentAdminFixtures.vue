@@ -1,14 +1,14 @@
 <template>
   <section id="generate-admin" class="container padded-container">
-    <h1 class="title">Generate Fixtures</h1>
-    <h1 class="subtitle">Define your tournament mode & generate fixtures</h1>
+    <h1 class="title">{{ $t('admin.fixtures.title') }}</h1>
+    <h1 class="subtitle">{{ $t('admin.fixtures.subtitle') }}</h1>
 
     <b-button
       type="is-primary"
       :disabled="isPending"
       :loading="isPending"
       @click="generate()"
-    >Generate Schedule</b-button>
+    >{{ $t('admin.fixtures.generate') }}</b-button>
 
     <br />
     <br />
@@ -22,7 +22,6 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
-import TournamentScheduleConfig from '@/app/components/TournamentScheduleConfig.vue'
 import TournamentAdminTabs from '@/app/components/admin/TournamentAdminTabs.vue'
 import {
   AdminTabStoreActions,
@@ -38,7 +37,6 @@ import GameRow from '@/app/components/GameRow.vue'
 @Component({
   components: {
     GameRow,
-    TournamentScheduleConfig,
     TournamentAdminTabs,
   },
 })

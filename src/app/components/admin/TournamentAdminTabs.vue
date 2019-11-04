@@ -5,7 +5,7 @@
         <span class="icon is-small">
           <font-awesome-icon icon="users" />
         </span>
-        <span>Teams</span>
+        <span>{{ $t('admin.teams.title') }}</span>
       </router-link>
     </li>
     <li :class="{ 'is-active': isActive(2) }">
@@ -13,7 +13,7 @@
         <span class="icon is-small">
           <font-awesome-icon icon="network-wired" />
         </span>
-        <span>Fixtures</span>
+        <span>{{ $t('admin.fixtures.title') }}</span>
       </router-link>
     </li>
     <li :class="{ 'is-active': isActive(1) }">
@@ -21,7 +21,7 @@
         <span class="icon is-small">
           <font-awesome-icon icon="cogs" />
         </span>
-        <span>Settings</span>
+        <span>{{ $t('admin.settings.title') }}</span>
       </router-link>
     </li>
   </ul>

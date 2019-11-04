@@ -6,6 +6,8 @@ export default {
   home: {
     title: 'Create your tournament today!',
     subtitle: 'With COPA, managing your tournaments becomes simple & fast',
+    beta:
+      'This app is still under development. So data will not be persisted permanently.',
   },
   notFound: {
     title: '404',
@@ -14,8 +16,22 @@ export default {
   admin: {
     invite: {
       title: 'Invite participants',
-      message: 'Everyone with the link can create a team – no account required.',
+      message:
+        'Everyone with the link can create a team – no account required.',
       copy: 'copy',
+    },
+    fixtures: {
+      title: 'Fixtures',
+      subtitle: 'Define your tournament mode & generate fixtures',
+      generate: 'Generate Schedule',
+    },
+    settings: {
+      title: 'Settings',
+      subtitle: 'Update your tournament options here',
+    },
+    teams: {
+      title: 'Teams',
+      subtitle: 'Add, update & remove your teams here',
     },
   },
   createTournament: {
@@ -31,12 +47,14 @@ export default {
       message: 'This field cannot be left blank',
     },
     email: {
-      label: 'Tell us your email so we can sent you a mail with the confirmation and the admin link.',
+      label:
+        'Tell us your email so we can sent you a mail with the confirmation and the admin link.',
       placeholder: 'Enter your email',
       message: 'This is not a valid email',
     },
     submitButton: 'Create Tournament',
     inValidForm: 'Form is not valid! Please check the fields.',
-    submitFailed: 'We are sorry, that we could not create your tournament. Please check your inputs and retry it.',
+    submitFailed:
+      'We are sorry, that we could not create your tournament. Please check your inputs and retry it.',
   },
 }

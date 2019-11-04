@@ -1,6 +1,6 @@
 <template>
   <section id="home">
-    <section class="hero is-dark is-bold is-fullheight">
+    <section class="hero is-dark is-fullheight">
       <div class="hero-head">
         <Header :is-dark="true"></Header>
       </div>
@@ -14,6 +14,10 @@
           <section style="padding-bottom: 1.5rem">
             <div class="columns is-centered">
               <div class="column is-two-thirds-tablet is-half-desktop">
+                <div class="notification is-info" style="display: flex">
+                  <font-awesome-icon class="icon is-large" icon="hard-hat" style="margin-right: 10px" />
+                  <p>{{ $t('home.beta') }}</p>
+                </div>
                 <div class="box">
                   <CreateTournamentForm />
                 </div>

@@ -1,5 +1,5 @@
 <template>
-  <section class="hero is-bold is-dark" v-if="tournament">
+  <section class="hero is-dark" v-if="tournament">
     <div class="hero-head">
       <Header :is-dark="true"></Header>
     </div>
@@ -31,3 +31,9 @@ export default class TournamentHeading extends Vue {
   @Prop() tournament!: Tournament
 }
 </script>
+
+<style lang="scss" scoped>
+.hero-body {
+  padding: 1.5rem 1.5rem 3rem 1.5rem;
+}
+</style>
