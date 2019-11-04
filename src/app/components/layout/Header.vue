@@ -17,7 +17,7 @@
             width="112"
             height="28"
           />
-          <span class="tag is-info" style="margin-left: 15px">BETA</span>
+          <span class="tag is-danger" style="margin-left: 15px">BETA</span>
         </a>
 
         <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">

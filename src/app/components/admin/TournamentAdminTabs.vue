@@ -1,6 +1,6 @@
 <template>
-  <ul>
-    <li :class="{ 'is-active': isActive(0) }">
+  <ul v-if="tournament">
+    <li v-if="tournament.isOpen()" :class="{ 'is-active': isTeamActive }">
       <router-link :to="{ name: 'admin-teams' }">
         <span class="icon is-small">
           <font-awesome-icon icon="users" />
@@ -8,7 +8,7 @@
         <span>{{ $t('admin.teams.title') }}</span>
       </router-link>
     </li>
-    <li :class="{ 'is-active': isActive(2) }">
+    <li :class="{ 'is-active': isFixturesActive }">
       <router-link :to="{ name: 'admin-fixtures' }">
         <span class="icon is-small">
           <font-awesome-icon icon="network-wired" />
@@ -16,7 +16,15 @@
         <span>{{ $t('admin.fixtures.title') }}</span>
       </router-link>
     </li>
-    <li :class="{ 'is-active': isActive(1) }">
+    <li v-if="!tournament.isOpen()" :class="{ 'is-active': isRankingActive }">
+      <router-link :to="{ name: 'admin-ranking' }">
+        <span class="icon is-small">
+          <font-awesome-icon icon="list-ol" />
+        </span>
+        <span>{{ $t('admin.ranking.title') }}</span>
+      </router-link>
+    </li>
+    <li :class="{ 'is-active': isSettingsActive }">
       <router-link :to="{ name: 'admin-settings' }">
         <span class="icon is-small">
           <font-awesome-icon icon="cogs" />
@@ -31,15 +39,39 @@
 import { Component, Vue } from 'vue-property-decorator'
 import { Events } from '@/app/constants/events'
 import { Getter } from 'vuex-class'
-import { AdminTabStoreGetters } from '@/app/store/accessors'
+import {
+  AdminTabStoreGetters,
+  TournamentStoreGetters,
+} from '@/app/store/accessors'
+import { AdminTabs } from '@/app/constants/tabs'
+import { Tournament } from '@/app/models/Tournament'
 
 @Component
 export default class TournamentAdminTabs extends Vue {
   @Getter(AdminTabStoreGetters.ActivatedTab)
-  activatedTab!: number
+  activatedTab!: AdminTabs
 
-  isActive(index: number) {
-    return parseInt(this.activatedTab as any, 10) === index
+  @Getter(TournamentStoreGetters.Tournament)
+  tournament!: Tournament
+
+  get isTeamActive() {
+    return this.isActive(AdminTabs.Teams)
+  }
+
+  get isRankingActive() {
+    return this.isActive(AdminTabs.Ranking)
+  }
+
+  get isFixturesActive() {
+    return this.isActive(AdminTabs.Fixtures)
+  }
+
+  get isSettingsActive() {
+    return this.isActive(AdminTabs.Settings)
+  }
+
+  private isActive(adminTabs: AdminTabs) {
+    return this.activatedTab === adminTabs
   }
 }
 </script>

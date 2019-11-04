@@ -4,7 +4,10 @@
       <Header :is-dark="true"></Header>
     </div>
     <div class="hero-body is-center">
-      <h1 class="title is-2">{{ tournament.name }}</h1>
+      <h1 class="title is-2">
+        {{ tournament.name }}
+        <span class="tag is-info">{{ tournament.state }}</span>
+        </h1>
       <h2 class="subtitle is-5">by {{ tournament.owner }}</h2>
       <slot></slot>
     </div>

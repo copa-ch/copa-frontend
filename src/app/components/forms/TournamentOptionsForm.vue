@@ -79,6 +79,7 @@ import { Action, Getter } from 'vuex-class'
 import {
   TournamentStoreActions,
   TournamentStoreGetters,
+  FixtruesStoreActions,
 } from '@/app/store/accessors'
 import { Tournament } from '@/app/models/Tournament'
 

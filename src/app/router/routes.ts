@@ -30,6 +30,11 @@ export const routes: RouteConfig[] = [
         name: 'admin-fixtures',
         component: () => import('../views/admin/TournamentAdminFixtures.vue'),
       },
+      {
+        path: 'ranking',
+        name: 'admin-ranking',
+        component: () => import('../views/admin/TournamentAdminRanking.vue'),
+      },
     ],
   },
   {
