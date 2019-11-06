@@ -1,5 +1,5 @@
 export class CreateTournamentRequest {
-  public name!: string
-  public owner!: string
-  public email!: string
+  name!: string
+  owner!: string
+  email!: string
 }

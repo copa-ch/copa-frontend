@@ -15,11 +15,11 @@
             <div class="columns is-centered">
               <div class="column is-two-thirds-tablet is-half-desktop">
                 <div class="notification is-danger" style="display: flex">
-                  <font-awesome-icon class="icon is-large" icon="hard-hat" style="margin-right: 10px" />
+                  <font-awesome-icon class="icon is-large" icon="hard-hat" style="margin-right: 10px"/>
                   <p>{{ $t('home.beta') }}</p>
                 </div>
                 <div class="box">
-                  <CreateTournamentForm />
+                  <CreateTournamentForm/>
                 </div>
               </div>
             </div>
@@ -31,15 +31,16 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
-import CreateTournamentForm from '../components/forms/CreateTournamentForm.vue'
-import Header from '@/app/components/layout/Header.vue'
+  import { Component, Vue } from 'vue-property-decorator'
+  import CreateTournamentForm from '../components/forms/CreateTournamentForm.vue'
+  import Header from '@/app/components/layout/Header.vue'
 
-@Component({
-  components: {
-    Header,
-    CreateTournamentForm,
-  },
-})
-export default class Home extends Vue {}
+  @Component({
+    components: {
+      Header,
+      CreateTournamentForm,
+    },
+  })
+  export default class Home extends Vue {
+  }
 </script>

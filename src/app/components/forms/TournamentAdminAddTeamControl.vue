@@ -16,67 +16,67 @@
 </template>
 
 <script lang="ts">
-import { Component, Emit, Prop, Vue } from 'vue-property-decorator'
-import { RequestState } from '@/app/models/States'
-import { Tournament } from '@/app/models/Tournament'
-import { API } from '@/app/api'
-import { Action } from 'vuex-class'
-import { FixtruesStoreActions } from '@/app/store/accessors'
+  import { Component, Emit, Prop, Vue } from 'vue-property-decorator'
+  import { RequestState } from '@/app/models/States'
+  import { Tournament } from '@/app/models/Tournament'
+  import { API } from '@/app/api'
+  import { Action } from 'vuex-class'
+  import { FixtruesStoreActions } from '@/app/store/accessors'
 
-@Component
-export default class TournamentAdminAddTeamControl extends Vue {
-  teamName = ''
-  hasError = false
-  state: RequestState = RequestState.PRISTINE
+  @Component
+  export default class TournamentAdminAddTeamControl extends Vue {
+    teamName = ''
+    hasError = false
+    state: RequestState = RequestState.PRISTINE
 
-  @Prop({ required: true })
-  tournament!: Tournament
+    @Prop({ required: true })
+    tournament!: Tournament
 
-  @Action(FixtruesStoreActions.Generate)
-  generateFixtures!: (tournamentHash: string) => Promise<void>
+    @Action(FixtruesStoreActions.Generate)
+    generateFixtures!: (tournamentHash: string) => Promise<void>
 
-  get isTeamNameValid() {
-    return this.teamName && this.teamName.length > 0
-  }
+    get isTeamNameValid() {
+      return this.teamName && this.teamName.length > 0
+    }
 
-  get isLoading() {
-    return this.state === RequestState.PENDING
-  }
+    get isLoading() {
+      return this.state === RequestState.PENDING
+    }
 
-  async addTeam() {
-    if (this.isTeamNameValid) {
-      this.hasError = false
-      this.state = RequestState.PENDING
-      try {
-        await API.Tournament.of(this.tournament.visitorId).Team.addTeam({
-          name: this.teamName,
-        })
-        this.teamName = ''
-        this.state = RequestState.PRISTINE
-        await this.generateFixtures(this.$route.params.id)
-        this.notifyAddTeam()
-      } catch (_) {
-        this.$buefy.snackbar.open({
-          message: 'Could not create the team!',
-          type: 'is-warning',
-          position: 'is-top',
-          actionText: 'Retry',
-          indefinite: true,
-          onAction: () => {
-            this.addTeam()
-          },
-        })
+    async addTeam() {
+      if (this.isTeamNameValid) {
+        this.hasError = false
+        this.state = RequestState.PENDING
+        try {
+          await API.Tournament.of(this.tournament.visitorId).Team.addTeam({
+            name: this.teamName,
+          })
+          this.teamName = ''
+          this.state = RequestState.PRISTINE
+          await this.generateFixtures(this.$route.params.id)
+          this.notifyAddTeam()
+        } catch (_) {
+          this.$buefy.snackbar.open({
+            message: 'Could not create the team!',
+            type: 'is-warning',
+            position: 'is-top',
+            actionText: 'Retry',
+            indefinite: true,
+            onAction: () => {
+              this.addTeam()
+            },
+          })
+        }
+      } else {
+        this.hasError = true
       }
-    } else {
-      this.hasError = true
+    }
+
+    @Emit('addTeam')
+    private notifyAddTeam() {
+      // Notifier
     }
   }
-
-  @Emit('addTeam')
-  private notifyAddTeam() {
-    // Notifier
-  }
-}
 </script>
 
 <style scoped lang="scss">

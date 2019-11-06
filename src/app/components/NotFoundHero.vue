@@ -13,11 +13,12 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
-import Header from '@/app/components/layout/Header.vue'
+  import { Component, Vue } from 'vue-property-decorator'
+  import Header from '@/app/components/layout/Header.vue'
 
-@Component({
-  components: { Header },
-})
-export default class NotFoundHero extends Vue {}
+  @Component({
+    components: { Header },
+  })
+  export default class NotFoundHero extends Vue {
+  }
 </script>

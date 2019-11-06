@@ -8,6 +8,7 @@ import {
 import { Failed, Requested, Successful } from '@/app/store/utils/action.utils'
 import { API } from '@/app/api'
 import { Game } from '../models/Game'
+import { UpdateGameRequest } from '@/app/models/UpdateGameRequest'
 
 // -------------------------------------------------------------------------
 // Define Store State
@@ -19,10 +20,8 @@ export interface FixturesStoreState {
   state: RequestState
 }
 
-type FixturesActionContext = ActionContext<
-  FixturesStoreState,
-  FixturesStoreState
->
+type FixturesActionContext = ActionContext<FixturesStoreState,
+  FixturesStoreState>
 
 // -------------------------------------------------------------------------
 // Define Store Module
@@ -93,6 +92,10 @@ export const FixturesStoreModule: Module<FixturesStoreState, any> = {
         commit(Failed(FixtruesStoreActions.Generate), error)
       }
     },
+
+    async [FixtruesStoreActions.UpdateGame]({ commit }: FixturesActionContext, game: Game): Promise<void> {
+      commit(FixtruesStoreActions.UpdateGame, game)
+    },
   },
   // -------------------------------------------------------------------------
   // Define mutations
@@ -141,5 +144,19 @@ export const FixturesStoreModule: Module<FixturesStoreState, any> = {
       state.state = RequestState.FAILED
       state.error = error
     },
+
+    [FixtruesStoreActions.UpdateGame](
+      state: FixturesStoreState,
+      game: Game,
+    ): void {
+      state.state = RequestState.SUCCESSFUL
+      state.fixtures = state.fixtures.map(fixture => {
+        if (fixture.id === game.id) {
+          return game
+        }
+        return fixture
+      })
+    },
+
   },
 }

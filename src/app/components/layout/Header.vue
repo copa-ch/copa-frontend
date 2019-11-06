@@ -31,10 +31,10 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
+  import { Component, Prop, Vue } from 'vue-property-decorator'
 
-@Component
-export default class Header extends Vue {
-  @Prop({ default: false }) isDark!: boolean
-}
+  @Component
+  export default class Header extends Vue {
+    @Prop({ default: false }) isDark!: boolean
+  }
 </script>

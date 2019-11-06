@@ -6,33 +6,33 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
-import TournamentAdminTabs from '@/app/components/admin/TournamentAdminTabs.vue'
-import { Action, Getter } from 'vuex-class'
-import {
-  TournamentStoreGetters,
-  AdminTabStoreActions,
-} from '@/app/store/accessors'
-import { Tournament } from '@/app/models/Tournament'
-import { Events } from '@/app/constants/events'
-import { AdminTabs } from '@/app/constants/tabs'
+  import { Component, Vue } from 'vue-property-decorator'
+  import TournamentAdminTabs from '@/app/components/admin/TournamentAdminTabs.vue'
+  import { Action, Getter } from 'vuex-class'
+  import {
+    TournamentStoreGetters,
+    AdminTabStoreActions,
+  } from '@/app/store/accessors'
+  import { Tournament } from '@/app/models/Tournament'
+  import { Events } from '@/app/constants/events'
+  import { AdminTabs } from '@/app/constants/tabs'
 
-@Component({
-  components: {
-    TournamentAdminTabs,
-  },
-})
-export default class TournamentAdminRanking extends Vue {
-  @Getter(TournamentStoreGetters.Tournament)
-  tournament!: Tournament
+  @Component({
+    components: {
+      TournamentAdminTabs,
+    },
+  })
+  export default class TournamentAdminRanking extends Vue {
+    @Getter(TournamentStoreGetters.Tournament)
+    tournament!: Tournament
 
-  @Action(AdminTabStoreActions.ActivateTab)
-  activateTab!: (tab: AdminTabs) => Promise<void>
+    @Action(AdminTabStoreActions.ActivateTab)
+    activateTab!: (tab: AdminTabs) => Promise<void>
 
-  mounted() {
-    this.activateTab(AdminTabs.Ranking)
+    mounted() {
+      this.activateTab(AdminTabs.Ranking)
+    }
   }
-}
 </script>
 
 <style lang="scss" scoped></style>

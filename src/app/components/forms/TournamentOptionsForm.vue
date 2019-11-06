@@ -18,7 +18,7 @@ import { RequestState } from '@/app/models/States'
       </div>
     </div>
 
-    <br />
+    <br/>
 
     <div class="columns is-multiline">
       <div class="column is-half">
@@ -37,7 +37,7 @@ import { RequestState } from '@/app/models/States'
       </div>
     </div>
 
-    <br />
+    <br/>
 
     <b-field>
       <div class="control buttons">
@@ -47,11 +47,12 @@ import { RequestState } from '@/app/models/States'
           :disabled="isPending"
           :loading="isPending"
           @click="save()"
-        >Save</b-button>
+        >Save
+        </b-button>
       </div>
     </b-field>
 
-    <hr />
+    <hr/>
 
     <div class="notification is-danger">
       <h4 class="title is-4">Delete this tournament</h4>
@@ -65,88 +66,89 @@ import { RequestState } from '@/app/models/States'
         inverted
         icon-left="trash"
         @click="deleteTournament()"
-      >Delete</b-button>
+      >Delete
+      </b-button>
     </div>
   </section>
 </template>
 
 <script lang="ts">
-import { Component, Vue, Watch } from 'vue-property-decorator'
-import { email, minLength, required } from 'vuelidate/lib/validators'
-import { RequestState } from '@/app/models/States'
-import { API } from '@/app/api'
-import { Action, Getter } from 'vuex-class'
-import {
-  TournamentStoreActions,
-  TournamentStoreGetters,
-  FixtruesStoreActions,
-} from '@/app/store/accessors'
-import { Tournament } from '@/app/models/Tournament'
+  import { Component, Vue, Watch } from 'vue-property-decorator'
+  import { email, minLength, required } from 'vuelidate/lib/validators'
+  import { RequestState } from '@/app/models/States'
+  import { API } from '@/app/api'
+  import { Action, Getter } from 'vuex-class'
+  import {
+    TournamentStoreActions,
+    TournamentStoreGetters,
+    FixtruesStoreActions,
+  } from '@/app/store/accessors'
+  import { Tournament } from '@/app/models/Tournament'
 
-@Component({
-  validations: {
-    name: { required, minLength: minLength(1) },
-    owner: { required, minLength: minLength(1) },
-  },
-})
-export default class TournamentOptionsForm extends Vue {
-  state: RequestState = RequestState.PRISTINE
-  name = ''
-  owner = ''
+  @Component({
+    validations: {
+      name: { required, minLength: minLength(1) },
+      owner: { required, minLength: minLength(1) },
+    },
+  })
+  export default class TournamentOptionsForm extends Vue {
+    state: RequestState = RequestState.PRISTINE
+    name = ''
+    owner = ''
 
-  @Getter(TournamentStoreGetters.Tournament)
-  tournament!: Tournament
+    @Getter(TournamentStoreGetters.Tournament)
+    tournament!: Tournament
 
-  @Action(TournamentStoreActions.Load)
-  loadTournament!: (id: string) => Promise<void>
+    @Action(TournamentStoreActions.Load)
+    loadTournament!: (id: string) => Promise<void>
 
-  get isPending() {
-    return this.state === RequestState.PENDING
-  }
+    get isPending() {
+      return this.state === RequestState.PENDING
+    }
 
-  mounted() {
-    this.onTournamentUpdate()
-  }
+    mounted() {
+      this.onTournamentUpdate()
+    }
 
-  @Watch('tournament')
-  onTournamentUpdate() {
-    this.name = this.tournament.name
-    this.owner = this.tournament.owner
-  }
+    @Watch('tournament')
+    onTournamentUpdate() {
+      this.name = this.tournament.name
+      this.owner = this.tournament.owner
+    }
 
-  getFieldType(fieldName: string) {
-    return this.$v[fieldName].$error
-      ? 'is-danger'
-      : this.$v[fieldName].$dirty
-      ? 'is-success'
-      : ''
-  }
+    getFieldType(fieldName: string) {
+      return this.$v[fieldName].$error
+        ? 'is-danger'
+        : this.$v[fieldName].$dirty
+          ? 'is-success'
+          : ''
+    }
 
-  getFieldMessage(fieldName: string) {
-    return this.$v[fieldName].$error
-      ? this.$t('createTournament.name.message')
-      : ''
-  }
+    getFieldMessage(fieldName: string) {
+      return this.$v[fieldName].$error
+        ? this.$t('createTournament.name.message')
+        : ''
+    }
 
-  async deleteTournament() {
-    this.state = RequestState.PENDING
-    await API.Tournament.delete(this.$route.params.id)
-    await this.$router.replace({ name: 'home' })
-    this.state = RequestState.SUCCESSFUL
-  }
-
-  async save() {
-    this.$v.$touch()
-    if (!this.$v.$invalid) {
+    async deleteTournament() {
       this.state = RequestState.PENDING
-      await API.Tournament.update(this.$route.params.id, {
-        name: this.name,
-        owner: this.owner,
-        state: this.tournament.state,
-      })
-      await this.loadTournament(this.$route.params.id)
+      await API.Tournament.delete(this.$route.params.id)
+      await this.$router.replace({ name: 'home' })
       this.state = RequestState.SUCCESSFUL
     }
+
+    async save() {
+      this.$v.$touch()
+      if (!this.$v.$invalid) {
+        this.state = RequestState.PENDING
+        await API.Tournament.update(this.$route.params.id, {
+          name: this.name,
+          owner: this.owner,
+          state: this.tournament.state,
+        })
+        await this.loadTournament(this.$route.params.id)
+        this.state = RequestState.SUCCESSFUL
+      }
+    }
   }
-}
 </script>

@@ -1,6 +1,6 @@
-import { ActionContext, Module } from "vuex"
-import { Successful } from "@/app/store/utils/action.utils"
-import { AdminTabStoreGetters, AdminTabStoreActions } from "./accessors"
+import { ActionContext, Module } from 'vuex'
+import { Successful } from '@/app/store/utils/action.utils'
+import { AdminTabStoreGetters, AdminTabStoreActions } from './accessors'
 import { AdminTabs } from '../constants/tabs'
 
 // -------------------------------------------------------------------------
@@ -11,10 +11,8 @@ export interface AdminTabStoreState {
   activatedTab: AdminTabs
 }
 
-type AdminTabActionContext = ActionContext<
-  AdminTabStoreState,
-  AdminTabStoreState
->
+type AdminTabActionContext = ActionContext<AdminTabStoreState,
+  AdminTabStoreState>
 
 // -------------------------------------------------------------------------
 // Define Store Module

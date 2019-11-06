@@ -1,12 +1,12 @@
-import { ActionContext, Module, ActionTree } from "vuex"
-import { Tournament } from "@/app/models/Tournament"
-import { RequestState } from "@/app/models/States"
+import { ActionContext, Module, ActionTree } from 'vuex'
+import { Tournament } from '@/app/models/Tournament'
+import { RequestState } from '@/app/models/States'
 import {
   TournamentStoreActions,
   TournamentStoreGetters,
-} from "@/app/store/accessors"
-import { Failed, Requested, Successful } from "@/app/store/utils/action.utils"
-import { API } from "@/app/api"
+} from '@/app/store/accessors'
+import { Failed, Requested, Successful } from '@/app/store/utils/action.utils'
+import { API } from '@/app/api'
 
 // -------------------------------------------------------------------------
 // Define Store State
@@ -18,10 +18,8 @@ export interface TournamentStoreState {
   tournamentState: RequestState
 }
 
-type TournamentActionContext = ActionContext<
-  TournamentStoreState,
-  TournamentStoreState
->
+type TournamentActionContext = ActionContext<TournamentStoreState,
+  TournamentStoreState>
 
 // -------------------------------------------------------------------------
 // Define Store Module
@@ -48,7 +46,7 @@ export const TournamentStoreModule: Module<TournamentStoreState, any> = {
       if (state && state.tournament) {
         return `${location.origin}/tournament/${state.tournament.visitorId}`
       }
-      return ""
+      return ''
     },
 
     [TournamentStoreGetters.State](state: TournamentStoreState) {

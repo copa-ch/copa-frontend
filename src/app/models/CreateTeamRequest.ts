@@ -1,3 +1,3 @@
 export class CreateTeamRequest {
-  public name!: string
+  name!: string
 }

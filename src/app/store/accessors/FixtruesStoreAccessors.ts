@@ -7,4 +7,5 @@ export enum FixtruesStoreGetters {
 export enum FixtruesStoreActions {
   Load = 'LoadFixtrues',
   Generate = 'GenerateFixtrues',
+  UpdateGame = 'UpdateGameFixtures',
 }

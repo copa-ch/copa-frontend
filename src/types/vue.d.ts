@@ -1,3 +1,5 @@
-declare module '*.vue' {}
+declare module '*.vue' {
+}
 
-declare module 'vuelidate' {}
+declare module 'vuelidate' {
+}

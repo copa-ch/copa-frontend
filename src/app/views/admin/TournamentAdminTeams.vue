@@ -2,40 +2,40 @@
   <section id="teams-admin" class="container padded-container">
     <h1 class="title">{{ $t('admin.teams.title') }}</h1>
     <h1 class="subtitle">{{ $t('admin.teams.subtitle') }}</h1>
-    <TournamentTeamTable :tournament="tournament" style="max-width: 500px" />
+    <TournamentTeamTable :tournament="tournament" style="max-width: 500px"/>
   </section>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
-import TournamentTeamTable from '@/app/components/TournamentTeamTable.vue'
-import TournamentAdminTabs from '@/app/components/admin/TournamentAdminTabs.vue'
-import { Action, Getter } from 'vuex-class'
-import {
-  TournamentStoreGetters,
-  AdminTabStoreActions,
-} from '@/app/store/accessors'
-import { Tournament } from '@/app/models/Tournament'
-import { Events } from '@/app/constants/events'
-import { AdminTabs } from '@/app/constants/tabs'
+  import { Component, Vue } from 'vue-property-decorator'
+  import TournamentTeamTable from '@/app/components/TournamentTeamTable.vue'
+  import TournamentAdminTabs from '@/app/components/admin/TournamentAdminTabs.vue'
+  import { Action, Getter } from 'vuex-class'
+  import {
+    TournamentStoreGetters,
+    AdminTabStoreActions,
+  } from '@/app/store/accessors'
+  import { Tournament } from '@/app/models/Tournament'
+  import { Events } from '@/app/constants/events'
+  import { AdminTabs } from '@/app/constants/tabs'
 
-@Component({
-  components: {
-    TournamentTeamTable,
-    TournamentAdminTabs,
-  },
-})
-export default class TournamentAdminTeams extends Vue {
-  @Getter(TournamentStoreGetters.Tournament)
-  tournament!: Tournament
+  @Component({
+    components: {
+      TournamentTeamTable,
+      TournamentAdminTabs,
+    },
+  })
+  export default class TournamentAdminTeams extends Vue {
+    @Getter(TournamentStoreGetters.Tournament)
+    tournament!: Tournament
 
-  @Action(AdminTabStoreActions.ActivateTab)
-  activateTab!: (tab: AdminTabs) => Promise<void>
+    @Action(AdminTabStoreActions.ActivateTab)
+    activateTab!: (tab: AdminTabs) => Promise<void>
 
-  mounted() {
-    this.activateTab(AdminTabs.Teams)
+    mounted() {
+      this.activateTab(AdminTabs.Teams)
+    }
   }
-}
 </script>
 
 <style lang="scss" scoped></style>

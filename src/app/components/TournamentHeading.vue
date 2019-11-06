@@ -7,7 +7,7 @@
       <h1 class="title is-2">
         {{ tournament.name }}
         <span class="tag is-info">{{ tournament.state }}</span>
-        </h1>
+      </h1>
       <h2 class="subtitle is-5">by {{ tournament.owner }}</h2>
       <slot></slot>
     </div>
@@ -22,21 +22,21 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
-import { Tournament } from '@/app/models/Tournament'
-import Header from '@/app/components/layout/Header.vue'
-import TournamentAdminTabs from '@/app/components/admin/TournamentAdminTabs.vue'
+  import { Component, Prop, Vue } from 'vue-property-decorator'
+  import { Tournament } from '@/app/models/Tournament'
+  import Header from '@/app/components/layout/Header.vue'
+  import TournamentAdminTabs from '@/app/components/admin/TournamentAdminTabs.vue'
 
-@Component({
-  components: { TournamentAdminTabs, Header },
-})
-export default class TournamentHeading extends Vue {
-  @Prop() tournament!: Tournament
-}
+  @Component({
+    components: { TournamentAdminTabs, Header },
+  })
+  export default class TournamentHeading extends Vue {
+    @Prop() tournament!: Tournament
+  }
 </script>
 
 <style lang="scss" scoped>
-.hero-body {
-  padding: 1.5rem 1.5rem 3rem 1.5rem;
-}
+  .hero-body {
+    padding: 1.5rem 1.5rem 3rem 1.5rem;
+  }
 </style>
