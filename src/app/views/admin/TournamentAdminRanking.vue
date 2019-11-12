@@ -2,6 +2,7 @@
   <section id="teams-admin" class="container padded-container">
     <h1 class="title">{{ $t('admin.ranking.title') }}</h1>
     <h1 class="subtitle">{{ $t('admin.ranking.subtitle') }}</h1>
+    <RankingTable></RankingTable>
   </section>
 </template>
 
@@ -14,11 +15,12 @@
     AdminTabStoreActions,
   } from '@/app/store/accessors'
   import { Tournament } from '@/app/models/Tournament'
-  import { Events } from '@/app/constants/events'
   import { AdminTabs } from '@/app/constants/tabs'
+  import RankingTable from '@/app/components/RankingTable.vue'
 
   @Component({
     components: {
+      RankingTable,
       TournamentAdminTabs,
     },
   })
