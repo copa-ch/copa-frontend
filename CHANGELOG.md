@@ -1,3 +1,10 @@
+# [1.6.0](https://github.com/hirsch88/copa-app/compare/v1.5.0...v1.6.0) (2019-11-06)
+
+
+### Features
+
+* **fixtures:** add update score ([d2b13d7](https://github.com/hirsch88/copa-app/commit/d2b13d7a43c86e3933e441147b67d9d8cd027da9))
+
 # [1.5.0](https://github.com/hirsch88/copa-app/compare/v1.4.0...v1.5.0) (2019-11-04)
 
 
