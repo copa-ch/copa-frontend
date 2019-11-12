@@ -1,3 +1,10 @@
+# [1.7.0](https://github.com/hirsch88/copa-app/compare/v1.6.0...v1.7.0) (2019-11-12)
+
+
+### Features
+
+* **ranking:** add ranking page ([4e4b032](https://github.com/hirsch88/copa-app/commit/4e4b0321a0f04197af06cd548556b7d63820ad3e))
+
 # [1.6.0](https://github.com/hirsch88/copa-app/compare/v1.5.0...v1.6.0) (2019-11-06)
 
 
