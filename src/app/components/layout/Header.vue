@@ -20,21 +20,34 @@
           <span class="tag is-danger" style="margin-left: 15px">BETA</span>
         </a>
 
-        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+        <a :class="{ 'is-active': isOpen }" @click="toggleIsOpen()" role="button" class="navbar-burger"
+           aria-label="menu" aria-expanded="false">
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
         </a>
+      </div>
+
+      <div class="navbar-menu" :class="{ 'is-active': isOpen }">
+        <div class="navbar-start">
+          <router-link class="navbar-item" :to="{ name: 'privacy' }">Privacy</router-link>
+        </div>
       </div>
     </div>
   </nav>
 </template>
 
 <script lang="ts">
-  import { Component, Prop, Vue } from 'vue-property-decorator'
+  import { Component, Prop, Ref, Vue } from 'vue-property-decorator'
 
   @Component
   export default class Header extends Vue {
     @Prop({ default: false }) isDark!: boolean
+    isOpen = false
+
+    toggleIsOpen() {
+      this.isOpen = !this.isOpen
+    }
+
   }
 </script>
