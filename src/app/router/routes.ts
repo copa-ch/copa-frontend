@@ -48,5 +48,10 @@ export const routes: RouteConfig[] = [
       },
     ],
   },
+  {
+    path: '/privacy',
+    name: 'privacy',
+    component: () => import('../views/Privacy.vue'),
+  },
   { path: '*', redirect: '/' },
 ]
