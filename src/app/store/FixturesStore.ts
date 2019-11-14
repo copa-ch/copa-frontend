@@ -1,5 +1,4 @@
 import { ActionContext, Module } from 'vuex'
-import { Tournament } from '@/app/models/Tournament'
 import { RequestState } from '@/app/models/States'
 import {
   FixtruesStoreActions,
@@ -8,7 +7,6 @@ import {
 import { Failed, Requested, Successful } from '@/app/store/utils/action.utils'
 import { API } from '@/app/api'
 import { Game } from '../models/Game'
-import { UpdateGameRequest } from '@/app/models/UpdateGameRequest'
 
 // -------------------------------------------------------------------------
 // Define Store State

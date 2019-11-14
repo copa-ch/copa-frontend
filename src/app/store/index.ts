@@ -7,7 +7,6 @@
  * http://vuex.vuejs.org/en/index.html
  */
 import Vuex from 'vuex'
-import createLogger from 'vuex/dist/logger'
 import {
   TournamentStoreModule,
   TournamentStoreState,
