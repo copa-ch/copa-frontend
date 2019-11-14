@@ -1,3 +1,16 @@
+# [1.8.0](https://github.com/hirsch88/copa-app/compare/v1.7.0...v1.8.0) (2019-11-14)
+
+
+### Bug Fixes
+
+* **config:** add new endpoint ([7ef792c](https://github.com/hirsch88/copa-app/commit/7ef792c24e9ac080222b506cb8d5c1ac139dbd99))
+* **header:** enable mobile layout ([df35d00](https://github.com/hirsch88/copa-app/commit/df35d0002826e47ed561d57bc6451e00af51ada5))
+
+
+### Features
+
+* **privacy:** [#13](https://github.com/hirsch88/copa-app/issues/13) add a data-privacy page ([41a6220](https://github.com/hirsch88/copa-app/commit/41a6220708251cac5b8dc3f02ba3b6b8b521b244))
+
 # [1.7.0](https://github.com/hirsch88/copa-app/compare/v1.6.0...v1.7.0) (2019-11-12)
 
 
