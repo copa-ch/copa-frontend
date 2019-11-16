@@ -1,3 +1,10 @@
+# [1.9.0](https://github.com/hirsch88/copa-app/compare/v1.8.0...v1.9.0) (2019-11-16)
+
+
+### Features
+
+* **footer:** [#15](https://github.com/hirsch88/copa-app/issues/15) add a page footer ([#18](https://github.com/hirsch88/copa-app/issues/18)) ([39d657a](https://github.com/hirsch88/copa-app/commit/39d657a44182493f5a216185b78107e68184defd))
+
 # [1.8.0](https://github.com/hirsch88/copa-app/compare/v1.7.0...v1.8.0) (2019-11-14)
 
 
