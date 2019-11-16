@@ -1,4 +1,3 @@
-import { RequestState } from '@/app/models/States'
 <template>
   <section v-if="tournament">
     <div class="columns is-multiline">
@@ -74,14 +73,13 @@ import { RequestState } from '@/app/models/States'
 
 <script lang="ts">
   import { Component, Mixins, Watch } from 'vue-property-decorator'
-  import { email, minLength, required } from 'vuelidate/lib/validators'
+  import { minLength, required } from 'vuelidate/lib/validators'
   import { RequestState } from '@/app/models/States'
   import { API } from '@/app/api'
   import { Action, Getter } from 'vuex-class'
   import {
     TournamentStoreActions,
     TournamentStoreGetters,
-    FixtruesStoreActions,
   } from '@/app/store/accessors'
   import { Tournament } from '@/app/models/Tournament'
   import TournamentMixin from '@/app/mixins/admin/Tournament'

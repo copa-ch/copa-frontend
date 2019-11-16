@@ -1,8 +1,8 @@
 <template>
-  <section id="tournament">
+  <section id="tournament" class="is-full-height">
     <NotFoundHero v-if="wasNotFound"/>
 
-    <section v-if="!wasNotFound">
+    <section v-if="!wasNotFound" class="content">
       <TournamentHeading :tournament="tournament">
         <section v-if="tournament && tournament.isOpen()">
           <InviteNotification
@@ -32,6 +32,8 @@
     </section>
 
     <b-loading :active.sync="isLoading"></b-loading>
+
+    <Footer />
   </section>
 </template>
 
@@ -43,6 +45,7 @@
   import InviteNotification from '@/app/components/admin/InviteNotification.vue'
   import StartNotification from '@/app/components/admin/StartNotification.vue'
   import TournamentHeading from '@/app/components/TournamentHeading.vue'
+  import Footer from '@/app/components/layout/Footer.vue'
   import { Action, Getter } from 'vuex-class'
   import {
     TournamentStoreActions,
@@ -56,6 +59,7 @@
       InviteNotification,
       StartNotification,
       TournamentHeading,
+      Footer,
     },
   })
   export default class TournamentAdminDashboard extends Mixins(TournamentMixin) {

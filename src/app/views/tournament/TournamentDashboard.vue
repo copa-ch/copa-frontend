@@ -1,14 +1,16 @@
 <template>
-  <section id="tournament">
+  <section id="tournament" class="is-full-height">
     <NotFoundHero v-if="wasNotFound"/>
 
-    <section v-if="!wasNotFound">
+    <section v-if="!wasNotFound" class="content">
       <TournamentHeading :tournament="tournament"/>
 
       <router-view></router-view>
     </section>
 
     <b-loading :active.sync="isLoading"></b-loading>
+
+    <Footer />
   </section>
 </template>
 
@@ -24,11 +26,13 @@
   import NotFoundHero from '@/app/components/NotFoundHero.vue'
   import TournamentMixin from '@/app/mixins/admin/Tournament'
   import TournamentHeading from '@/app/components/TournamentHeading.vue'
+  import Footer from '@/app/components/layout/Footer.vue'
 
   @Component({
     components: {
       NotFoundHero,
       TournamentHeading,
+      Footer,
     },
   })
   export default class TournamentDashboard extends Mixins(TournamentMixin) {
