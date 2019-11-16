@@ -16,7 +16,6 @@ export default {
   admin: {
     ranking: {
       title: 'Ranking',
-
     },
     start: {
       title: 'Let\'s start your Tournament',
@@ -66,5 +65,12 @@ export default {
     inValidForm: 'Form is not valid! Please check the fields.',
     submitFailed:
       'We are sorry, that we could not create your tournament. Please check your inputs and retry it.',
+  },
+  privacy: {
+    title: 'Privacy',
+  },
+  footer: {
+    app: 'App:',
+    server: 'Server:',
   },
 }

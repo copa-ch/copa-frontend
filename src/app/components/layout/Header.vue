@@ -30,7 +30,7 @@
 
       <div class="navbar-menu" :class="{ 'is-active': isOpen }">
         <div class="navbar-start">
-          <router-link class="navbar-item" :to="{ name: 'privacy' }">Privacy</router-link>
+          <router-link class="navbar-item" :to="{ name: 'privacy' }">{{ $t('privacy.title') }}</router-link>
         </div>
       </div>
     </div>

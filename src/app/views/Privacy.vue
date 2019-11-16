@@ -1,5 +1,5 @@
 <template>
-  <section id="privacy">
+  <section id="privacy" class="is-full-height">
     <section class="hero is-dark">
       <div class="hero-head">
         <Header :is-dark="true"></Header>
@@ -135,16 +135,20 @@
         <p>By using our website, you hereby consent to our Privacy Policy and agree to its terms.</p>
       </div>
     </div>
+
+    <Footer />
   </section>
 </template>
 
 <script lang="ts">
   import { Component, Vue } from 'vue-property-decorator'
   import Header from '@/app/components/layout/Header.vue'
+  import Footer from '@/app/components/layout/Footer.vue'
 
   @Component({
     components: {
       Header,
+      Footer,
     },
   })
   export default class Privacy extends Vue {
