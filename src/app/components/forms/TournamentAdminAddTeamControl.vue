@@ -16,15 +16,16 @@
 </template>
 
 <script lang="ts">
-  import { Component, Emit, Prop, Vue } from 'vue-property-decorator'
+  import { Component, Emit, Mixins, Prop } from 'vue-property-decorator'
   import { RequestState } from '@/app/models/States'
   import { Tournament } from '@/app/models/Tournament'
   import { API } from '@/app/api'
   import { Action } from 'vuex-class'
   import { FixtruesStoreActions } from '@/app/store/accessors'
+  import TournamentMixin from '@/app/mixins/admin/Tournament'
 
   @Component
-  export default class TournamentAdminAddTeamControl extends Vue {
+  export default class TournamentAdminAddTeamControl extends Mixins(TournamentMixin) {
     teamName = ''
     hasError = false
     state: RequestState = RequestState.PRISTINE
@@ -53,7 +54,7 @@
           })
           this.teamName = ''
           this.state = RequestState.PRISTINE
-          await this.generateFixtures(this.$route.params.id)
+          await this.generateFixtures(this.hash)
           this.notifyAddTeam()
         } catch (_) {
           this.$buefy.snackbar.open({

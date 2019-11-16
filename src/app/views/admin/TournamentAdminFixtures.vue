@@ -26,7 +26,7 @@
 </template>
 
 <script lang="ts">
-  import { Component, Vue } from 'vue-property-decorator'
+  import { Component, Mixins } from 'vue-property-decorator'
   import TournamentAdminTabs from '@/app/components/admin/TournamentAdminTabs.vue'
   import {
     AdminTabStoreActions,
@@ -40,7 +40,8 @@
   import { Game } from '@/app/models/Game'
   import GameRow from '@/app/components/GameRow.vue'
   import { AdminTabs } from '@/app/constants/tabs'
-  import { Tournament } from '../../models/Tournament'
+  import { Tournament } from '@/app/models/Tournament'
+  import TournamentMixin from '@/app/mixins/admin/Tournament'
 
   @Component({
     components: {
@@ -48,7 +49,7 @@
       TournamentAdminTabs,
     },
   })
-  export default class TournamentAdminFixtures extends Vue {
+  export default class TournamentAdminFixtures extends Mixins(TournamentMixin) {
     @Getter(FixtruesStoreGetters.Rounds)
     rounds!: Game[][]
 
@@ -73,11 +74,11 @@
 
     mounted() {
       this.activateTab(AdminTabs.Fixtures)
-      this.loadFixtures(this.$route.params.id)
+      this.loadFixtures(this.hash)
     }
 
     generate() {
-      this.generateFixtures(this.$route.params.id)
+      this.generateFixtures(this.hash)
     }
   }
 </script>

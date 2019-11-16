@@ -73,7 +73,7 @@ import { RequestState } from '@/app/models/States'
 </template>
 
 <script lang="ts">
-  import { Component, Vue, Watch } from 'vue-property-decorator'
+  import { Component, Mixins, Watch } from 'vue-property-decorator'
   import { email, minLength, required } from 'vuelidate/lib/validators'
   import { RequestState } from '@/app/models/States'
   import { API } from '@/app/api'
@@ -84,6 +84,7 @@ import { RequestState } from '@/app/models/States'
     FixtruesStoreActions,
   } from '@/app/store/accessors'
   import { Tournament } from '@/app/models/Tournament'
+  import TournamentMixin from '@/app/mixins/admin/Tournament'
 
   @Component({
     validations: {
@@ -91,7 +92,7 @@ import { RequestState } from '@/app/models/States'
       owner: { required, minLength: minLength(1) },
     },
   })
-  export default class TournamentOptionsForm extends Vue {
+  export default class TournamentOptionsForm extends Mixins(TournamentMixin) {
     state: RequestState = RequestState.PRISTINE
     name = ''
     owner = ''
@@ -132,7 +133,7 @@ import { RequestState } from '@/app/models/States'
 
     async deleteTournament() {
       this.state = RequestState.PENDING
-      await API.Tournament.delete(this.$route.params.id)
+      await API.Tournament.delete(this.hash)
       await this.$router.replace({ name: 'home' })
       this.state = RequestState.SUCCESSFUL
     }
@@ -141,12 +142,12 @@ import { RequestState } from '@/app/models/States'
       this.$v.$touch()
       if (!this.$v.$invalid) {
         this.state = RequestState.PENDING
-        await API.Tournament.update(this.$route.params.id, {
+        await API.Tournament.update(this.hash, {
           name: this.name,
           owner: this.owner,
           state: this.tournament.state,
         })
-        await this.loadTournament(this.$route.params.id)
+        await this.loadTournament(this.hash)
         this.state = RequestState.SUCCESSFUL
       }
     }

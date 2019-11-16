@@ -38,7 +38,7 @@
 </template>
 
 <script lang="ts">
-  import { Component, Prop, Vue, Watch } from 'vue-property-decorator'
+  import { Component, Prop, Mixins, Watch } from 'vue-property-decorator'
   import { Tournament } from '@/app/models/Tournament'
   import { RequestState } from '@/app/models/States'
   import { API } from '@/app/api'
@@ -46,13 +46,14 @@
   import TournamentAdminAddTeamControl from '@/app/components/forms/TournamentAdminAddTeamControl.vue'
   import { Action } from 'vuex-class'
   import { FixtruesStoreActions } from '../store/accessors'
+  import TournamentMixin from '@/app/mixins/admin/Tournament'
 
   @Component({
     components: {
       TournamentAdminAddTeamControl,
     },
   })
-  export default class TournamentTeamTable extends Vue {
+  export default class TournamentTeamTable extends Mixins(TournamentMixin) {
     @Prop({ required: true })
     tournament!: Tournament
 
@@ -79,7 +80,7 @@
 
     async deleteTeam(team: Team) {
       await API.Tournament.of(this.tournament.visitorId).Team.removeTeam(team.id)
-      await this.generateFixtures(this.$route.params.id)
+      await this.generateFixtures(this.hash)
       this.loadTeams()
     }
   }
