@@ -37,13 +37,14 @@
 </template>
 
 <script lang="ts">
-  import { Component, Vue } from 'vue-property-decorator'
+  import { Component, Mixins } from 'vue-property-decorator'
   import { Ranking } from '@/app/models/Ranking'
   import { RequestState } from '@/app/models/States'
   import { API } from '@/app/api'
+  import TournamentMixin from '@/app/mixins/admin/Tournament'
 
   @Component
-  export default class RankingTable extends Vue {
+  export default class RankingTable extends Mixins(TournamentMixin) {
 
     rankings: Ranking[] = []
     state: RequestState = RequestState.PRISTINE
@@ -54,7 +55,7 @@
 
     async loadRanking() {
       this.state = RequestState.PENDING
-      this.rankings = await API.Tournament.of(this.$route.params.id).Ranking.findAll()
+      this.rankings = await API.Tournament.of(this.hash).Ranking.findAll()
       this.state = RequestState.SUCCESSFUL
     }
 

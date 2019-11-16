@@ -15,7 +15,7 @@
 </template>
 
 <script lang="ts">
-  import { Component, Vue, Watch } from 'vue-property-decorator'
+  import { Component, Mixins, Watch } from 'vue-property-decorator'
   import { Action, Getter } from 'vuex-class'
   import {
     TournamentStoreActions,
@@ -24,6 +24,7 @@
   import { RequestState } from '@/app/models/States'
   import { Tournament } from '@/app/models/Tournament'
   import NotFoundHero from '@/app/components/NotFoundHero.vue'
+  import TournamentMixin from '@/app/mixins/admin/Tournament'
   import TournamentHeading from '@/app/components/TournamentHeading.vue'
   import Footer from '@/app/components/layout/Footer.vue'
 
@@ -34,7 +35,7 @@
       Footer,
     },
   })
-  export default class TournamentDashboard extends Vue {
+  export default class TournamentDashboard extends Mixins(TournamentMixin) {
     @Getter(TournamentStoreGetters.Tournament)
     tournament!: Tournament
 
@@ -53,7 +54,7 @@
     }
 
     mounted() {
-      this.loadTournament(this.$route.params.id)
+      this.loadTournament(this.hash)
     }
   }
 </script>

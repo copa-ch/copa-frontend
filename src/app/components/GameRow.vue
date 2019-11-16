@@ -38,16 +38,17 @@
 </template>
 
 <script lang="ts">
-  import { Component, Prop, Vue } from 'vue-property-decorator'
+  import { Component, Mixins, Prop } from 'vue-property-decorator'
   import { Game } from '@/app/models/Game'
   import { RequestState } from '@/app/models/States'
   import { API } from '@/app/api'
   import { LogdownInstance } from '@/types/logdown'
   import { Action } from 'vuex-class'
   import { FixtruesStoreActions } from '@/app/store/accessors'
+  import TournamentMixin from '@/app/mixins/admin/Tournament'
 
   @Component
-  export default class GameRow extends Vue {
+  export default class GameRow extends Mixins(TournamentMixin) {
     logger!: LogdownInstance
     hostScore: string = ''
     guestScore: string = ''
@@ -99,7 +100,7 @@
       this.logger.info('updateGameScore - hasScoreChanged', this.hasScoreChanged)
       if (this.isPlayed && this.hasScoreChanged) {
         this.state = RequestState.PENDING
-        const game = await API.Tournament.of(this.$route.params.id).Game.update(this.game.id, {
+        const game = await API.Tournament.of(this.hash).Game.update(this.game.id, {
           hostScore: parseInt(this.hostScore, 10),
           guestScore: parseInt(this.guestScore, 10),
         })

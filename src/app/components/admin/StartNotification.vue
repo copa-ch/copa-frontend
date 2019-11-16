@@ -19,19 +19,20 @@
 </template>
 
 <script lang="ts">
-  import { Component, Emit, Prop, Vue, Watch } from 'vue-property-decorator'
-  import { Tournament } from '../../models/Tournament'
+  import { Component, Emit, Mixins, Prop, Watch } from 'vue-property-decorator'
+  import { Tournament } from '@/app/models/Tournament'
   import { Getter, Action } from 'vuex-class'
   import {
     TournamentStoreGetters,
     TournamentStoreActions,
   } from '@/app/store/accessors'
-  import { RequestState } from '../../models/States'
+  import { RequestState } from '@/app/models/States'
   import { API } from '@/app/api'
-  import { TournamentState } from '../../models/TournamentState'
+  import { TournamentState } from '@/app/models/TournamentState'
+  import TournamentMixin from '@/app/mixins/admin/Tournament'
 
   @Component
-  export default class StartNotification extends Vue {
+  export default class StartNotification extends Mixins(TournamentMixin) {
     state: RequestState = RequestState.PRISTINE
 
     @Getter(TournamentStoreGetters.Tournament)
@@ -46,11 +47,11 @@
 
     async startTournament() {
       this.state = RequestState.PENDING
-      await API.Tournament.update(this.$route.params.id, {
+      await API.Tournament.update(this.hash, {
         ...this.tournament,
         state: TournamentState.Playable,
       })
-      await this.loadTournament(this.$route.params.id)
+      await this.loadTournament(this.hash)
       this.state = RequestState.SUCCESSFUL
     }
 

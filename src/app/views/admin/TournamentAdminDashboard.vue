@@ -38,7 +38,7 @@
 </template>
 
 <script lang="ts">
-  import { Component, Vue, Watch } from 'vue-property-decorator'
+  import { Component, Mixins, Watch } from 'vue-property-decorator'
   import { Tournament } from '@/app/models/Tournament'
   import { RequestState } from '@/app/models/States'
   import NotFoundHero from '@/app/components/NotFoundHero.vue'
@@ -51,6 +51,7 @@
     TournamentStoreActions,
     TournamentStoreGetters,
   } from '@/app/store/accessors'
+  import TournamentMixin from '@/app/mixins/admin/Tournament'
 
   @Component({
     components: {
@@ -61,7 +62,7 @@
       Footer,
     },
   })
-  export default class TournamentAdminDashboard extends Vue {
+  export default class TournamentAdminDashboard extends Mixins(TournamentMixin) {
     isInvitationVisible = false
     isStartingVisible = false
 
@@ -83,14 +84,14 @@
     }
 
     mounted() {
-      this.loadTournament(this.$route.params.id)
+      this.loadTournament(this.hash)
     }
 
     @Watch('tournament')
     verifyAdmin() {
       if (
         this.tournament &&
-        this.tournament.visitorId === this.$route.params.id
+        this.tournament.visitorId === this.hash
       ) {
         this.$router.replace({
           name: 'tournament.teams',
