@@ -27,6 +27,7 @@
         </div>
       </div>
     </section>
+    <Footer />
   </section>
 </template>
 
@@ -34,11 +35,13 @@
   import { Component, Vue } from 'vue-property-decorator'
   import CreateTournamentForm from '../components/forms/CreateTournamentForm.vue'
   import Header from '@/app/components/layout/Header.vue'
+  import Footer from '@/app/components/layout/Footer.vue'
 
   @Component({
     components: {
       Header,
       CreateTournamentForm,
+      Footer,
     },
   })
   export default class Home extends Vue {

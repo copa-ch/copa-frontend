@@ -15,7 +15,14 @@ import {
   AdminTabStoreModule,
   AdminTabStoreState,
 } from '@/app/store/AdminTabStore'
-import { FixturesStoreState, FixturesStoreModule } from './FixturesStore'
+import {
+  FixturesStoreModule,
+  FixturesStoreState,
+} from '@/app/store/FixturesStore'
+import {
+  ApiInformationStoreModule,
+  ApiInformationStoreState,
+} from '@/app/store/ApiInformationStore'
 
 /**
  * Define your Store here
@@ -24,6 +31,7 @@ export interface Store {
   tournament: TournamentStoreState
   fixtures: FixturesStoreState
   adminTab: AdminTabStoreState
+  apiInformation: ApiInformationStoreState
 }
 
 const debug = process.env.NODE_ENV !== 'production'
@@ -36,6 +44,7 @@ export const store = new Vuex.Store<Store>({
     adminTab: AdminTabStoreModule,
     tournament: TournamentStoreModule,
     fixtures: FixturesStoreModule,
+    apiInformation: ApiInformationStoreModule,
   },
 
   /**

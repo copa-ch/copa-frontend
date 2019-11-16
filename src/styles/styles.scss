@@ -20,3 +20,13 @@
     padding: 3rem 0;
   }
 }
+
+.is-full-height {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  .content {
+    flex: 1;
+  }
+}
