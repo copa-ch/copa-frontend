@@ -1,3 +1,10 @@
+## [1.9.2](https://github.com/hirsch88/copa-app/compare/v1.9.1...v1.9.2) (2020-02-18)
+
+
+### Bug Fixes
+
+* **config:** redirect routes to index.html in server.js ([94bb9b0](https://github.com/hirsch88/copa-app/commit/94bb9b0f50bb6d0dfbac11c43f74c7796d0a2f30))
+
 ## [1.9.1](https://github.com/hirsch88/copa-app/compare/v1.9.0...v1.9.1) (2020-02-17)
 
 
