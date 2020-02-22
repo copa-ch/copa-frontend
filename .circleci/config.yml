@@ -1,9 +1,9 @@
 version: 2
 jobs:
   build:
-    working_directory: ~/copa-server
+    working_directory: ~/copa-app
     docker:
-      - image: circleci/node:10.16-jessie-browsers-legacy
+      - image: circleci/node:10.18-jessie-browsers-legacy
     steps:
       - checkout
       - restore_cache:
