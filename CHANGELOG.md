@@ -1,3 +1,10 @@
+# [1.10.0](https://github.com/hirsch88/copa-app/compare/v1.9.2...v1.10.0) (2020-02-22)
+
+
+### Features
+
+* **dependecies:** update dependecies ([4b7f00c](https://github.com/hirsch88/copa-app/commit/4b7f00c1b168fb323d95bbb6a18f06516583a9b6))
+
 ## [1.9.2](https://github.com/hirsch88/copa-app/compare/v1.9.1...v1.9.2) (2020-02-18)
 
 
