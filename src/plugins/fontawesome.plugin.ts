@@ -1,5 +1,5 @@
-import Vue from 'vue'
-import { library } from '@fortawesome/fontawesome-svg-core'
+import Vue from "vue"
+import {library} from "@fortawesome/fontawesome-svg-core"
 import {
   faCheck,
   faUser,
@@ -15,8 +15,8 @@ import {
   faNetworkWired,
   faHardHat,
   faListOl,
-} from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+} from "@fortawesome/free-solid-svg-icons"
+import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome"
 
 library.add(
   faUser,
@@ -35,4 +35,4 @@ library.add(
   faListOl,
 )
 
-Vue.component('font-awesome-icon', FontAwesomeIcon)
+Vue.component("font-awesome-icon", FontAwesomeIcon)

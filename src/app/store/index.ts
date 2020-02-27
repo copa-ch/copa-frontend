@@ -12,10 +12,6 @@ import {
   TournamentStoreState,
 } from '@/app/store/TournamentStore'
 import {
-  AdminTabStoreModule,
-  AdminTabStoreState,
-} from '@/app/store/AdminTabStore'
-import {
   FixturesStoreModule,
   FixturesStoreState,
 } from '@/app/store/FixturesStore'
@@ -30,7 +26,6 @@ import {
 export interface Store {
   tournament: TournamentStoreState
   fixtures: FixturesStoreState
-  adminTab: AdminTabStoreState
   apiInformation: ApiInformationStoreState
 }
 
@@ -41,7 +36,6 @@ export const store = new Vuex.Store<Store>({
    * Assign the modules to the store.
    */
   modules: {
-    adminTab: AdminTabStoreModule,
     tournament: TournamentStoreModule,
     fixtures: FixturesStoreModule,
     apiInformation: ApiInformationStoreModule,
