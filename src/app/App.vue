@@ -1,21 +1,15 @@
 <template>
   <div id="app">
-    <router-view />
+    <router-view/>
   </div>
 </template>
 
 <script lang="ts">
-  import { Action } from 'vuex-class';
-  import { Vue, Component } from 'vue-property-decorator';
-  import { ApiInformationStoreActions } from '@/app/store/accessors';
+  import {defineComponent} from '@vue/composition-api'
 
-  @Component
-  export default class App extends Vue {
-    @Action(ApiInformationStoreActions.Load)
-    loadApiInformation!: () => Promise<void>;
+  export default defineComponent({
+    setup() {
 
-    mounted() {
-      this.loadApiInformation();
-    }
-  }
+    },
+  })
 </script>

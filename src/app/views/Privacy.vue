@@ -1,20 +1,6 @@
 <template>
   <section id="privacy" class="is-full-height">
-    <section class="hero is-dark">
-      <div class="hero-head">
-        <Header :is-dark="true"></Header>
-      </div>
-      <div class="hero-body is-center">
-        <h1 class="title is-2">
-          Privacy Policy
-        </h1>
-        <h2 class="subtitle">
-          Effective November 13, 2019
-        </h2>
-        <slot></slot>
-      </div>
-    </section>
-    <div class="container padded-container">
+    <div class="container">
       <div class="content">
         <h1>Privacy Policy for Copa</h1>
 
@@ -136,22 +122,16 @@
       </div>
     </div>
 
-    <Footer />
   </section>
 </template>
 
 <script lang="ts">
-  import { Component, Vue } from 'vue-property-decorator'
-  import Header from '@/app/components/layout/Header.vue'
-  import Footer from '@/app/components/layout/Footer.vue'
+  import {defineComponent} from '@vue/composition-api'
 
-  @Component({
-    components: {
-      Header,
-      Footer,
+  export default defineComponent({
+    setup() {
+
     },
   })
-  export default class Privacy extends Vue {
-  }
 </script>
 

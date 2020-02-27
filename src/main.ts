@@ -7,7 +7,7 @@
 
 import Vue from 'vue'
 import './styles/styles.scss'
-import { appConfig } from '@/config/app.config'
+import {appConfig} from '@/config/app.config'
 
 /* ============
  * Plugins
@@ -22,10 +22,10 @@ import '@/plugins/fontawesome.plugin'
 import '@/plugins/buefy.plugin'
 import '@/plugins/axios.plugin'
 import '@/plugins/vuex.plugin'
-import '@/plugins/vuelidate.plugin'
 import '@/plugins/clipboard.plugin'
-import { i18n } from '@/plugins/i18n.plugin'
-import { router } from '@/plugins/vue-router.plugin'
+import '@/plugins/vue-composition-api.plugin'
+import {i18n} from '@/plugins/i18n.plugin'
+import {router} from '@/plugins/vue-router.plugin'
 
 /* ============
  * Main App
@@ -35,7 +35,7 @@ import { router } from '@/plugins/vue-router.plugin'
  */
 import App from './app/App.vue'
 import './registerServiceWorker'
-import { store } from './app/store'
+import {store} from './app/store'
 
 Vue.config.productionTip = false
 

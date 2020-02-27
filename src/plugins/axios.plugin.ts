@@ -9,12 +9,12 @@
  * https://github.com/mzabriskie/axios
  */
 
-import Vue, { PluginObject } from 'vue'
+import Vue, {PluginObject} from "vue"
 
-import Axios from 'axios'
+import Axios from "axios"
 
 // import { store } from '@/app/store';
-import { appConfig } from '@/config/app.config'
+import {appConfig} from "@/config/app.config"
 
 Axios.defaults.baseURL = appConfig.apiPath
 // Axios.defaults.headers.common.Accept = 'application/json';

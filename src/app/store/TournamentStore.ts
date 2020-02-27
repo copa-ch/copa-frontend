@@ -6,7 +6,7 @@ import {
   TournamentStoreGetters,
 } from '@/app/store/accessors'
 import { Failed, Requested, Successful } from '@/app/store/utils/action.utils'
-import { API } from '@/app/api'
+import { API } from '@/app/effects/api'
 
 // -------------------------------------------------------------------------
 // Define Store State

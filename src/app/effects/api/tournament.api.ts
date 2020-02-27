@@ -4,10 +4,10 @@ import { classToPlain, plainToClass } from 'class-transformer'
 import { CreateTournamentRequest } from '@/app/models/CreateTournamentRequest'
 import { Tournament } from '@/app/models/Tournament'
 import { defaultApiConfig } from '@/config/api.config'
-import { TournamentTeamApi } from '@/app/api/tournament-team.api'
+import { TournamentTeamApi } from '@/app/effects/api/tournament-team.api'
 import { UpdateTournamentRequest } from '@/app/models/UpdateTournamentRequest'
-import { TournamentGameApi } from '@/app/api/tournament-game.api'
-import { TournamentRankingApi } from '@/app/api/tournament-ranking.api'
+import { TournamentGameApi } from '@/app/effects/api/tournament-game.api'
+import { TournamentRankingApi } from '@/app/effects/api/tournament-ranking.api'
 
 export class TournamentApi {
 

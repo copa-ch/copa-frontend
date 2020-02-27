@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import { TournamentApi } from '@/app/api/tournament.api'
+import { TournamentApi } from '@/app/effects/api/tournament.api'
 import { plainToClass } from 'class-transformer'
 import { defaultApiConfig } from '@/config/api.config'
 import { ApiInformation } from '@/app/models/ApiInformation'
