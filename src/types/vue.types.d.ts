@@ -1,6 +1,6 @@
 import Vue from 'vue'
-import { AxiosInstance } from 'axios'
-import { LogdownBuilder } from './logdown'
+import {AxiosInstance} from 'axios'
+import {LogdownBuilder} from './logdown'
 
 interface EventBus {
   $on(event: string | string[], callback: Function): this;

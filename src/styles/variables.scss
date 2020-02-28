@@ -2,15 +2,17 @@
  * Colors
  */
 $dark: #5F3DC4;
+$light: #38D9C0;
 $primary: #38D9C0;
 $warning: #ffb600;
 $danger: #eb0006;
 $success: #00d500;
 $info: #5F3DC4;
+$black: #222;
+$white: #fff;
 /**
  * Font
  */
-//$family-sans-serif: 'Poppins', sans-serif;
 $family-sans-serif: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
 $weight-bold: 800;
 /**
@@ -24,3 +26,5 @@ $widescreen: 960px + (2 * $gap);
 $widescreen-enabled: true;
 $fullhd: 960px + (2 * $gap);
 $fullhd-enabled: true;
+
+$navbar-height: 4rem;
