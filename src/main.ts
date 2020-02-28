@@ -27,6 +27,7 @@ import '@/plugins/vue-composition-api.plugin'
 import {i18n} from '@/plugins/i18n.plugin'
 import {router} from '@/plugins/vue-router.plugin'
 
+
 /* ============
  * Main App
  * ============

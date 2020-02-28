@@ -4,3 +4,13 @@
 @import 'variables.scss';
 @import '~bulma';
 @import '~buefy/src/scss/buefy';
+@import 'animations.scss';
+
+.container.is-spaced {
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+.hidden {
+  opacity: 0;
+}

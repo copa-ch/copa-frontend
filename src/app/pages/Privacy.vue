@@ -1,6 +1,7 @@
 <template>
-  <section id="privacy" class="is-full-height">
-    <div class="container">
+  <section id="privacy">
+    <Header></Header>
+    <div class="container is-spaced">
       <div class="content">
         <h1>Privacy Policy for Copa</h1>
 
@@ -121,14 +122,20 @@
         <p>By using our website, you hereby consent to our Privacy Policy and agree to its terms.</p>
       </div>
     </div>
-
+    <Footer></Footer>
   </section>
 </template>
 
 <script lang="ts">
   import {defineComponent} from '@vue/composition-api'
+  import Header from '@/app/components/layout/Header.vue'
+  import Footer from '@/app/components/layout/Footer.vue'
 
   export default defineComponent({
+    components: {
+      Header,
+      Footer,
+    },
     setup() {
 
     },

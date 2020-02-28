@@ -1,5 +1,5 @@
 import { RouteConfig } from 'vue-router'
-import Home from '../views/Home.vue'
+import Home from '../pages/Home.vue'
 
 export const routes: RouteConfig[] = [
   {
@@ -10,11 +10,11 @@ export const routes: RouteConfig[] = [
   {
     path: '/privacy',
     name: 'privacy',
-    component: () => import('../views/Privacy.vue'),
+    component: () => import('../pages/Privacy.vue'),
   },
   // {
   //   path: '/tournament/:id/admin',
-  //   component: () => import('../views/admin/TournamentAdminDashboard.vue'),
+  //   component: () => import('../pages/admin/TournamentAdminDashboard.vue'),
   //   children: [
   //     {
   //       path: '',
@@ -23,33 +23,33 @@ export const routes: RouteConfig[] = [
   //     {
   //       path: 'teams',
   //       name: 'admin-teams',
-  //       component: () => import('../views/admin/TournamentAdminTeams.vue'),
+  //       component: () => import('../pages/admin/TournamentAdminTeams.vue'),
   //     },
   //     {
   //       path: 'settings',
   //       name: 'admin-settings',
-  //       component: () => import('../views/admin/TournamentAdminSettings.vue'),
+  //       component: () => import('../pages/admin/TournamentAdminSettings.vue'),
   //     },
   //     {
   //       path: 'fixtures',
   //       name: 'admin-fixtures',
-  //       component: () => import('../views/admin/TournamentAdminFixtures.vue'),
+  //       component: () => import('../pages/admin/TournamentAdminFixtures.vue'),
   //     },
   //     {
   //       path: 'ranking',
   //       name: 'admin-ranking',
-  //       component: () => import('../views/admin/TournamentAdminRanking.vue'),
+  //       component: () => import('../pages/admin/TournamentAdminRanking.vue'),
   //     },
   //   ],
   // },
   // {
   //   path: '/tournament/:id',
-  //   component: () => import('../views/tournament/TournamentDashboard.vue'),
+  //   component: () => import('../pages/tournament/TournamentDashboard.vue'),
   //   children: [
   //     {
   //       path: '',
   //       name: 'tournament.teams',
-  //       component: () => import('../views/tournament/TournamentTeams.vue'),
+  //       component: () => import('../pages/tournament/TournamentTeams.vue'),
   //     },
   //   ],
   // },
