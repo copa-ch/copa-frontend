@@ -1,3 +1,10 @@
+# [1.11.0](https://github.com/copa-ch/copa-frontend/compare/v1.10.0...v1.11.0) (2020-02-28)
+
+
+### Features
+
+* **home:** add home page ([b478ade](https://github.com/copa-ch/copa-frontend/commit/b478ade3438a2cbbf52349f218df80bb80cfc8cc))
+
 # [1.10.0](https://github.com/hirsch88/copa-app/compare/v1.9.2...v1.10.0) (2020-02-22)
 
 
