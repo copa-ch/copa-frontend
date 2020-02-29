@@ -13,6 +13,18 @@ export default {
     title: "404",
     subtitle: "This is not the Tournament your are looking for.",
   },
+  tournament: {
+    title: "Tournament",
+    teams: {
+      title: "Teams",
+    },
+    fixtures: {
+      title: "Fixtures",
+    },
+    ranking: {
+      title: "Ranking",
+    },
+  },
   admin: {
     ranking: {
       title: "Ranking",
