@@ -1,5 +1,5 @@
 <template>
-  <section class="hero is-primary">
+  <section class="hero is-dark">
     <div class="hero-body">
       <div class="container">
         <h1 class="title">{{$t(title)}}</h1>
@@ -10,7 +10,11 @@
         <div class="container">
           <ul>
             <li v-for="child in children" :key="child.name">
-              <router-link class="navbar-item" :to="{ name: child.name }" exact-active-class="is-active">{{$t(child.meta.title)}}</router-link>
+              <router-link
+                class="navbar-item"
+                :to="{ name: child.name }"
+                exact-active-class="is-active"
+              >{{$t(child.meta.title)}}</router-link>
             </li>
           </ul>
         </div>
@@ -25,6 +29,7 @@ import { RouteConfig } from 'vue-router'
 
 export default defineComponent({
   props: {
+    title: String,
     routeName: String,
   },
   setup(props, context) {
@@ -37,13 +42,20 @@ export default defineComponent({
       route = router.options.routes.find((route: RouteConfig) => route.name === props.routeName);
     }
 
-    const title = route ? route.meta.title : '';
     const children = route && route.children ? route.children : [];
 
     return {
-      title,
       children,
     }
   },
 })
 </script>
+
+<style lang="scss" scoped>
+section.hero {
+  background-image: url("../../../assets/hero.svg");
+  background-position: right center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+</style>

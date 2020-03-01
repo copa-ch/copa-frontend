@@ -1,19 +1,31 @@
 <template>
   <section id="tournament-teams">
-    <div class="container is-spaced">{{$t('tournament.teams.title')}}</div>
+    <div :v-if="!isPending" class="container is-spaced">
+      <AddTeam />
+      <TeamList :teams="teams" />
+    </div>
   </section>
 </template>
 
 <script lang="ts">
 import { defineComponent } from '@vue/composition-api'
-import Header from '@/app/components/layout/Header.vue'
-import Footer from '@/app/components/layout/Footer.vue'
+import { useApiTournamentTeams } from '@/app/effects/api-tourtnament-teams.effect'
+import AddTeam from '@/app/components/tournament/AddTeam.vue';
+import TeamList from '@/app/components/tournament/TeamList.vue';
 
 export default defineComponent({
   components: {
+    AddTeam,
+    TeamList,
   },
-  setup() {
+  setup(props, context) {
+    const { isPending, teams, load } = useApiTournamentTeams(context.parent!.$route.params.id)
+    load()
 
+    return {
+      isPending,
+      teams,
+    }
   },
 })
 </script>

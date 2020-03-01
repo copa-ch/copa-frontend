@@ -17,6 +17,9 @@ export default {
     title: "Tournament",
     teams: {
       title: "Teams",
+      add: {
+        placeholder: "Team name",
+      },
     },
     fixtures: {
       title: "Fixtures",

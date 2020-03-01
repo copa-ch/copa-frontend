@@ -15,9 +15,6 @@ export const routes: RouteConfig[] = [
     path: '/tournament/:id',
     name: 'tournament',
     component: () => import('@/app/pages/tournament/Dashboard.vue'),
-    meta: {
-      title: 'tournament.title',
-    },
     children: [
       {
         path: '',
