@@ -14,7 +14,7 @@
 <script lang="ts">
 import { defineComponent } from '@vue/composition-api'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { useTournamentTeamsApi } from '@/app/effects/tournament-teams-api.effect'
+import { actions } from '@/app/effects/tournament-teams-api.effect'
 
 export default defineComponent({
   components: {
@@ -24,11 +24,13 @@ export default defineComponent({
     team: Object,
   },
   setup(props, context) {
-     const { isPending, removeTeam } = useTournamentTeamsApi(context.parent!.$route.params.id)
+    const removeTeam = (teamId: string) => {
+      actions.removeTournamentTeam(context.parent!.$route.params.id, teamId)
+    }
 
-     return {
-       removeTeam,
-     }
+    return {
+      removeTeam,
+    }
   },
 })
 </script>

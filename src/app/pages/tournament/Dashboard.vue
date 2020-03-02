@@ -8,8 +8,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from '@vue/composition-api'
-import { useTournamentApi } from '@/app/effects/tournament-api.effect'
+import { defineComponent, computed } from '@vue/composition-api'
+import { actions, getters } from '@/app/effects/tournament-api.effect'
 import Header from '@/app/components/layout/Header.vue'
 import PageHero from '@/app/components/layout/PageHero.vue'
 import Footer from '@/app/components/layout/Footer.vue'
@@ -21,13 +21,11 @@ export default defineComponent({
     Footer,
   },
   setup(props, context) {
-    const { isPending, tournament, load } = useTournamentApi()
-
-    load(context.parent!.$route.params.id);
+    actions.loadTournament(context.parent!.$route.params.id);
 
     return {
-      isPending,
-      tournament,
+      isPending: getters.isPending,
+      tournament: getters.tournament,
     }
   },
 })

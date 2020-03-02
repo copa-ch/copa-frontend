@@ -2,66 +2,80 @@ import Vue from 'vue'
 import { computed } from '@vue/composition-api'
 import { defaultApiConfig } from '@/config/api.config'
 import { plainToClass } from 'class-transformer'
+import { RequestState } from '@/app/models/States'
 import { Team } from '@/app/models/Team'
 
 interface TeamsStoreState {
-  isPending: boolean,
+  tournamentTeamsApiState: RequestState,
   teams: Team[],
 }
 
 const state = Vue.observable<TeamsStoreState>({
-  isPending: false,
+  tournamentTeamsApiState: RequestState.PRISTINE,
   teams: [],
 })
 
-export const useTournamentTeamsApi = (hashId: string) => {
-  const load = async () => {
-    state.isPending = true
+export const getters = {
+  isPending: computed(() => state.tournamentTeamsApiState === RequestState.PENDING),
+  teams: computed(() => state.teams),
+}
 
-    const response = await Vue.$http.request({
-      ...defaultApiConfig,
-      method: 'GET',
-      url: `/tournament/${hashId}/team`,
-    })
+const mutations = {
+  setTournamentTeamsApiState: (apiState: RequestState) => state.tournamentTeamsApiState = apiState,
+  setTournamentTeams: (teams: {}[]) => state.teams = teams.map(row => plainToClass(Team, row)),
+  setTournamentTeam: (team: {}) => state.teams.push(plainToClass(Team, team)),
+  removeTournamentTeam: (teamId: string) => state.teams = state.teams.filter(team => team.id !== teamId),
+}
 
-    state.isPending = false
-    state.teams = (response.data as any[]).map(row => plainToClass(Team, row))
-  }
+export const actions = {
+  loadTournamentTeams: async (hashId: string) => {
+    mutations.setTournamentTeamsApiState(RequestState.PENDING)
 
-  const addTeam = async (name: string) => {
-    state.isPending = true
+    try {
+      const response = await Vue.$http.request({
+        ...defaultApiConfig,
+        method: 'GET',
+        url: `/tournament/${hashId}/team`,
+      })
 
-    const response = await Vue.$http.request({
-      ...defaultApiConfig,
-      method: 'POST',
-      url: `/tournament/${hashId}/team`,
-      data: { name },
-    })
+      mutations.setTournamentTeamsApiState(RequestState.SUCCESSFUL)
+      mutations.setTournamentTeams(response.data)
+    } catch (error) {
+      mutations.setTournamentTeamsApiState(RequestState.FAILED)
+    }
+  },
+  addTournamentTeam: async (hashId: string, name: string) => {
+    mutations.setTournamentTeamsApiState(RequestState.PENDING)
 
-    state.isPending = false
-    const tournament = plainToClass(Team, response.data)
-    state.teams.push(tournament)
-  }
+    try {
+      const response = await Vue.$http.request({
+        ...defaultApiConfig,
+        method: 'POST',
+        url: `/tournament/${hashId}/team`,
+        data: { name },
+      })
 
-  const removeTeam = async (id: string) => {
-    state.isPending = true
+      mutations.setTournamentTeamsApiState(RequestState.SUCCESSFUL)
+      mutations.setTournamentTeam(response.data)
+    } catch (error) {
+      mutations.setTournamentTeamsApiState(RequestState.FAILED)
+    }
+  },
+  removeTournamentTeam: async (hashId: string, teamId: string) => {
+    mutations.setTournamentTeamsApiState(RequestState.PENDING)
 
-    await Vue.$http.request({
-      ...defaultApiConfig,
-      method: 'DELETE',
-      url: `/tournament/${hashId}/team/${id}`,
-      data: { name },
-    })
+    try {
+      await Vue.$http.request({
+        ...defaultApiConfig,
+        method: 'DELETE',
+        url: `/tournament/${hashId}/team/${teamId}`,
+        data: { name },
+      })
 
-    state.isPending = false
-    state.teams = state.teams.filter((team => team.id !== id))
-  };
-
-  return {
-    isPending: computed(() => state.isPending),
-    teams: computed(() => state.teams),
-    load,
-    addTeam,
-    removeTeam,
-  }
+      mutations.setTournamentTeamsApiState(RequestState.SUCCESSFUL)
+      mutations.removeTournamentTeam(teamId)
+    } catch (error) {
+      mutations.setTournamentTeamsApiState(RequestState.FAILED)
+    }
+  },
 }

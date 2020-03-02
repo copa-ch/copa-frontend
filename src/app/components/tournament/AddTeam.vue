@@ -2,7 +2,13 @@
   <section id="tournament-add-team">
     <div class="field has-addons">
       <div class="control is-expanded">
-        <input class="input" type="text" :placeholder="$t('tournament.teams.add.placeholder')" v-on:keyup.enter="submit" v-model="teamName" />
+        <input
+          class="input"
+          type="text"
+          :placeholder="$t('tournament.teams.add.placeholder')"
+          v-on:keyup.enter="submit"
+          v-model="teamName"
+        />
       </div>
       <div class="control">
         <a class="button is-info" @click="submit">
@@ -16,7 +22,7 @@
 <script lang="ts">
 import { defineComponent, ref, watch } from '@vue/composition-api'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { useTournamentTeamsApi } from '@/app/effects/tournament-teams-api.effect'
+import { actions, getters } from '@/app/effects/tournament-teams-api.effect'
 
 export default defineComponent({
   components: {
@@ -24,14 +30,13 @@ export default defineComponent({
   },
   setup(props, context) {
     const teamName = ref('');
-    const { isPending, addTeam } = useTournamentTeamsApi(context.parent!.$route.params.id)
 
     const submit = () => {
-      addTeam(teamName.value)
+      actions.addTournamentTeam(context.parent!.$route.params.id, teamName.value)
     }
 
-    watch(() => isPending.value, (currentPending, previousPending) => {
-      if(previousPending && !currentPending) {
+    watch(() => getters.isPending.value, (currentPending, previousPending) => {
+      if (previousPending && !currentPending) {
         teamName.value = ''
       }
     })

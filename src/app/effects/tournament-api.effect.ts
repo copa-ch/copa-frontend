@@ -2,34 +2,43 @@ import Vue from 'vue'
 import { computed } from '@vue/composition-api'
 import { plainToClass } from 'class-transformer'
 import { defaultApiConfig } from '@/config/api.config'
+import { RequestState } from '@/app/models/States'
 import { Tournament } from '@/app/models/Tournament'
 
 interface TournamentStoreState {
-  isPending: boolean,
+  tournamentApiState: RequestState,
   tournament?: Tournament,
 }
 
 const state = Vue.observable<TournamentStoreState>({
-  isPending: false,
+  tournamentApiState: RequestState.PRISTINE,
   tournament: undefined,
 })
 
-export const useTournamentApi = () => {
-  const load = async (hashId: string) => {
-    state.isPending = true
+export const getters = {
+  isPending: computed(() => state.tournamentApiState === RequestState.PENDING),
+  tournament: computed(() => state.tournament),
+}
 
-    const response = await Vue.$http.request({
-      ...defaultApiConfig,
-      url: `/tournament/${hashId}`,
-    })
-
-    state.isPending = false
-    state.tournament = plainToClass(Tournament, response.data)
-  }
-
-  return {
-    isPending: computed(() => state.isPending),
-    tournament: computed(() => state.tournament),
-    load,
-  }
+const mutations = {
+  setTournamentApiState: (apiState: RequestState) => state.tournamentApiState = apiState,
+  setTournament: (tournament: Object) => state.tournament = plainToClass(Tournament, tournament),
 };
+
+export const actions = {
+  loadTournament: async (hashId: string) => {
+    mutations.setTournamentApiState(RequestState.PENDING)
+
+    try {
+      const response = await Vue.$http.request({
+        ...defaultApiConfig,
+        url: `/tournament/${hashId}`,
+      })
+
+      mutations.setTournamentApiState(RequestState.SUCCESSFUL)
+      mutations.setTournament(response.data)
+    } catch (error) {
+      mutations.setTournamentApiState(RequestState.FAILED)
+    }
+  },
+}
