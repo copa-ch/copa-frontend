@@ -9,7 +9,7 @@
 
 <script lang="ts">
 import { defineComponent } from '@vue/composition-api'
-import { useApiTournament } from '@/app/effects/api-tournament.effect'
+import { useTournamentApi } from '@/app/effects/tournament-api.effect'
 import Header from '@/app/components/layout/Header.vue'
 import PageHero from '@/app/components/layout/PageHero.vue'
 import Footer from '@/app/components/layout/Footer.vue'
@@ -21,7 +21,7 @@ export default defineComponent({
     Footer,
   },
   setup(props, context) {
-    const { isPending, tournament, load } = useApiTournament()
+    const { isPending, tournament, load } = useTournamentApi()
 
     load(context.parent!.$route.params.id);
 

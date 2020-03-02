@@ -9,7 +9,7 @@
 
 <script lang="ts">
 import { defineComponent } from '@vue/composition-api'
-import { useApiTournamentTeams } from '@/app/effects/api-tourtnament-teams.effect'
+import { useTournamentTeamsApi } from '@/app/effects/tournament-teams-api.effect'
 import AddTeam from '@/app/components/tournament/AddTeam.vue';
 import TeamList from '@/app/components/tournament/TeamList.vue';
 
@@ -19,7 +19,7 @@ export default defineComponent({
     TeamList,
   },
   setup(props, context) {
-    const { isPending, teams, load } = useApiTournamentTeams(context.parent!.$route.params.id)
+    const { isPending, teams, load } = useTournamentTeamsApi(context.parent!.$route.params.id)
     load()
 
     return {

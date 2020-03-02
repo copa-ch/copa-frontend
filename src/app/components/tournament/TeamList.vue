@@ -30,17 +30,5 @@ export default defineComponent({
 section {
   padding-top: $spacing-4;
   padding-bottom: $spacing-8;
-
-  table {
-    td {
-      &.team-name {
-        vertical-align: middle;
-      }
-
-      &.action {
-        width: 15px;
-      }
-    }
-  }
 }
 </style>
