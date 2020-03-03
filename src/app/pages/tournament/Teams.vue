@@ -2,14 +2,14 @@
   <section id="tournament-teams">
     <div :v-if="!isPending" class="container is-spaced">
       <AddTeam />
-      <TeamList :teams="teams" />
+      <TeamList />
     </div>
   </section>
 </template>
 
 <script lang="ts">
 import { defineComponent } from '@vue/composition-api'
-import { actions, getters } from '@/app/effects/tournament-teams-api.effect'
+import { useTeams } from '@/app/effects/teams.effect'
 import AddTeam from '@/app/components/tournament/AddTeam.vue';
 import TeamList from '@/app/components/tournament/TeamList.vue';
 
@@ -19,11 +19,12 @@ export default defineComponent({
     TeamList,
   },
   setup(props, context) {
-    actions.loadTournamentTeams(context.parent!.$route.params.id);
+    const { getTeams, addTeam, removeTeam, isPending, teams } = useTeams(context.root.$route.params.id)
+
+    getTeams()
 
     return {
-      isPending: getters.isPending,
-      teams: getters.teams,
+      isPending,
     }
   },
 })

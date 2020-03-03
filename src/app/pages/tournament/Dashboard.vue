@@ -9,7 +9,7 @@
 
 <script lang="ts">
 import { defineComponent, computed } from '@vue/composition-api'
-import { actions, getters } from '@/app/effects/tournament-api.effect'
+import { useTournament } from '@/app/effects/tournament.effect'
 import Header from '@/app/components/layout/Header.vue'
 import PageHero from '@/app/components/layout/PageHero.vue'
 import Footer from '@/app/components/layout/Footer.vue'
@@ -21,11 +21,13 @@ export default defineComponent({
     Footer,
   },
   setup(props, context) {
-    actions.loadTournament(context.parent!.$route.params.id);
+    const { getTournament, isPending, tournament } = useTournament()
+
+    getTournament(context.root.$route.params.id);
 
     return {
-      isPending: getters.isPending,
-      tournament: getters.tournament,
+      isPending,
+      tournament,
     }
   },
 })

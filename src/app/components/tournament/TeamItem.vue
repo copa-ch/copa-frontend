@@ -2,7 +2,7 @@
   <tr>
     <td>{{team.name}}</td>
     <td class="action">
-      <button class="button is-danger is-light" @click="removeTeam(team.id)">
+      <button class="button is-danger is-light" @click="remove()">
         <span class="icon">
           <font-awesome-icon icon="trash" />
         </span>
@@ -14,22 +14,28 @@
 <script lang="ts">
 import { defineComponent } from '@vue/composition-api'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { actions } from '@/app/effects/tournament-teams-api.effect'
+import { Team } from '@/app/models/Team'
+import { useTeams } from '@/app/effects/teams.effect'
 
 export default defineComponent({
   components: {
     FontAwesomeIcon,
   },
   props: {
-    team: Object,
+    team: {
+      required: true,
+      type: Team,
+    },
   },
   setup(props, context) {
-    const removeTeam = (teamId: string) => {
-      actions.removeTournamentTeam(context.parent!.$route.params.id, teamId)
+    const { removeTeam } = useTeams(context.root.$route.params.id)
+
+    const remove = () => {
+      removeTeam(props.team.id)
     }
 
     return {
-      removeTeam,
+      remove,
     }
   },
 })

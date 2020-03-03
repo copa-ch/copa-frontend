@@ -6,12 +6,12 @@
           class="input"
           type="text"
           :placeholder="$t('tournament.teams.add.placeholder')"
-          v-on:keyup.enter="submit"
+          v-on:keyup.enter="submit()"
           v-model="teamName"
         />
       </div>
       <div class="control">
-        <a class="button is-info" @click="submit">
+        <a class="button is-info" @click="submit()">
           <font-awesome-icon icon="plus" />
         </a>
       </div>
@@ -22,24 +22,26 @@
 <script lang="ts">
 import { defineComponent, ref, watch } from '@vue/composition-api'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { actions, getters } from '@/app/effects/tournament-teams-api.effect'
+import { useTeams } from '@/app/effects/teams.effect'
 
 export default defineComponent({
   components: {
     FontAwesomeIcon,
   },
   setup(props, context) {
-    const teamName = ref('');
+    const { addTeam, isPending } = useTeams(context.root.$route.params.id)
+    const teamName = ref('')
 
-    const submit = () => {
-      actions.addTournamentTeam(context.parent!.$route.params.id, teamName.value)
-    }
-
-    watch(() => getters.isPending.value, (currentPending, previousPending) => {
+    watch(() => isPending.value
+    , (currentPending, previousPending) => {
       if (previousPending && !currentPending) {
         teamName.value = ''
       }
     })
+
+    const submit = () => {
+      addTeam(teamName.value)
+    }
 
     return {
       teamName,
