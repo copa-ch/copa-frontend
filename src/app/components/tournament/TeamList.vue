@@ -15,15 +15,13 @@
 <script lang="ts">
 import { defineComponent } from '@vue/composition-api'
 import TeamItem from '@/app/components/tournament/TeamItem.vue'
-import { useTeams } from '@/app/effects/teams.effect'
+import { teams } from '@/app/effects/teams.effect'
 
 export default defineComponent({
   components: {
     TeamItem,
   },
   setup(props, context) {
-    const { teams } = useTeams(context.root.$route.params.id)
-
     return {
       teams,
     }

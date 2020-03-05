@@ -22,25 +22,18 @@
 <script lang="ts">
 import { defineComponent, ref, watch } from '@vue/composition-api'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { useTeams } from '@/app/effects/teams.effect'
+import { addTeam } from '@/app/effects/teams.effect'
 
 export default defineComponent({
   components: {
     FontAwesomeIcon,
   },
   setup(props, context) {
-    const { addTeam, isPending } = useTeams(context.root.$route.params.id)
     const teamName = ref('')
 
-    watch(() => isPending.value
-    , (currentPending, previousPending) => {
-      if (previousPending && !currentPending) {
-        teamName.value = ''
-      }
-    })
-
-    const submit = () => {
-      addTeam(teamName.value)
+    const submit = async () => {
+      await addTeam(context.root.$route.params.id, teamName.value)
+      teamName.value = ''
     }
 
     return {

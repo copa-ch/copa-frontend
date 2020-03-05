@@ -14,47 +14,39 @@ const state = Vue.observable<TeamsState>({
   teams: [],
 })
 
-export const useTeams = (hashId: string) => {
-  const isPending = computed(() => state.requestState === RequestState.PENDING)
-  const teams = computed(() => state.teams)
+export const isPending = computed(() => state.requestState === RequestState.PENDING)
+export const teams = computed(() => state.teams)
 
-  const getTeams = async () => {
-    try {
-      state.requestState = RequestState.PENDING
-      state.teams = await API.Tournament.of(hashId).Team.findAll()
-      state.requestState = RequestState.SUCCESSFUL
-    } catch (error) {
-      state.requestState = RequestState.FAILED
-    }
-  }
-
-  const addTeam = async (name: string) => {
-    try {
-      state.requestState = RequestState.PENDING
-      const team = await API.Tournament.of(hashId).Team.addTeam({ name })
-      state.teams.push(team)
-      state.requestState = RequestState.SUCCESSFUL
-    } catch (error) {
-      state.requestState = RequestState.FAILED
-    }
-  }
-
-  const removeTeam = async (teamId: string) => {
-    try {
-      state.requestState = RequestState.PENDING
-      await API.Tournament.of(hashId).Team.removeTeam(teamId)
-      state.teams = state.teams.filter(({ id }) => id !== teamId)
-      state.requestState = RequestState.SUCCESSFUL
-    } catch (error) {
-      state.requestState = RequestState.FAILED
-    }
-  }
-
-  return {
-    isPending,
-    teams,
-    getTeams,
-    addTeam,
-    removeTeam,
+export const getTeams = async (hashId: string) => {
+  try {
+    state.requestState = RequestState.PENDING
+    state.teams = await API.Tournament.of(hashId).Team.findAll()
+    state.requestState = RequestState.SUCCESSFUL
+  } catch (error) {
+    state.requestState = RequestState.FAILED
   }
 }
+
+export const addTeam = async (hashId: string, name: string) => {
+  try {
+    state.requestState = RequestState.PENDING
+    const team = await API.Tournament.of(hashId).Team.addTeam({ name })
+    state.teams.push(team)
+    state.requestState = RequestState.SUCCESSFUL
+  } catch (error) {
+    state.requestState = RequestState.FAILED
+  }
+}
+
+
+export const removeTeam = async (hashId: string,teamId: string) => {
+  try {
+    state.requestState = RequestState.PENDING
+    await API.Tournament.of(hashId).Team.removeTeam(teamId)
+    state.teams = state.teams.filter(({ id }) => id !== teamId)
+    state.requestState = RequestState.SUCCESSFUL
+  } catch (error) {
+    state.requestState = RequestState.FAILED
+  }
+}
+

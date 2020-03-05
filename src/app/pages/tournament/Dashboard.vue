@@ -1,18 +1,19 @@
 <template>
   <section id="tournament">
     <Header />
-    <PageHero v-if="!isPending" :title="tournament.name" route-name="tournament" />
+    <PageHero :title="tournament.name" route-name="tournament" />
     <router-view />
     <Footer />
   </section>
 </template>
 
 <script lang="ts">
+import { Route } from 'vue-router'
 import { defineComponent, computed } from '@vue/composition-api'
-import { useTournament } from '@/app/effects/tournament.effect'
 import Header from '@/app/components/layout/Header.vue'
 import PageHero from '@/app/components/layout/PageHero.vue'
 import Footer from '@/app/components/layout/Footer.vue'
+import { getTournament, isPending, tournament } from '@/app/effects/tournament.effect'
 
 export default defineComponent({
   components: {
@@ -20,13 +21,12 @@ export default defineComponent({
     PageHero,
     Footer,
   },
+  beforeRouteEnter: async (to: Route, from: Route, next: () => void) => {
+    await getTournament(to.params.id)
+    next()
+  },
   setup(props, context) {
-    const { getTournament, isPending, tournament } = useTournament()
-
-    getTournament(context.root.$route.params.id);
-
     return {
-      isPending,
       tournament,
     }
   },

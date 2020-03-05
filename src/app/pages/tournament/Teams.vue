@@ -1,6 +1,6 @@
 <template>
   <section id="tournament-teams">
-    <div :v-if="!isPending" class="container is-spaced">
+    <div class="container is-spaced">
       <AddTeam />
       <TeamList />
     </div>
@@ -8,8 +8,9 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from '@vue/composition-api'
-import { useTeams } from '@/app/effects/teams.effect'
+import { Route } from 'vue-router';
+import { defineComponent, onBeforeMount } from '@vue/composition-api'
+import { getTeams } from '@/app/effects/teams.effect'
 import AddTeam from '@/app/components/tournament/AddTeam.vue';
 import TeamList from '@/app/components/tournament/TeamList.vue';
 
@@ -18,14 +19,9 @@ export default defineComponent({
     AddTeam,
     TeamList,
   },
-  setup(props, context) {
-    const { getTeams, addTeam, removeTeam, isPending, teams } = useTeams(context.root.$route.params.id)
-
-    getTeams()
-
-    return {
-      isPending,
-    }
+  beforeRouteEnter: async (to: Route, from: Route, next: () => void) => {
+    await getTeams(to.params.id)
+    next()
   },
 })
 </script>

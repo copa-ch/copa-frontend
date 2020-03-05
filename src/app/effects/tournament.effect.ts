@@ -14,23 +14,15 @@ const state = Vue.observable<TournamentState>({
   tournament: undefined,
 })
 
-export const useTournament = () => {
-  const isPending = computed(() => state.requestState === RequestState.PENDING)
-  const tournament = computed(() => state.tournament)
+export const isPending = computed(() => state.requestState === RequestState.PENDING)
+export const tournament = computed(() => state.tournament)
 
-  const getTournament = async (hashId: string) => {
-    try {
-      state.requestState = RequestState.PENDING
-      state.tournament = await API.Tournament.findOne(hashId)
-      state.requestState = RequestState.SUCCESSFUL
-    } catch (error) {
-      state.requestState = RequestState.FAILED
-    }
-  }
-
-  return {
-    getTournament,
-    isPending,
-    tournament,
+export const getTournament = async (hashId: string) => {
+  try {
+    state.requestState = RequestState.PENDING
+    state.tournament = await API.Tournament.findOne(hashId)
+    state.requestState = RequestState.SUCCESSFUL
+  } catch (error) {
+    state.requestState = RequestState.FAILED
   }
 }

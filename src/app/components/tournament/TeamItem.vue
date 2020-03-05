@@ -15,7 +15,7 @@
 import { defineComponent } from '@vue/composition-api'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { Team } from '@/app/models/Team'
-import { useTeams } from '@/app/effects/teams.effect'
+import { removeTeam } from '@/app/effects/teams.effect'
 
 export default defineComponent({
   components: {
@@ -28,10 +28,9 @@ export default defineComponent({
     },
   },
   setup(props, context) {
-    const { removeTeam } = useTeams(context.root.$route.params.id)
 
     const remove = () => {
-      removeTeam(props.team.id)
+      removeTeam(context.root.$route.params.id, props.team.id)
     }
 
     return {
