@@ -2,7 +2,10 @@
   <b-navbar shadow type="is-white">
     <template slot="brand">
       <b-navbar-item tag="router-link" :to="{ name: 'home' }">
-        <span class="logo">COPA</span>
+        <span class="logo">
+          COPA
+          <b-tag type="is-danger">Alpha</b-tag>
+        </span>
       </b-navbar-item>
     </template>
     <template slot="start">
@@ -30,13 +33,19 @@
 </script>
 
 <style lang="scss">
-  @import '../../../styles/variables.scss';
+  @import 'src/styles/utilities/all';
 
   span.logo {
     font-family: 'Poppins';
     font-weight: bold;
     font-size: 32px;
     color: $black;
+    align-items: center;
+    display: flex;
+
+    span.tag {
+      margin-left: 8px;
+    }
   }
 
   nav.navbar {
@@ -52,10 +61,6 @@
     }
   }
 
-  .navbar-brand {
-    margin-right: 30px;
-  }
-
   a.navbar-item {
     font-family: 'Poppins';
     font-weight: bold;
@@ -63,4 +68,11 @@
     padding-left: 15px;
     padding-right: 15px;
   }
+
+  @include desktop() {
+    .navbar-brand {
+      margin-right: 30px;
+    }
+  }
+
 </style>
