@@ -1,3 +1,10 @@
+# [1.12.0](https://github.com/copa-ch/copa-frontend/compare/v1.11.0...v1.12.0) (2020-03-07)
+
+
+### Features
+
+* **home:** add create tournament form ([b1c1831](https://github.com/copa-ch/copa-frontend/commit/b1c18315ad16755f69e45b4edb52c7065ce43b81))
+
 # [1.11.0](https://github.com/copa-ch/copa-frontend/compare/v1.10.0...v1.11.0) (2020-02-28)
 
 
