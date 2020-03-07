@@ -1,5 +1,5 @@
-import Vue from "vue"
-import {library} from "@fortawesome/fontawesome-svg-core"
+import Vue from 'vue'
+import {library} from '@fortawesome/fontawesome-svg-core'
 import {
   faCheck,
   faUser,
@@ -15,8 +15,11 @@ import {
   faNetworkWired,
   faHardHat,
   faListOl,
-} from "@fortawesome/free-solid-svg-icons"
-import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome"
+  faExclamationTriangle,
+  faExclamation,
+  faVolleyballBall,
+} from '@fortawesome/free-solid-svg-icons'
+import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome'
 
 library.add(
   faUser,
@@ -24,6 +27,7 @@ library.add(
   faEnvelope,
   faLink,
   faExclamationCircle,
+  faExclamation,
   faCheck,
   faCogs,
   faUsers,
@@ -33,6 +37,8 @@ library.add(
   faNetworkWired,
   faHardHat,
   faListOl,
+  faExclamationTriangle,
+  faVolleyballBall,
 )
 
-Vue.component("font-awesome-icon", FontAwesomeIcon)
+Vue.component('font-awesome-icon', FontAwesomeIcon)

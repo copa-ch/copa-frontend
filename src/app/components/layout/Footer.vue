@@ -17,7 +17,7 @@
 <script lang="ts">
   import {defineComponent} from '@vue/composition-api'
   import {useAppConfig} from '@/app/effects/config.effect'
-  import {useApiInformation} from '@/app/effects/api-information.effect'
+  import {useApiInformation} from '@/app/effects/meta.api.effect'
 
   export default defineComponent({
     setup() {
@@ -36,7 +36,7 @@
 </script>
 
 <style lang="scss">
-  @import '../../../styles/variables.scss';
+  @import 'src/styles/utilities/variables';
 
   footer.footer {
     position: relative;
