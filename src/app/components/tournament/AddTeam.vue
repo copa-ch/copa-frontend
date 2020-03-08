@@ -45,7 +45,7 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-@import "../../../styles/variables.scss";
+@import 'src/styles/utilities/variables';
 
 section {
   padding-top: $spacing-8;

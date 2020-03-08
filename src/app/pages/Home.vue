@@ -4,22 +4,27 @@
     <section class="hero is-dark is-fullheight-with-navbar">
       <div class="hero-body">
         <div class="container has-text-centered">
-          <h1 class="title animated" :class="{
+          <h1 class="title animated"
+              v-html="$t('home.title')"
+              :class="{
+                'is-hidden': isBannerGone,
+                fadeInDown: !isCreateDialogOpen,
+                fadeOutUp: isCreateDialogOpen,
+              }"></h1>
+          <h1 class="subtitle is-5 animated"
+              v-html="$t('home.subtitle')"
+              :class="{
               'is-hidden': isBannerGone,
               fadeInDown: !isCreateDialogOpen,
               fadeOutUp: isCreateDialogOpen,
-            }">
-            Create amazing <br> tournaments
-          </h1>
-          <h1 class="subtitle is-5 animated" :class="{
-              'is-hidden': isBannerGone,
-              fadeInDown: !isCreateDialogOpen,
-              fadeOutUp: isCreateDialogOpen,
-            }">
-            Get started today for free<br>
-            A better way to manage your own tournament<br>
-            Invite your participants, generate your schedule and much more
-          </h1>
+            }"></h1>
+          <h1 class="subtitle is-1 animated"
+              v-html="$t('home.beta')"
+              :class="{
+                'is-hidden': isBannerGone,
+                fadeInDown: !isCreateDialogOpen,
+                fadeOutUp: isCreateDialogOpen,
+              }"></h1>
           <b-button @click="() => openCreateDialog()"
                     class="animated"
                     type="is-dark"
@@ -76,7 +81,7 @@
 </script>
 
 <style lang="scss" scoped>
-  @import '../../styles/variables.scss';
+  @import 'src/styles/utilities/variables';
   @import '~bulma/sass/utilities/all';
 
   $margin-outside: 180px;

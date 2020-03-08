@@ -1,11 +1,10 @@
 @charset "UTF-8";
 
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap');
-@import 'variables.scss';
+@import 'utilities/all';
 @import '~bulma';
 @import '~bulma/sass/utilities/initial-variables.sass';
 @import '~buefy/src/scss/buefy';
-@import 'animations.scss';
 
 .is-spaced {
   @media screen and (max-width: $desktop) {
@@ -16,4 +15,8 @@
 
 .hidden {
   opacity: 0;
+}
+
+button.button {
+  font-weight: $weight-medium;
 }
