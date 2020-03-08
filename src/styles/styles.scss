@@ -3,11 +3,14 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap');
 @import 'utilities/all';
 @import '~bulma';
+@import '~bulma/sass/utilities/initial-variables.sass';
 @import '~buefy/src/scss/buefy';
 
-.container.is-spaced {
-  padding-top: 60px;
-  padding-bottom: 60px;
+.is-spaced {
+  @media screen and (max-width: $desktop) {
+    padding-left: $spacing-8;
+    padding-right: $spacing-8;
+  }
 }
 
 .hidden {

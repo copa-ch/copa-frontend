@@ -1,16 +1,46 @@
 import { RouteConfig } from 'vue-router'
-import Home from '../pages/Home.vue'
 
 export const routes: RouteConfig[] = [
   {
     path: '/',
     name: 'home',
-    component: Home,
+    component: () => import('@/app/pages/Home.vue'),
   },
   {
     path: '/privacy',
     name: 'privacy',
-    component: () => import('../pages/Privacy.vue'),
+    component: () => import('@/app/pages/Privacy.vue'),
+  },
+  {
+    path: '/tournament/:id',
+    name: 'tournament',
+    component: () => import('@/app/pages/tournament/Dashboard.vue'),
+    children: [
+      {
+        path: '',
+        name: 'tournament-teams',
+        component: () => import('../pages/tournament/Teams.vue'),
+        meta: {
+          title: 'tournament.teams.title',
+        },
+      },
+      {
+        path: 'fixtures',
+        name: 'tournament-fixtures',
+        component: () => import('../pages/tournament/Fixtures.vue'),
+        meta: {
+          title: 'tournament.fixtures.title',
+        },
+      },
+      {
+        path: 'ranking',
+        name: 'tournament-ranking',
+        component: () => import('../pages/tournament/Ranking.vue'),
+        meta: {
+          title: 'tournament.ranking.title',
+        },
+      },
+    ],
   },
   // {
   //   path: '/tournament/:id/admin',
