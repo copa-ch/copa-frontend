@@ -1,3 +1,10 @@
+# [1.13.0](https://github.com/copa-ch/copa-frontend/compare/v1.12.0...v1.13.0) (2020-04-01)
+
+
+### Features
+
+* refactor app and update deps ([114cdf5](https://github.com/copa-ch/copa-frontend/commit/114cdf5f4f6fd192defdbc8aa0a963d902c7ba97))
+
 # [1.12.0](https://github.com/copa-ch/copa-frontend/compare/v1.11.0...v1.12.0) (2020-03-07)
 
 
