@@ -8,11 +8,11 @@
 </template>
 
 <script lang="ts">
-import { Route } from 'vue-router';
-import { defineComponent, onBeforeMount } from '@vue/composition-api'
-import { getTeams } from '@/app/effects/teams.effect'
-import AddTeam from '@/app/components/tournament/AddTeam.vue';
-import TeamList from '@/app/components/tournament/TeamList.vue';
+import { Route } from "vue-router"
+import { defineComponent, onBeforeMount } from "@vue/composition-api"
+import { getTeams } from "@/app/effects/teams.effect"
+import AddTeam from "@/app/components/tournament/AddTeam.vue"
+import TeamList from "@/app/components/tournament/TeamList.vue"
 
 export default defineComponent({
   components: {
@@ -26,5 +26,4 @@ export default defineComponent({
 })
 </script>
 
-<style>
-</style>
+<style></style>

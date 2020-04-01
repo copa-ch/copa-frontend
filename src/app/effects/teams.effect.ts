@@ -1,12 +1,12 @@
-import Vue from 'vue'
-import { computed } from '@vue/composition-api'
-import { API } from '@/app/effects/api'
-import { RequestState } from '@/app/models/States'
-import { Team } from '@/app/models/Team'
+import Vue from "vue"
+import { computed } from "@vue/composition-api"
+import { API } from "@/app/effects/api"
+import { RequestState } from "@/app/models/States"
+import { Team } from "@/app/models/Team"
 
 interface TeamsState {
-  requestState: RequestState,
-  teams: Team[],
+  requestState: RequestState
+  teams: Team[]
 }
 
 const state = Vue.observable<TeamsState>({
@@ -14,7 +14,9 @@ const state = Vue.observable<TeamsState>({
   teams: [],
 })
 
-export const isPending = computed(() => state.requestState === RequestState.PENDING)
+export const isPending = computed(
+  () => state.requestState === RequestState.PENDING,
+)
 export const teams = computed(() => state.teams)
 
 export const getTeams = async (hashId: string) => {
@@ -38,8 +40,7 @@ export const addTeam = async (hashId: string, name: string) => {
   }
 }
 
-
-export const removeTeam = async (hashId: string,teamId: string) => {
+export const removeTeam = async (hashId: string, teamId: string) => {
   try {
     state.requestState = RequestState.PENDING
     await API.Tournament.of(hashId).Team.removeTeam(teamId)
@@ -49,4 +50,3 @@ export const removeTeam = async (hashId: string,teamId: string) => {
     state.requestState = RequestState.FAILED
   }
 }
-

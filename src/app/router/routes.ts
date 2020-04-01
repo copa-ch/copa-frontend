@@ -1,47 +1,47 @@
-import { RouteConfig } from 'vue-router'
+import { RouteConfig } from "vue-router"
 
 export const routes: RouteConfig[] = [
   {
-    path: '/',
-    name: 'home',
-    component: () => import('@/app/pages/Home.vue'),
+    path: "/",
+    name: "home",
+    component: () => import("../views/Home.vue"),
   },
   {
-    path: '/privacy',
-    name: 'privacy',
-    component: () => import('@/app/pages/Privacy.vue'),
+    path: "/privacy",
+    name: "privacy",
+    component: () => import("../views/Privacy.vue"),
   },
-  {
-    path: '/tournament/:id',
-    name: 'tournament',
-    component: () => import('@/app/pages/tournament/Dashboard.vue'),
-    children: [
-      {
-        path: '',
-        name: 'tournament-teams',
-        component: () => import('../pages/tournament/Teams.vue'),
-        meta: {
-          title: 'tournament.teams.title',
-        },
-      },
-      {
-        path: 'fixtures',
-        name: 'tournament-fixtures',
-        component: () => import('../pages/tournament/Fixtures.vue'),
-        meta: {
-          title: 'tournament.fixtures.title',
-        },
-      },
-      {
-        path: 'ranking',
-        name: 'tournament-ranking',
-        component: () => import('../pages/tournament/Ranking.vue'),
-        meta: {
-          title: 'tournament.ranking.title',
-        },
-      },
-    ],
-  },
+  // {
+  //   path: '/tournament/:id',
+  //   name: 'tournament',
+  //   component: () => import('../app/pages/tournament/Dashboard.vue'),
+  //   children: [
+  //     {
+  //       path: '',
+  //       name: 'tournament-teams',
+  //       component: () => import('../pages/tournament/Teams.vue'),
+  //       meta: {
+  //         title: 'tournament.teams.title',
+  //       },
+  //     },
+  //     {
+  //       path: 'fixtures',
+  //       name: 'tournament-fixtures',
+  //       component: () => import('../pages/tournament/Fixtures.vue'),
+  //       meta: {
+  //         title: 'tournament.fixtures.title',
+  //       },
+  //     },
+  //     {
+  //       path: 'ranking',
+  //       name: 'tournament-ranking',
+  //       component: () => import('../pages/tournament/Ranking.vue'),
+  //       meta: {
+  //         title: 'tournament.ranking.title',
+  //       },
+  //     },
+  //   ],
+  // },
   // {
   //   path: '/tournament/:id/admin',
   //   component: () => import('../pages/admin/TournamentAdminDashboard.vue'),
@@ -83,5 +83,5 @@ export const routes: RouteConfig[] = [
   //     },
   //   ],
   // },
-  { path: '*', redirect: '/' },
+  { path: "*", redirect: "/" },
 ]

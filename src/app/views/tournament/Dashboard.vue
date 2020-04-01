@@ -8,12 +8,16 @@
 </template>
 
 <script lang="ts">
-import { Route } from 'vue-router'
-import { defineComponent, computed } from '@vue/composition-api'
-import Header from '@/app/components/layout/Header.vue'
-import PageHero from '@/app/components/layout/PageHero.vue'
-import Footer from '@/app/components/layout/Footer.vue'
-import { getTournament, isPending, tournament } from '@/app/effects/tournament.effect'
+import { Route } from "vue-router"
+import { defineComponent, computed } from "@vue/composition-api"
+import Header from "@/app/components/layout/Header.vue"
+import PageHero from "@/app/components/layout/PageHero.vue"
+import Footer from "@/app/components/layout/Footer.vue"
+import {
+  getTournament,
+  isPending,
+  tournament,
+} from "@/app/effects/tournament.effect"
 
 export default defineComponent({
   components: {

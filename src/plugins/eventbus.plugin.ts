@@ -4,7 +4,7 @@
  *
  */
 
-import Vue, {PluginObject} from "vue"
+import Vue, { PluginObject } from "vue"
 
 export const EventBus: PluginObject<any> = {
   install(VueInstance, options): void {

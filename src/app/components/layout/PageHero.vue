@@ -2,7 +2,7 @@
   <section class="hero is-dark">
     <div class="hero-body">
       <div class="container">
-        <h1 class="title">{{$t(title)}}</h1>
+        <h1 class="title">{{ $t(title) }}</h1>
       </div>
     </div>
     <div class="hero-foot">
@@ -14,7 +14,8 @@
                 class="navbar-item"
                 :to="{ name: child.name }"
                 exact-active-class="is-active"
-              >{{$t(child.meta.title)}}</router-link>
+                >{{ $t(child.meta.title) }}</router-link
+              >
             </li>
           </ul>
         </div>
@@ -24,8 +25,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from '@vue/composition-api'
-import { RouteConfig } from 'vue-router'
+import { defineComponent, ref } from "@vue/composition-api"
+import { RouteConfig } from "vue-router"
 
 export default defineComponent({
   props: {
@@ -38,11 +39,13 @@ export default defineComponent({
     if (context.parent) {
       // this is a workaround until new vue router with TS options support is released.
       // https://github.com/vuejs/vue-router/pull/2085
-      const router: any = context.parent.$router;
-      route = router.options.routes.find((route: RouteConfig) => route.name === props.routeName);
+      const router: any = context.parent.$router
+      route = router.options.routes.find(
+        (route: RouteConfig) => route.name === props.routeName,
+      )
     }
 
-    const children = route && route.children ? route.children : [];
+    const children = route && route.children ? route.children : []
 
     return {
       children,

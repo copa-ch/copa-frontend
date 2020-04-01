@@ -1,4 +1,4 @@
-import { TournamentState } from './TournamentState'
+import { TournamentState } from "./TournamentState"
 
 export class Tournament {
   id!: string

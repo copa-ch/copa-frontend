@@ -1,4 +1,4 @@
-import { Team } from '@/app/models/Team'
+import { Team } from "@/app/models/Team"
 
 export class Ranking {
   rank!: number

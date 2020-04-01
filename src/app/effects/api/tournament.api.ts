@@ -1,19 +1,18 @@
-import Vue from 'vue'
-import { AxiosRequestConfig } from 'axios'
-import { classToPlain, plainToClass } from 'class-transformer'
-import { CreateTournamentRequest } from '@/app/models/CreateTournamentRequest'
-import { Tournament } from '@/app/models/Tournament'
-import { defaultApiConfig } from '@/config/api.config'
-import { TournamentTeamApi } from '@/app/effects/api/tournament-team.api'
-import { UpdateTournamentRequest } from '@/app/models/UpdateTournamentRequest'
-import { TournamentGameApi } from '@/app/effects/api/tournament-game.api'
-import { TournamentRankingApi } from '@/app/effects/api/tournament-ranking.api'
+import Vue from "vue"
+import { AxiosRequestConfig } from "axios"
+import { classToPlain, plainToClass } from "class-transformer"
+import { CreateTournamentRequest } from "@/app/models/CreateTournamentRequest"
+import { Tournament } from "@/app/models/Tournament"
+import { defaultApiConfig } from "@/config/api.config"
+import { TournamentTeamApi } from "@/app/effects/api/tournament-team.api"
+import { UpdateTournamentRequest } from "@/app/models/UpdateTournamentRequest"
+import { TournamentGameApi } from "@/app/effects/api/tournament-game.api"
+import { TournamentRankingApi } from "@/app/effects/api/tournament-ranking.api"
 
 export class TournamentApi {
-
   private readonly config: AxiosRequestConfig = {
     ...defaultApiConfig,
-    url: 'tournament',
+    url: "tournament",
   }
 
   public of(tournamentId: string) {
@@ -28,7 +27,7 @@ export class TournamentApi {
     const data = classToPlain(createTournamentRequest)
     const response = await Vue.$http.request({
       ...this.config,
-      method: 'POST',
+      method: "POST",
       data,
     })
     return plainToClass(Tournament, response.data)
@@ -42,12 +41,15 @@ export class TournamentApi {
     return plainToClass(Tournament, response.data)
   }
 
-  public async update(hashId: string, updateTournamentRequest: UpdateTournamentRequest) {
+  public async update(
+    hashId: string,
+    updateTournamentRequest: UpdateTournamentRequest,
+  ) {
     const data = classToPlain(updateTournamentRequest)
     const response = await Vue.$http.request({
       ...this.config,
       url: `${this.config.url}/${hashId}`,
-      method: 'PUT',
+      method: "PUT",
       data,
     })
     return plainToClass(Tournament, response.data)
@@ -57,8 +59,7 @@ export class TournamentApi {
     await Vue.$http.request({
       ...this.config,
       url: `${this.config.url}/${hashId}`,
-      method: 'DELETE',
+      method: "DELETE",
     })
   }
-
 }

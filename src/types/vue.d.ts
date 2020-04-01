@@ -1,5 +1,3 @@
-declare module '*.vue' {
-}
+declare module "*.vue" {}
 
-declare module 'validator' {
-}
+declare module "validator" {}

@@ -20,20 +20,20 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, watch } from '@vue/composition-api'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { addTeam } from '@/app/effects/teams.effect'
+import { defineComponent, ref, watch } from "@vue/composition-api"
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome"
+import { addTeam } from "@/app/effects/teams.effect"
 
 export default defineComponent({
   components: {
     FontAwesomeIcon,
   },
   setup(props, context) {
-    const teamName = ref('')
+    const teamName = ref("")
 
     const submit = async () => {
       await addTeam(context.root.$route.params.id, teamName.value)
-      teamName.value = ''
+      teamName.value = ""
     }
 
     return {
@@ -45,7 +45,7 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-@import 'src/styles/utilities/variables';
+@import "src/styles/utilities/variables";
 
 section {
   padding-top: $spacing-8;

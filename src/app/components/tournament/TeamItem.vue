@@ -1,6 +1,6 @@
 <template>
   <tr>
-    <td>{{team.name}}</td>
+    <td>{{ team.name }}</td>
     <td class="action">
       <button class="button is-danger is-light" @click="remove()">
         <span class="icon">
@@ -12,10 +12,10 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from '@vue/composition-api'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { Team } from '@/app/models/Team'
-import { removeTeam } from '@/app/effects/teams.effect'
+import { defineComponent } from "@vue/composition-api"
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome"
+import { Team } from "@/app/models/Team"
+import { removeTeam } from "@/app/effects/teams.effect"
 
 export default defineComponent({
   components: {
@@ -28,7 +28,6 @@ export default defineComponent({
     },
   },
   setup(props, context) {
-
     const remove = () => {
       removeTeam(context.root.$route.params.id, props.team.id)
     }

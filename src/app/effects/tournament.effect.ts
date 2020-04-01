@@ -1,11 +1,11 @@
-import Vue from 'vue'
-import { computed } from '@vue/composition-api'
-import { API } from '@/app/effects/api'
-import { RequestState } from '@/app/models/States'
-import { Tournament } from '@/app/models/Tournament'
+import Vue from "vue"
+import { computed } from "@vue/composition-api"
+import { API } from "@/app/effects/api"
+import { RequestState } from "@/app/models/States"
+import { Tournament } from "@/app/models/Tournament"
 
 interface TournamentState {
-  requestState: RequestState,
+  requestState: RequestState
   tournament?: Tournament
 }
 
@@ -14,7 +14,9 @@ const state = Vue.observable<TournamentState>({
   tournament: undefined,
 })
 
-export const isPending = computed(() => state.requestState === RequestState.PENDING)
+export const isPending = computed(
+  () => state.requestState === RequestState.PENDING,
+)
 export const tournament = computed(() => state.tournament)
 
 export const getTournament = async (hashId: string) => {

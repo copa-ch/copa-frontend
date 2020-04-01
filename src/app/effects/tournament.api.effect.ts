@@ -1,14 +1,14 @@
-import Vue from 'vue'
-import {computed, ref} from '@vue/composition-api'
-import {classToPlain, plainToClass} from 'class-transformer'
-import {defaultApiConfig} from '@/config/api.config'
-import {Tournament} from '@/app/models/Tournament'
-import {CreateTournamentRequest} from '@/app/models/CreateTournamentRequest'
-import {AxiosError, AxiosRequestConfig} from 'axios'
+import Vue from "vue"
+import { computed, ref } from "@vue/composition-api"
+import { classToPlain, plainToClass } from "class-transformer"
+import { defaultApiConfig } from "@/config/api.config"
+import { Tournament } from "@/app/models/Tournament"
+import { CreateTournamentRequest } from "@/app/models/CreateTournamentRequest"
+import { AxiosError, AxiosRequestConfig } from "axios"
 
 const apiTournamentConfig: AxiosRequestConfig = {
   ...defaultApiConfig,
-  url: 'tournament',
+  url: "tournament",
 }
 
 export const useApiTournamentCreate = () => {
@@ -16,14 +16,16 @@ export const useApiTournamentCreate = () => {
   const error = ref<AxiosError<Tournament>>(null)
   const createdTournament = ref<Tournament>({})
 
-  const createTournament = async (createTournamentRequest: CreateTournamentRequest) => {
+  const createTournament = async (
+    createTournamentRequest: CreateTournamentRequest,
+  ) => {
     isPending.value = true
     error.value = null
     const data = classToPlain(createTournamentRequest)
     try {
       const response = await Vue.$http.request({
         ...apiTournamentConfig,
-        method: 'POST',
+        method: "POST",
         data,
       })
       createdTournament.value = plainToClass(Tournament, response.data)
@@ -42,5 +44,3 @@ export const useApiTournamentCreate = () => {
     createTournament,
   }
 }
-
-

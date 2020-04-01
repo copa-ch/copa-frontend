@@ -9,27 +9,27 @@
  * https://github.com/mzabriskie/axios
  */
 
-import Vue, {PluginObject} from "vue"
+import Vue, { PluginObject } from "vue"
 
 import Axios from "axios"
 
 // import { store } from '@/app/store';
-import {appConfig} from "@/config/app.config"
+import { appConfig } from "@/config/app.config"
 
 Axios.defaults.baseURL = appConfig.apiPath
 // Axios.defaults.headers.common.Accept = 'application/json';
 // Axios.defaults.headers.common.ContentType = 'application/json';
 Axios.interceptors.request.use(
-  request => {
+  (request) => {
     // Add a token to every request
     // request.headers.Authorization = `Bearer ${token}`;
     return request
   },
-  error => error,
+  (error) => error,
 )
 Axios.interceptors.response.use(
-  response => response,
-  error => {
+  (response) => response,
+  (error) => {
     // TODO: Handle network errors
     // if (!error.response) {
     //   store.dispatch(MetaDataActions.SetServerUnavailable);

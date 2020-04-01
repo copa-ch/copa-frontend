@@ -8,9 +8,9 @@
  */
 
 import Vue from "vue"
-import {PluginObject} from "vue"
+import { PluginObject } from "vue"
 import logdown from "logdown"
-import {appConfig} from "@/config/app.config"
+import { appConfig } from "@/config/app.config"
 
 export const Logger: PluginObject<any> = {
   install(VueInstance, options) {

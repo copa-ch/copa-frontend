@@ -1,8 +1,8 @@
-import Vue from 'vue'
-import {ref} from '@vue/composition-api'
-import {plainToClass} from 'class-transformer'
-import {defaultApiConfig} from '@/config/api.config'
-import {ApiInformation} from '@/app/models/ApiInformation'
+import Vue from "vue"
+import { ref } from "@vue/composition-api"
+import { plainToClass } from "class-transformer"
+import { defaultApiConfig } from "@/config/api.config"
+import { ApiInformation } from "@/app/models/ApiInformation"
 
 export const useApiInformation = () => {
   const isPending = ref(false)
@@ -24,5 +24,3 @@ export const useApiInformation = () => {
     getApiInformation,
   }
 }
-
-

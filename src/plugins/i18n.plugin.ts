@@ -19,5 +19,5 @@ export const i18n = new VueI18n({
   locale: "en", // set locale
   fallbackLocale: "en",
   silentTranslationWarn: true,
-  messages: {de, en}, // set locale messages
+  messages: { de, en }, // set locale messages
 })
