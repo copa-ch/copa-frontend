@@ -11,6 +11,21 @@ export const routes: RouteConfig[] = [
     name: "privacy",
     component: () => import("../views/Privacy.vue"),
   },
+  {
+    path: "/tournament/:id",
+    name: "tournament",
+    component: () => import("../views/tournament/Dashboard.vue"),
+    children: [
+      {
+        path: "",
+        name: "tournament-teams",
+        component: () => import("../views/tournament/Teams.vue"),
+        meta: {
+          title: "tournament.teams.title",
+        },
+      },
+    ],
+  },
   // {
   //   path: '/tournament/:id',
   //   name: 'tournament',
