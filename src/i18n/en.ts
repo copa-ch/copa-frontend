@@ -25,6 +25,9 @@ export default {
           empty: "This field cannot be left blank",
         }
       },
+      list: {
+        empty: "No teams added yet"
+      }
     },
     fixtures: {
       title: "Fixtures",

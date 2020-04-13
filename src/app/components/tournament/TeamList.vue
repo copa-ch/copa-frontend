@@ -18,6 +18,17 @@
           />
         </b-table-column>
       </template>
+
+      <template slot="empty">
+        <section class="section">
+          <div class="content has-text-grey has-text-centered">
+            <p>
+              <b-icon icon="users" pack="fas" />
+            </p>
+            <p>{{ $t("tournament.teams.list.empty") }}</p>
+          </div>
+        </section>
+      </template>
     </b-table>
   </section>
 </template>
