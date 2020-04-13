@@ -17,6 +17,11 @@ const state = Vue.observable<TeamsState>({
 export const isPending = computed(
   () => state.requestState === RequestState.PENDING,
 )
+
+export const isFailed = computed(
+  () => state.requestState === RequestState.FAILED
+)
+
 export const teams = computed(() => state.teams)
 
 export const getTeams = async (hashId: string) => {

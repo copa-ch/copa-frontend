@@ -1,7 +1,12 @@
 <template>
   <section id="tournament-team-list">
-    <b-table :data="teams.length ? teams : []" :mobile-cards="false" hoverable>
-      <template slot-scope="props">
+    <b-table
+      :data="teams.length ? teams : []"
+      :mobile-cards="false"
+      :row-class="() => 'is-wide'"
+      hoverable
+    >
+      <template class="bubu" slot-scope="props">
         <b-table-column field="name" label="Name">
           {{ props.row.name }}
         </b-table-column>
@@ -9,7 +14,6 @@
           <b-button
             type="is-danger"
             icon-right="trash"
-            size="is-small"
             @click="remove(props.row.id)"
           />
         </b-table-column>

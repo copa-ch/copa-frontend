@@ -1,9 +1,7 @@
 <template>
   <div class="field copa-field" :class="loading ? 'is-loading' : ''">
-    <label class="label">{{ $t(label) }}</label>
-    <p
-      :class="`control ${hasIconLeft ? 'has-icons-left' : ''} has-icons-right`"
-    >
+    <label v-if="label" class="label">{{ $t(label) }}</label>
+    <p :class="`control ${hasIconLeft ? 'has-icons-left' : ''} has-icons-right`">
       <input
         class="input"
         :class="state"
@@ -14,6 +12,7 @@
         :placeholder="$t(placeholder)"
         :value="modelValue"
         @input="onInput"
+        v-on="inputListeners"
       />
       <b-icon v-if="icon" class="is-left" :icon="icon" :pack="'fas'" />
       <transition name="slide">
@@ -53,7 +52,7 @@ export default defineComponent({
     loading: Boolean,
     disabled: Boolean,
   },
-  setup(props, { emit }) {
+  setup(props, { emit, listeners }) {
     const modelValue = ref(props.value)
 
     watch(
@@ -61,12 +60,20 @@ export default defineComponent({
       (changedValue: any) => (modelValue.value = changedValue),
     )
 
+    const onInput = (event: any) => {
+      modelValue.value = event.target.value
+      emit("input", modelValue.value)
+    }
+
+    const inputListeners = computed(() => ({
+      ...listeners,
+      input: onInput,
+    }))
+
     return {
       modelValue,
-      onInput: (event: any) => {
-        modelValue.value = event.target.value
-        emit("input", modelValue.value)
-      },
+      onInput,
+      inputListeners,
       hasIconLeft: computed(() => !!props.icon),
       hasIconRight: computed(() => !!props.state || !!props.loading),
       iconRight: computed(() => {
@@ -100,10 +107,9 @@ export default defineComponent({
 
 .copa-field {
   position: relative;
-  min-height: 105px;
 
   &:not(:last-child) {
-    margin-bottom: 0.25rem;
+    margin-bottom: 1rem;
   }
 
   input {

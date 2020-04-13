@@ -19,7 +19,11 @@ export default {
     teams: {
       title: "Teams",
       add: {
-        placeholder: "Team name",
+        label: "Do you want to add a new team?",
+        placeholder: "Enter team name",
+        messages: {
+          empty: "This field cannot be left blank",
+        }
       },
     },
     fixtures: {
