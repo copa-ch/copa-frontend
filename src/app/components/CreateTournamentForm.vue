@@ -111,9 +111,9 @@ export default defineComponent({
           owner: owner.value,
           email: email.value,
         })
-        if (!hasError) {
+        if (!hasError.value) {
           await root.$router.push({
-            name: "admin-teams",
+            name: "tournament-teams",
             params: { id: createdTournament.value.adminId },
           })
         }

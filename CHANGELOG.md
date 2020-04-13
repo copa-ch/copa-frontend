@@ -1,3 +1,15 @@
+# [1.14.0](https://github.com/copa-ch/copa-frontend/compare/v1.13.0...v1.14.0) (2020-04-13)
+
+
+### Bug Fixes
+
+* **test:** remove unused unit test ([278d563](https://github.com/copa-ch/copa-frontend/commit/278d563db4d89e0a21574cbfd47e26418e30a2f8))
+
+
+### Features
+
+* **tournament:** add redirection after create ([5fa181b](https://github.com/copa-ch/copa-frontend/commit/5fa181b8e0a661d900e30254dac8a6a4cbe98eb7))
+
 # [1.13.0](https://github.com/copa-ch/copa-frontend/compare/v1.12.0...v1.13.0) (2020-04-01)
 
 
