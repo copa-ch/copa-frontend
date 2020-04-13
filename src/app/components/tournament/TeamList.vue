@@ -1,6 +1,6 @@
 <template>
   <section id="tournament-team-list">
-    <b-table :data="teams.length ? teams : []" :mobile-cards="false">
+    <b-table :data="teams.length ? teams : []" :mobile-cards="false" hoverable>
       <template slot-scope="props">
         <b-table-column field="name" label="Name">
           {{ props.row.name }}
