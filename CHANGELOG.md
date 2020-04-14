@@ -1,3 +1,10 @@
+# [1.15.0](https://github.com/copa-ch/copa-frontend/compare/v1.14.0...v1.15.0) (2020-04-14)
+
+
+### Features
+
+* **tournament:** use buefy table component ([#33](https://github.com/copa-ch/copa-frontend/issues/33)) ([9e773ea](https://github.com/copa-ch/copa-frontend/commit/9e773eaff0132a10be9462947ff81d67579f9d4b))
+
 # [1.14.0](https://github.com/copa-ch/copa-frontend/compare/v1.13.0...v1.14.0) (2020-04-13)
 
 
