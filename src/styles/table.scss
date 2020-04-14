@@ -1,0 +1,11 @@
+.table {
+    button {
+        height: initial;
+    }
+
+    tr {
+        &.is-wide {
+            line-height: 2.25;
+        }
+    }
+}

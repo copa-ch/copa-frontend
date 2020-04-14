@@ -6,6 +6,8 @@
 @import '~bulma/sass/utilities/initial-variables.sass';
 @import '~buefy/src/scss/buefy';
 
+@import './table.scss';
+
 .is-spaced {
   @media screen and (max-width: $desktop) {
     padding-left: $spacing-8;
@@ -20,3 +22,4 @@
 button.button {
   font-weight: $weight-medium;
 }
+

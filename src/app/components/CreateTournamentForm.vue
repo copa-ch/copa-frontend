@@ -198,8 +198,12 @@ function useEmailInput(isPristine: Ref<boolean>) {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import "src/styles/utilities/all";
+
+.copa-field {
+  min-height: 105px;
+}
 
 @include mobile() {
   button.create-tournament-submit-button {
