@@ -18,6 +18,7 @@ import {
   faExclamationTriangle,
   faExclamation,
   faVolleyballBall,
+  faSadTear,
 } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome"
 
@@ -39,6 +40,7 @@ library.add(
   faListOl,
   faExclamationTriangle,
   faVolleyballBall,
+  faSadTear,
 )
 
 Vue.component("font-awesome-icon", FontAwesomeIcon)
