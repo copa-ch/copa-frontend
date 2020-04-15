@@ -1,3 +1,10 @@
+# [1.16.0](https://github.com/copa-ch/copa-frontend/compare/v1.15.0...v1.16.0) (2020-04-15)
+
+
+### Features
+
+* **team:** add custom input field for add new team form ([#34](https://github.com/copa-ch/copa-frontend/issues/34)) ([53a4b0c](https://github.com/copa-ch/copa-frontend/commit/53a4b0c2b92326fac3b2b4af80383ce67c792cc8))
+
 # [1.15.0](https://github.com/copa-ch/copa-frontend/compare/v1.14.0...v1.15.0) (2020-04-14)
 
 
