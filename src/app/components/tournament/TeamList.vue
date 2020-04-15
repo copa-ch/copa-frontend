@@ -23,7 +23,7 @@
         <section class="section">
           <div class="content has-text-grey has-text-centered">
             <p>
-              <b-icon icon="users" pack="fas" />
+              <b-icon icon="sad-tear" size="is-large" />
             </p>
             <p>{{ $t("tournament.teams.list.empty") }}</p>
           </div>
