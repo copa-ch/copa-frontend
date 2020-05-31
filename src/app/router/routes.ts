@@ -1,87 +1,63 @@
-import { RouteConfig } from "vue-router"
+import { RouteConfig } from 'vue-router'
 
 export const routes: RouteConfig[] = [
   {
-    path: "/",
-    name: "home",
-    component: () => import("../views/Home.vue"),
+    path: '/',
+    name: 'home',
+    component: () => import('../views/Home.vue'),
+    children: [
+      {
+        path: '/',
+        name: 'home.index',
+        component: () => import('../views/HomeIndex.vue'),
+      },
+      {
+        path: '/create',
+        name: 'home.create',
+        component: () => import('../views/HomeCreate.vue'),
+      },
+    ],
   },
   {
-    path: "/privacy",
-    name: "privacy",
-    component: () => import("../views/Privacy.vue"),
+    path: '/privacy',
+    name: 'privacy',
+    component: () => import('../views/Privacy.vue'),
   },
-  // {
-  //   path: '/tournament/:id',
-  //   name: 'tournament',
-  //   component: () => import('../app/pages/tournament/Dashboard.vue'),
-  //   children: [
-  //     {
-  //       path: '',
-  //       name: 'tournament-teams',
-  //       component: () => import('../pages/tournament/Teams.vue'),
-  //       meta: {
-  //         title: 'tournament.teams.title',
-  //       },
-  //     },
-  //     {
-  //       path: 'fixtures',
-  //       name: 'tournament-fixtures',
-  //       component: () => import('../pages/tournament/Fixtures.vue'),
-  //       meta: {
-  //         title: 'tournament.fixtures.title',
-  //       },
-  //     },
-  //     {
-  //       path: 'ranking',
-  //       name: 'tournament-ranking',
-  //       component: () => import('../pages/tournament/Ranking.vue'),
-  //       meta: {
-  //         title: 'tournament.ranking.title',
-  //       },
-  //     },
-  //   ],
-  // },
-  // {
-  //   path: '/tournament/:id/admin',
-  //   component: () => import('../pages/admin/TournamentAdminDashboard.vue'),
-  //   children: [
-  //     {
-  //       path: '',
-  //       redirect: 'teams',
-  //     },
-  //     {
-  //       path: 'teams',
-  //       name: 'admin-teams',
-  //       component: () => import('../pages/admin/TournamentAdminTeams.vue'),
-  //     },
-  //     {
-  //       path: 'settings',
-  //       name: 'admin-settings',
-  //       component: () => import('../pages/admin/TournamentAdminSettings.vue'),
-  //     },
-  //     {
-  //       path: 'fixtures',
-  //       name: 'admin-fixtures',
-  //       component: () => import('../pages/admin/TournamentAdminFixtures.vue'),
-  //     },
-  //     {
-  //       path: 'ranking',
-  //       name: 'admin-ranking',
-  //       component: () => import('../pages/admin/TournamentAdminRanking.vue'),
-  //     },
-  //   ],
-  // },
-  // {
-  //   path: '/tournament/:id',
-  //   component: () => import('../pages/tournament/TournamentDashboard.vue'),
-  //   children: [
-  //     {
-  //       path: '',
-  //       name: 'tournament.teams',
-  //       component: () => import('../pages/tournament/TournamentTeams.vue'),
-  //     },
-  //   ],
-  // },
-  { path: "*", redirect: "/" },
+  {
+    path: '/about',
+    name: 'about',
+    component: () => import('../views/About.vue'),
+  },
+  {
+    path: '/tournament/:hash',
+    name: 'tournament',
+    component: () => import('../views/Tournament.vue'),
+    children: [
+      {
+        path: '/tournament/:hash',
+        redirect: '/tournament/:hash/teams',
+      },
+      {
+        path: '/tournament/:hash/teams',
+        name: 'tournament.teams',
+        component: () => import('../views/TournamentTeams.vue'),
+      },
+      {
+        path: '/tournament/:hash/games',
+        name: 'tournament.games',
+        component: () => import('../views/TournamentGames.vue'),
+      },
+      {
+        path: '/tournament/:hash/ranking',
+        name: 'tournament.ranking',
+        component: () => import('../views/TournamentRanking.vue'),
+      },
+      {
+        path: '/tournament/:hash/settings',
+        name: 'tournament.settings',
+        component: () => import('../views/TournamentSettings.vue'),
+      },
+    ],
+  },
+  { path: '*', redirect: '/' },
 ]

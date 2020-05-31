@@ -1,147 +1,63 @@
 <template>
-  <section id="home">
-    <Header></Header>
-    <section class="hero is-dark is-fullheight-with-navbar">
-      <div class="hero-body">
-        <div class="container has-text-centered">
-          <h1
-            class="title animated"
-            v-html="$t('home.title')"
-            :class="{
-              'is-hidden': isBannerGone,
-              fadeInDown: !isCreateDialogOpen,
-              fadeOutUp: isCreateDialogOpen,
-            }"
-          ></h1>
-          <h1
-            class="subtitle is-5 animated"
-            v-html="$t('home.subtitle')"
-            :class="{
-              'is-hidden': isBannerGone,
-              fadeInDown: !isCreateDialogOpen,
-              fadeOutUp: isCreateDialogOpen,
-            }"
-          ></h1>
-          <h1
-            class="subtitle is-1 animated"
-            v-html="$t('home.beta')"
-            :class="{
-              'is-hidden': isBannerGone,
-              fadeInDown: !isCreateDialogOpen,
-              fadeOutUp: isCreateDialogOpen,
-            }"
-          ></h1>
-          <b-button
-            @click="() => openCreateDialog()"
-            class="animated"
-            type="is-dark"
-            size="is-medium"
-            rounded
-            inverted
-            :class="{
-              'is-hidden': isBannerGone,
-              fadeInDown: !isCreateDialogOpen,
-              fadeOutUp: isCreateDialogOpen,
-            }"
-          >
-            Let's start
-          </b-button>
-          <section
-            class="box animated delay-1 hidden"
-            :class="{
-              'is-hidden': !isBannerGone,
-              fadeInUp: isBannerGone,
-            }"
-          >
-            <CreateTournamentForm></CreateTournamentForm>
-          </section>
-        </div>
-      </div>
-    </section>
-    <Footer></Footer>
+  <section class="home">
+    <v-container>
+      <v-row>
+        <v-col xs="12" sm="12" md="5" lg="5" xl="5">
+          <br />
+          <router-view />
+        </v-col>
+        <v-col
+          v-if="$vuetify.breakpoint.mdAndUp"
+          xs="0"
+          sm="0"
+          md="7"
+          lg="7"
+          xl="7"
+        >
+          <img
+            class="home-banner"
+            alt="banner"
+            :src="require('../../assets/background-2.svg')"
+          />
+        </v-col>
+      </v-row>
+    </v-container>
   </section>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from "@vue/composition-api"
-import Header from "@/app/components/layout/Header.vue"
-import Footer from "@/app/components/layout/Footer.vue"
-import CreateTournamentForm from "@/app/components/CreateTournamentForm.vue"
+import { defineComponent } from '@vue/composition-api'
 
 export default defineComponent({
-  components: {
-    Header,
-    Footer,
-    CreateTournamentForm,
-  },
   setup() {
-    const isCreateDialogOpen = ref(false)
-    const isBannerGone = ref(false)
-
-    const openCreateDialog = () => {
-      isCreateDialogOpen.value = true
-      setTimeout(() => (isBannerGone.value = true), 500)
-    }
-
-    return {
-      openCreateDialog,
-      isCreateDialogOpen,
-      isBannerGone,
-    }
+    return {}
   },
 })
 </script>
 
-<style lang="scss" scoped>
-@import "src/styles/utilities/variables";
-@import "~bulma/sass/utilities/all";
+<style lang="scss">
+.home {
+  min-height: 100vh;
+}
 
-$margin-outside: 180px;
+img.home-banner {
+  margin-top: -20px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  max-width: 50%;
+  max-height: 90vh;
+}
 
-section.hero {
-  background-image: url("../../assets/background.svg");
-  background-position: right center;
-  background-repeat: no-repeat;
-  background-size: cover;
-
-  .container {
-    > .title {
-      font-size: 2rem;
-      margin: 0 5px 30px 5px;
-    }
-
-    > .subtitle {
-      font-size: 1rem;
-      margin: 15px 5px;
-    }
-
-    > .button {
-      margin: 15px;
-      padding-left: 50px;
-      padding-right: 50px;
-    }
+@media only screen and (max-width: 960px) {
+  img.home-banner {
+    max-width: 40%;
   }
+}
 
-  @include tablet() {
-    background-position: center center;
-
-    .container {
-      > .title {
-        font-size: 4rem;
-        margin: 0 15px 60px 15px;
-      }
-
-      > .subtitle {
-        font-size: 1.2rem;
-        margin: 30px 15px;
-      }
-
-      > .button {
-        margin: 30px;
-        padding-left: 50px;
-        padding-right: 50px;
-      }
-    }
+@media only screen and (max-width: 600px) {
+  img.home-banner {
+    max-width: 20%;
   }
 }
 </style>

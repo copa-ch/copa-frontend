@@ -1,27 +1,26 @@
 <template>
-  <section id="privacy">
-    <Header></Header>
-    <div class="container is-spaced">
+  <section class="privacy">
+    <v-container>
       <div class="content">
         <br />
-        <h1>Privacy Policy for Copa</h1>
+        <Heading>{{ $t('privacy.title') }}</Heading>
 
-        <p>
+        <p class="body-1">
           At Copa, accessible from https://copa-app.herokuapp.com, one of our
           main priorities is the privacy of our visitors. This Privacy Policy
           document contains types of information that is collected and recorded
           by Copa and how we use it.
         </p>
 
-        <p>
+        <p class="body-1">
           If you have additional questions or require more information about our
           Privacy Policy, do not hesitate to contact us.
         </p>
 
-        <h2>General Data Protection Regulation (GDPR)</h2>
-        <p>We are a Data Controller of your information.</p>
+        <h2 class="title">General Data Protection Regulation (GDPR)</h2>
+        <p class="body-1">We are a Data Controller of your information.</p>
 
-        <p>
+        <p class="body-1">
           Copa legal basis for collecting and using the personal information
           described in this Privacy Policy depends on the Personal Information
           we collect and the specific context in which we collect the
@@ -36,7 +35,7 @@
           <li>Copa needs to comply with the law</li>
         </ul>
 
-        <p>
+        <p class="body-1">
           Copa will retain your personal information only for as long as is
           necessary for the purposes set out in this Privacy Policy. We will
           retain and use your information to the extent necessary to comply with
@@ -51,13 +50,13 @@
           >.
         </p>
 
-        <p>
+        <p class="body-1">
           If you are a resident of the European Economic Area (EEA), you have
           certain data protection rights. If you wish to be informed what
           Personal Information we hold about you and if you want it to be
           removed from our systems, please contact us.
         </p>
-        <p>
+        <p class="body-1">
           In certain circumstances, you have the following data protection
           rights:
         </p>
@@ -73,9 +72,9 @@
           <li>The right to withdraw consent</li>
         </ul>
 
-        <h2>Log Files</h2>
+        <h2 class="title">Log Files</h2>
 
-        <p>
+        <p class="body-1">
           Copa follows a standard procedure of using log files. These files log
           visitors when they visit websites. All hosting companies do this and a
           part of hosting services' analytics. The information collected by log
@@ -87,14 +86,14 @@
           the website, and gathering demographic information.
         </p>
 
-        <h2>Privacy Policies</h2>
+        <h2 class="title">Privacy Policies</h2>
 
         <P
           >You may consult this list to find the Privacy Policy for each of the
           advertising partners of Copa.</P
         >
 
-        <p>
+        <p class="body-1">
           Third-party ad servers or ad networks uses technologies like cookies,
           JavaScript, or Web Beacons that are used in their respective
           advertisements and links that appear on Copa, which are sent directly
@@ -104,12 +103,12 @@
           content that you see on websites that you visit.
         </p>
 
-        <p>
+        <p class="body-1">
           Note that Copa has no access to or control over these cookies that are
           used by third-party advertisers.
         </p>
 
-        <h2>Third Party Privacy Policies</h2>
+        <h2 class="title">Third Party Privacy Policies</h2>
 
         <p>
           Copa's Privacy Policy does not apply to other advertisers or websites.
@@ -127,7 +126,7 @@
           respective websites. What Are Cookies?
         </p>
 
-        <h2>Children's Information</h2>
+        <h2 class="title">Children's Information</h2>
 
         <p>
           Another part of our priority is adding protection for children while
@@ -143,7 +142,7 @@
           efforts to promptly remove such information from our records.
         </p>
 
-        <h2>Online Privacy Policy Only</h2>
+        <h2 class="title">Online Privacy Policy Only</h2>
 
         <p>
           Our Privacy Policy applies only to our online activities and is valid
@@ -152,7 +151,7 @@
           information collected offline or via channels other than this website.
         </p>
 
-        <h2>Consent</h2>
+        <h2 class="title">Consent</h2>
 
         <p>
           By using our website, you hereby consent to our Privacy Policy and
@@ -161,23 +160,25 @@
         <br />
         <br />
       </div>
-    </div>
-    <Footer></Footer>
+    </v-container>
   </section>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "@vue/composition-api"
-import Header from "@/app/components/layout/Header.vue"
-import Footer from "@/app/components/layout/Footer.vue"
+import { defineComponent } from '@vue/composition-api'
+import Heading from '../components/Heading.vue'
 
 export default defineComponent({
-  components: {
-    Header,
-    Footer,
-  },
+  components: { Heading },
   setup() {
     return {}
   },
 })
 </script>
+
+<style lang="scss">
+h2 {
+  margin-top: 32px;
+  margin-bottom: 16px;
+}
+</style>

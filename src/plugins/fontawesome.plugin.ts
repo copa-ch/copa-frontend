@@ -1,44 +1,26 @@
-import Vue from "vue"
-import { library } from "@fortawesome/fontawesome-svg-core"
+import Vue from 'vue'
+import { library } from '@fortawesome/fontawesome-svg-core'
 import {
-  faCheck,
-  faUser,
-  faTrophy,
-  faEnvelope,
-  faLink,
-  faExclamationCircle,
-  faCogs,
-  faUsers,
-  faTrash,
-  faPlus,
-  faSave,
-  faNetworkWired,
-  faHardHat,
-  faListOl,
-  faExclamationTriangle,
+  faCheckCircle,
+  faInfoCircle,
   faExclamation,
-  faVolleyballBall,
-} from "@fortawesome/free-solid-svg-icons"
-import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome"
+  faExclamationTriangle,
+  faTrophy,
+  faUsers,
+  faCog,
+  faBasketballBall,
+} from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 library.add(
-  faUser,
-  faTrophy,
-  faEnvelope,
-  faLink,
-  faExclamationCircle,
+  faCheckCircle,
+  faInfoCircle,
   faExclamation,
-  faCheck,
-  faCogs,
-  faUsers,
-  faTrash,
-  faPlus,
-  faSave,
-  faNetworkWired,
-  faHardHat,
-  faListOl,
   faExclamationTriangle,
-  faVolleyballBall,
+  faTrophy,
+  faUsers,
+  faCog,
+  faBasketballBall,
 )
 
-Vue.component("font-awesome-icon", FontAwesomeIcon)
+Vue.component('font-awesome-icon', FontAwesomeIcon)
