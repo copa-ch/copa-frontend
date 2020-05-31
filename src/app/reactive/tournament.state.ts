@@ -2,7 +2,7 @@ import Vue from 'vue'
 import { TournamentState } from '../dto/tournament-state'
 import { API } from '../api'
 import { TournamentDto } from '../dto/tournament.dto'
-import { ref } from '@vue/composition-api'
+import { ref, computed } from '@vue/composition-api'
 
 const tournament = Vue.observable<TournamentDto>({
   id: '',
@@ -18,6 +18,12 @@ export function useTournament() {
   const loadTournamentHasFailed = ref(false)
   const loadTournamentIsLoading = ref(false)
 
+  const isOpen = computed(() => tournament.state === TournamentState.Open)
+  const isPlayable = computed(
+    () => tournament.state === TournamentState.Playable,
+  )
+  const isClosed = computed(() => tournament.state === TournamentState.Closed)
+
   function setTournament(tournamentDto: TournamentDto) {
     log.info(`setTournament`, tournamentDto)
     tournament.id = tournamentDto.id
@@ -25,6 +31,15 @@ export function useTournament() {
     tournament.owner = tournamentDto.owner
     tournament.state = tournamentDto.state
     tournament.visitorId = tournamentDto.visitorId
+  }
+
+  function clearTournament() {
+    log.info(`clearTournament`)
+    tournament.id = ''
+    tournament.name = ''
+    tournament.owner = ''
+    tournament.state = TournamentState.Open
+    tournament.visitorId = ''
   }
 
   async function loadTournament(id: string) {
@@ -46,9 +61,13 @@ export function useTournament() {
   return {
     tournament,
     setTournament,
+    clearTournament,
     isAdmin,
     loadTournament,
     loadTournamentIsLoading,
     loadTournamentHasFailed,
+    isPlayable,
+    isOpen,
+    isClosed,
   }
 }

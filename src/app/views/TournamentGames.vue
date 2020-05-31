@@ -1,7 +1,8 @@
 <template>
   <section>
     <v-container>
-      <Heading size="small" padded>Games</Heading>
+      <Heading size="small" padded> {{ $t('games.title') }}</Heading>
+      <p class="body-1">{{ $t('games.description.open') }}</p>
     </v-container>
   </section>
 </template>

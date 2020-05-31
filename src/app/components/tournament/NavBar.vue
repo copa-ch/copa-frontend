@@ -2,19 +2,23 @@
   <v-container>
     <v-tabs centered fixed-tabs background-color="transparent" dark>
       <v-tab link :to="{ name: 'tournament.teams', params: { hash: hash } }">
-        Teams
+        {{ $t('teams.title') }}
       </v-tab>
 
       <v-tab link :to="{ name: 'tournament.games', params: { hash: hash } }">
-        Games
+        {{ $t('games.title') }}
       </v-tab>
 
-      <v-tab link :to="{ name: 'tournament.ranking', params: { hash: hash } }">
-        Ranking
+      <v-tab
+        v-if="!isOpen"
+        link
+        :to="{ name: 'tournament.ranking', params: { hash: hash } }"
+      >
+        {{ $t('ranking.title') }}
       </v-tab>
 
       <v-tab link :to="{ name: 'tournament.settings', params: { hash: hash } }">
-        Settings
+        {{ $t('settings.title') }}
       </v-tab>
     </v-tabs>
   </v-container>
@@ -26,13 +30,14 @@ import { useTournament } from '../../reactive/tournament.state'
 
 export default defineComponent({
   setup(props, { root }) {
-    const { tournament } = useTournament()
+    const { tournament, isOpen } = useTournament()
 
     const hash = computed(() => root.$route.params.hash)
 
     return {
       hash,
       tournament,
+      isOpen,
     }
   },
 })

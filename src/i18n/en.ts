@@ -9,7 +9,9 @@ export default {
       email: 'This is not a valid email',
     },
     close: 'Close',
+    copy: 'Copy',
     delete: 'Delete',
+    save: 'Save',
   },
   home: {
     link: 'Home',
@@ -45,6 +47,7 @@ export default {
     subtitle: 'This is not the Tournament your are looking for.',
   },
   teams: {
+    title: 'Teams',
     add: {
       label: 'Team name',
       submit: 'Add Team',
@@ -63,36 +66,50 @@ export default {
     ranking: {
       title: 'Ranking',
     },
+    state: {
+      open: {
+        label: 'Open',
+        hint: 'Tournament is in pre configure and registraion phase',
+      },
+    },
+    invitation: {
+      title: 'Invite Participant',
+      subtitle: 'Share this link with your participants.',
+      snackbar: 'URL to share was successfully copied to your clipboard.',
+      start: {
+        title: "Let's start your Tournament",
+        message:
+          'Starting your tournament will close the team registration. After that you can enter the results of the games.',
+        action: 'Start Tournament',
+      },
+    },
   },
-  admin: {
-    ranking: {
-      title: 'Ranking',
+  ranking: {
+    title: 'Ranking',
+  },
+  games: {
+    title: 'Fixtures',
+    description: {
+      open: 'Define your tournament mode & generate fixtures',
     },
-    start: {
-      title: "Let's start your Tournament",
-      message:
-        'Starting your tournament will close the team registration. After that you can enter the results of the games.',
-      action: 'Start Tournament',
+    generate: 'Generate Schedule',
+  },
+  settings: {
+    title: 'Settings',
+    description: 'In this section you can update or delete your tournament.',
+    update: {
+      title: 'Update this tournament',
+      name: {
+        label: 'Name of your tournament',
+      },
+      owner: {
+        label: 'Owner of your tournament',
+      },
     },
-    invite: {
-      title: 'Invite participants',
-      message:
-        'Everyone with the link can create a team – no account required.',
-      copy: 'copy',
-      action: 'Invite participants',
-    },
-    fixtures: {
-      title: 'Fixtures',
-      subtitle: 'Define your tournament mode & generate fixtures',
-      generate: 'Generate Schedule',
-    },
-    settings: {
-      title: 'Settings',
-      subtitle: 'Update your tournament options here',
-    },
-    teams: {
-      title: 'Teams',
-      subtitle: 'Add, update & remove your teams here',
+    delete: {
+      title: 'Delete this tournament',
+      description:
+        'Once you delete a tournament, there is no going back. Please be certain.',
     },
   },
   about: {

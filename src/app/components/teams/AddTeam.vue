@@ -16,7 +16,6 @@
     <v-row v-if="!isLoading">
       <v-col cols="12" sm="8" lg="6">
         <v-text-field
-          autofocus
           v-model="teamNameModel"
           :label="$t('teams.add.label')"
           :loading="isSubmitting"

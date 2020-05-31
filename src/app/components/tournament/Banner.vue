@@ -2,7 +2,19 @@
   <section class="banner">
     <div class="banner-body">
       <div class="banner-title" v-if="!isLoading">
-        <h1 class="display-1">{{ title }}</h1>
+        <h1 class="display-1">
+          {{ title }}
+          <v-tooltip bottom v-if="state">
+            <template v-slot:activator="{ on }">
+              <v-chip small v-on="on" :ripple="false" color="primary">
+                {{ $t(`tournament.state.${state.toLowerCase()}.label`) }}
+              </v-chip>
+            </template>
+            <span>{{
+              $t(`tournament.state.${state.toLowerCase()}.hint`)
+            }}</span>
+          </v-tooltip>
+        </h1>
         <h2 class="title">{{ subtitle }}</h2>
       </div>
       <div class="banner-loading" v-if="isLoading">
@@ -42,6 +54,10 @@ export default defineComponent({
       type: String,
       required: true,
     },
+    state: {
+      type: String,
+      required: true,
+    },
   },
   setup() {
     return {}
@@ -64,15 +80,16 @@ export default defineComponent({
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 220px;
   flex-direction: column;
-  padding-bottom: 48px;
+  padding-top: 48px;
+  padding-bottom: 60px;
 
   .banner-body {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    width: 100%;
   }
 
   .banner-foot {

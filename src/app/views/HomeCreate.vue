@@ -64,15 +64,16 @@ export default defineComponent({
     Heading,
   },
   setup(props, { root }) {
+    const { setTournament } = useTournament()
+
     const hasFailed = ref(false)
     const isPending = ref(false)
     const validModel = ref(false)
     const nameModel = ref<string>('')
     const ownerModel = ref<string>('')
     const emailModel = ref<string>('')
-    const { setTournament } = useTournament()
 
-    const submit = async () => {
+    async function submit() {
       hasFailed.value = false
       const response = await API.Tournament.create({
         name: nameModel.value,
@@ -83,7 +84,7 @@ export default defineComponent({
         setTournament(response.data)
         await root.$router.push({
           name: 'tournament.teams',
-          params: { id: response.data.adminId },
+          params: { hash: response.data.adminId },
         })
       } else {
         hasFailed.value = true

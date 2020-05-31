@@ -1,7 +1,7 @@
 <template>
   <section>
     <v-container>
-      <Heading size="small" padded>Teams</Heading>
+      <Heading size="small" padded>{{ $t('teams.title') }}</Heading>
       <p class="body-1">{{ $t('teams.description.open') }}</p>
       <Teams />
     </v-container>
