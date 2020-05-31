@@ -1,3 +1,10 @@
+# [1.17.0](https://github.com/copa-ch/copa-frontend/compare/v1.16.0...v1.17.0) (2020-05-31)
+
+
+### Features
+
+* **settings:** add settings page and inviation card ([335b8cc](https://github.com/copa-ch/copa-frontend/commit/335b8ccf37d936e03de9b53ca905746f39070fca))
+
 # [1.16.0](https://github.com/copa-ch/copa-frontend/compare/v1.15.0...v1.16.0) (2020-04-15)
 
 
