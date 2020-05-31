@@ -1,7 +1,16 @@
 {
   "name": "copa-app",
-  "version": "0.1.0",
-  "private": true,
+  "title": "COPA",
+  "version": "1.13.0",
+  "license": "Apache-2.0",
+  "authors": [
+    "Gery Hirschfeld <gery.hirschfeld@w3tec.ch> (https://github.com/copa-ch)",
+    "Robert Kleger <DaNautilus> (https://github.com/copa-ch)"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/copa-ch/copa-frontend.git"
+  },
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",

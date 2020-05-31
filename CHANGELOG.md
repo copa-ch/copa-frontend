@@ -1,3 +1,29 @@
+# [1.16.0](https://github.com/copa-ch/copa-frontend/compare/v1.15.0...v1.16.0) (2020-04-15)
+
+
+### Features
+
+* **team:** add custom input field for add new team form ([#34](https://github.com/copa-ch/copa-frontend/issues/34)) ([53a4b0c](https://github.com/copa-ch/copa-frontend/commit/53a4b0c2b92326fac3b2b4af80383ce67c792cc8))
+
+# [1.15.0](https://github.com/copa-ch/copa-frontend/compare/v1.14.0...v1.15.0) (2020-04-14)
+
+
+### Features
+
+* **tournament:** use buefy table component ([#33](https://github.com/copa-ch/copa-frontend/issues/33)) ([9e773ea](https://github.com/copa-ch/copa-frontend/commit/9e773eaff0132a10be9462947ff81d67579f9d4b))
+
+# [1.14.0](https://github.com/copa-ch/copa-frontend/compare/v1.13.0...v1.14.0) (2020-04-13)
+
+
+### Bug Fixes
+
+* **test:** remove unused unit test ([278d563](https://github.com/copa-ch/copa-frontend/commit/278d563db4d89e0a21574cbfd47e26418e30a2f8))
+
+
+### Features
+
+* **tournament:** add redirection after create ([5fa181b](https://github.com/copa-ch/copa-frontend/commit/5fa181b8e0a661d900e30254dac8a6a4cbe98eb7))
+
 # [1.13.0](https://github.com/copa-ch/copa-frontend/compare/v1.12.0...v1.13.0) (2020-04-01)
 
 
