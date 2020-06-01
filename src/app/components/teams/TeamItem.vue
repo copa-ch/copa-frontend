@@ -1,7 +1,7 @@
 <template>
   <v-list-item>
     <v-list-item-avatar :color="avatarColor(team.name)">
-      {{ initials(team.name) }}
+      <span class="white--text">{{ initials(team.name) }}</span>
     </v-list-item-avatar>
     <v-list-item-content>
       <v-list-item-title>{{ team.name }}</v-list-item-title>

@@ -14,7 +14,7 @@
     </v-row>
 
     <v-row v-if="!isLoading">
-      <v-col cols="12" sm="8" lg="6">
+      <v-col>
         <v-text-field
           v-model="teamNameModel"
           :label="$t('teams.add.label')"
@@ -26,7 +26,7 @@
           @keypress.enter.native="submit($event)"
         ></v-text-field>
       </v-col>
-      <v-col cols="12" sm="4" lg="6">
+      <v-col cols="12" sm="auto">
         <v-btn
           color="primary"
           height="56"
