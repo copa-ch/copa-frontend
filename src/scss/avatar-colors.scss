@@ -1,0 +1,9 @@
+@import 'variables.scss';
+
+:export {
+    primary: $primary;
+    accent: $accent;
+    error: $error;
+    info: $info;
+    success: $success;
+}

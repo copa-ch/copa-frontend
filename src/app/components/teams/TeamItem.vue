@@ -1,6 +1,6 @@
 <template>
   <v-list-item>
-    <v-list-item-avatar>
+    <v-list-item-avatar :color="avatarColor(team.name)">
       {{ initials(team.name) }}
     </v-list-item-avatar>
     <v-list-item-content>
@@ -24,6 +24,7 @@
 import { defineComponent, ref } from '@vue/composition-api'
 import { TeamDto } from '../../dto/team.dto'
 import { API } from '../../api'
+import avatarColors from '../../../scss/avatar-colors.scss'
 
 export default defineComponent({
   props: {
@@ -44,6 +45,19 @@ export default defineComponent({
         .substring(0, 2)
     }
 
+    function avatarColor(name: string): string {
+      let sum = 0
+
+      for (let index = 0; index < name.length; index++) {
+        sum += name.charCodeAt(index)
+      }
+
+      const avatarColorsKeyLength = Object.keys(avatarColors).length
+      const colorKey = Object.keys(avatarColors)[sum % avatarColorsKeyLength]
+
+      return avatarColors[colorKey]
+    }
+
     async function remove(team: TeamDto) {
       const response = await API.Tournament.removeTeam(
         root.$route.params.hash,
@@ -56,7 +70,7 @@ export default defineComponent({
       isRemoving.value = false
     }
 
-    return { initials, isRemoving, remove }
+    return { initials, isRemoving, remove, avatarColor }
   },
 })
 </script>
