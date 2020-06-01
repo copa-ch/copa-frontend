@@ -33,7 +33,7 @@
             >
           </v-row>
           <InvitationCard
-            v-if="showInviationCard && isOpen"
+            v-if="showInviationCard && isOpen && isAdmin"
             :visitor-id="visitorId"
             @close="() => (showInviationCard = false)"
           />
@@ -65,6 +65,7 @@ export default defineComponent({
   setup(props, { root }) {
     const {
       isOpen,
+      isAdmin,
       loadTournament,
       tournament,
       loadTournamentIsLoading,
@@ -97,6 +98,7 @@ export default defineComponent({
       state,
       visitorId,
       isOpen,
+      isAdmin,
       hasTournament,
       loadTournamentIsLoading,
       showInviationCard,

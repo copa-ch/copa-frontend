@@ -1,7 +1,7 @@
 <template>
   <section class="d-flex justify-center" style="width: 100%;">
     <v-card max-width="420" style="margin-top: 12px; width: 100%;">
-      <v-card-title class="headline">
+      <v-card-title class="title">
         {{ $t('tournament.invitation.title') }}
       </v-card-title>
       <v-card-subtitle>

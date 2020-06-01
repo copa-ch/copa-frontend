@@ -19,6 +19,9 @@ export function useTournament() {
   const loadTournamentIsLoading = ref(false)
 
   const isOpen = computed(() => tournament.state === TournamentState.Open)
+  const isPlanable = computed(
+    () => tournament.state === TournamentState.Planable,
+  )
   const isPlayable = computed(
     () => tournament.state === TournamentState.Playable,
   )
@@ -67,6 +70,7 @@ export function useTournament() {
     loadTournamentIsLoading,
     loadTournamentHasFailed,
     isPlayable,
+    isPlanable,
     isOpen,
     isClosed,
   }

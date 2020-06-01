@@ -1,23 +1,43 @@
 <template>
   <v-container>
     <v-tabs centered fixed-tabs background-color="transparent" dark>
-      <v-tab link :to="{ name: 'tournament.teams', params: { hash: hash } }">
+      <v-tab
+        v-if="isOpen || isPlanable"
+        link
+        :to="{ name: 'tournament.teams', params: { hash: hash } }"
+      >
         {{ $t('teams.title') }}
       </v-tab>
 
-      <v-tab link :to="{ name: 'tournament.games', params: { hash: hash } }">
+      <v-tab
+        v-if="isPlanable && isAdmin"
+        link
+        :to="{ name: 'tournament.generator', params: { hash: hash } }"
+      >
+        {{ $t('generator.title') }}
+      </v-tab>
+
+      <v-tab
+        v-if="isPlayable || isClosed"
+        link
+        :to="{ name: 'tournament.games', params: { hash: hash } }"
+      >
         {{ $t('games.title') }}
       </v-tab>
 
       <v-tab
-        v-if="!isOpen"
+        v-if="isPlayable || isClosed"
         link
         :to="{ name: 'tournament.ranking', params: { hash: hash } }"
       >
         {{ $t('ranking.title') }}
       </v-tab>
 
-      <v-tab link :to="{ name: 'tournament.settings', params: { hash: hash } }">
+      <v-tab
+        v-if="isAdmin"
+        link
+        :to="{ name: 'tournament.settings', params: { hash: hash } }"
+      >
         {{ $t('settings.title') }}
       </v-tab>
     </v-tabs>
@@ -30,7 +50,14 @@ import { useTournament } from '../../reactive/tournament.state'
 
 export default defineComponent({
   setup(props, { root }) {
-    const { tournament, isOpen } = useTournament()
+    const {
+      tournament,
+      isOpen,
+      isPlanable,
+      isPlayable,
+      isClosed,
+      isAdmin,
+    } = useTournament()
 
     const hash = computed(() => root.$route.params.hash)
 
@@ -38,6 +65,10 @@ export default defineComponent({
       hash,
       tournament,
       isOpen,
+      isPlanable,
+      isPlayable,
+      isClosed,
+      isAdmin,
     }
   },
 })

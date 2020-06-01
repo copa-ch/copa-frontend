@@ -1,20 +1,22 @@
 <template>
-  <v-form ref="formRef" v-model="valid" novalidate>
-    <v-row v-if="isLoading" style="height: 110px">
-      <v-col cols="12" sm="8" lg="6">
-        <v-skeleton-loader height="56" type="image"></v-skeleton-loader>
-      </v-col>
-      <v-col cols="12" sm="4" lg="6">
-        <v-skeleton-loader
-          height="56"
-          width="112"
-          type="image"
-        ></v-skeleton-loader>
-      </v-col>
-    </v-row>
+  <v-card flat outlined>
+    <v-card-title>Add a participant</v-card-title>
+    <v-card-subtitle>List of the participants</v-card-subtitle>
+    <v-card-text>
+      <v-form ref="formRef" v-model="valid" novalidate>
+        <v-row v-if="isLoading" style="height: 110px;">
+          <v-col cols="12" sm="8" lg="6">
+            <v-skeleton-loader height="56" type="image"></v-skeleton-loader>
+          </v-col>
+          <v-col cols="12" sm="4" lg="6">
+            <v-skeleton-loader
+              height="56"
+              width="112"
+              type="image"
+            ></v-skeleton-loader>
+          </v-col>
+        </v-row>
 
-    <v-row v-if="!isLoading">
-      <v-col cols="12" sm="8" lg="6">
         <v-text-field
           v-model="teamNameModel"
           :label="$t('teams.add.label')"
@@ -22,30 +24,29 @@
           :rules="[rules.isRequired]"
           maxlength="45"
           :counter="45"
+          style="max-width: 450px;"
           filled
           @keypress.enter.native="submit($event)"
         ></v-text-field>
-      </v-col>
-      <v-col cols="12" sm="4" lg="6">
+
         <v-btn
           color="primary"
-          height="56"
           :loading="isSubmitting"
           :disabled="isSubmitting || !valid"
           @click="submit($event)"
         >
           {{ $t('teams.add.submit') }}
         </v-btn>
-      </v-col>
-    </v-row>
 
-    <v-snackbar v-model="snackbar" bottom color="error">
-      {{ $t('teams.add.failed') }}
-      <v-btn dark text @click="snackbar = false">
-        {{ $t('common.close') }}
-      </v-btn>
-    </v-snackbar>
-  </v-form>
+        <v-snackbar v-model="snackbar" bottom color="error">
+          {{ $t('teams.add.failed') }}
+          <v-btn dark text @click="snackbar = false">
+            {{ $t('common.close') }}
+          </v-btn>
+        </v-snackbar>
+      </v-form>
+    </v-card-text>
+  </v-card>
 </template>
 
 <script lang="ts">

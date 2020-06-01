@@ -1,12 +1,12 @@
 <template>
-  <v-list-item>
-    <v-list-item-avatar>
+  <v-list-item class="team-item">
+    <v-list-item-avatar style="background: #f0f0f0;">
       {{ initials(team.name) }}
     </v-list-item-avatar>
     <v-list-item-content>
       <v-list-item-title>{{ team.name }}</v-list-item-title>
     </v-list-item-content>
-    <v-list-item-action>
+    <v-list-item-action class="team-item__action">
       <v-btn text color="primary" v-if="!isRemoving" @click="remove(team)">{{
         $t('common.delete')
       }}</v-btn>
@@ -61,4 +61,23 @@ export default defineComponent({
 })
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+.team-item {
+  .team-item__action {
+    visibility: hidden;
+    opacity: 0;
+  }
+  &:hover {
+    background: lighten(#5f3dc4, 45);
+    .team-item__action {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    .v-avatar {
+      background: #5f3dc4 !important;
+      color: #fff !important;
+    }
+  }
+}
+</style>

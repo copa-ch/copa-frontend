@@ -1,6 +1,8 @@
 <template>
   <section>
     <AddTeam @input="newTeam => addNewTeam(newTeam)" :is-loading="isLoading" />
+    <br />
+    <br />
     <TeamList
       :teams="teams"
       @removed="teamIndex => removed(teamIndex)"
