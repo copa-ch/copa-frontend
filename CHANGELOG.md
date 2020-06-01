@@ -1,3 +1,10 @@
+# [1.18.0](https://github.com/copa-ch/copa-frontend/compare/v1.17.0...v1.18.0) (2020-06-01)
+
+
+### Features
+
+* finish team and settings ([ac7df7c](https://github.com/copa-ch/copa-frontend/commit/ac7df7c0fb88926486832733b40456f741f9b20a))
+
 # [1.17.0](https://github.com/copa-ch/copa-frontend/compare/v1.16.0...v1.17.0) (2020-05-31)
 
 
