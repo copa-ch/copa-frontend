@@ -73,8 +73,8 @@ export default {
       },
       playable: {
         label: 'Playable',
-        hint: 'Tournament is configured and ready to be played'
-      }
+        hint: 'Tournament is configured and ready to be played',
+      },
     },
     invitation: {
       title: 'Invite Participant',
@@ -99,8 +99,8 @@ export default {
       lost: 'Lost',
       goalsFor: 'Goals For',
       goalsAgainst: 'Goals Against',
-      points: 'Points'
-    }
+      points: 'Points',
+    },
   },
   games: {
     title: 'Fixtures',

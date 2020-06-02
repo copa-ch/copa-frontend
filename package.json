@@ -16,7 +16,8 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "format": "prettier --write \"src/**/*.ts\" \"tests/**/*.ts\"",
-    "prebuild": "rimraf dist"
+    "prebuild": "rimraf dist",
+    "test": "echo \"Error: no test specified\" && exit 0"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.28",
