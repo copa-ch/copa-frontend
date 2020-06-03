@@ -1,3 +1,10 @@
+# [1.19.0](https://github.com/copa-ch/copa-frontend/compare/v1.18.0...v1.19.0) (2020-06-03)
+
+
+### Features
+
+* **ranking:** add ranking table ([87215f7](https://github.com/copa-ch/copa-frontend/commit/87215f7a9f598230e91f690891aab998bbe4af57))
+
 # [1.18.0](https://github.com/copa-ch/copa-frontend/compare/v1.17.0...v1.18.0) (2020-06-01)
 
 
