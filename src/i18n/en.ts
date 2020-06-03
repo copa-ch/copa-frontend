@@ -69,7 +69,11 @@ export default {
     state: {
       open: {
         label: 'Open',
-        hint: 'Tournament is in pre configure and registraion phase',
+        hint: 'Tournament is in pre configure and registration phase',
+      },
+      playable: {
+        label: 'Playable',
+        hint: 'Tournament is configured and ready to be played',
       },
     },
     invitation: {
@@ -86,6 +90,17 @@ export default {
   },
   ranking: {
     title: 'Ranking',
+    table: {
+      position: 'Position',
+      team: 'Team',
+      played: 'Played',
+      won: 'Won',
+      drawn: 'Drawn',
+      lost: 'Lost',
+      goalsFor: 'Goals For',
+      goalsAgainst: 'Goals Against',
+      points: 'Points',
+    },
   },
   games: {
     title: 'Fixtures',

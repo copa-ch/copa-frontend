@@ -1,4 +1,4 @@
-import Vue, { ComponentOptions, PluginFunction, AsyncComponent } from 'vue'
+import { PluginFunction } from 'vue'
 
 type LogdownBuilder = (scope: string) => LogdownInstance
 

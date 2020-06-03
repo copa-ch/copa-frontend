@@ -1,7 +1,9 @@
 <template>
   <div class="field copa-field" :class="loading ? 'is-loading' : ''">
     <label v-if="label" class="label">{{ $t(label) }}</label>
-    <p :class="`control ${hasIconLeft ? 'has-icons-left' : ''} has-icons-right`">
+    <p
+      :class="`control ${hasIconLeft ? 'has-icons-left' : ''} has-icons-right`"
+    >
       <input
         class="input"
         :class="state"
@@ -34,7 +36,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref, watch } from "@vue/composition-api"
+import { computed, defineComponent, ref, watch } from '@vue/composition-api'
 
 export default defineComponent({
   props: {
@@ -42,7 +44,7 @@ export default defineComponent({
     label: String,
     type: {
       type: String,
-      default: "text",
+      default: 'text',
     },
     state: String,
     message: String,
@@ -62,7 +64,7 @@ export default defineComponent({
 
     const onInput = (event: any) => {
       modelValue.value = event.target.value
-      emit("input", modelValue.value)
+      emit('input', modelValue.value)
     }
 
     const inputListeners = computed(() => ({
@@ -78,24 +80,24 @@ export default defineComponent({
       hasIconRight: computed(() => !!props.state || !!props.loading),
       iconRight: computed(() => {
         if (props.loading) {
-          return ""
+          return ''
         }
         if (props.state) {
-          if (props.state === "is-success") {
-            return "check"
-          } else if (props.state === "is-danger") {
-            return "exclamation"
-          } else if (props.state === "is-warning") {
-            return "exclamation-triangle"
+          if (props.state === 'is-success') {
+            return 'check'
+          } else if (props.state === 'is-danger') {
+            return 'exclamation'
+          } else if (props.state === 'is-warning') {
+            return 'exclamation-triangle'
           }
         }
-        return ""
+        return ''
       }),
       iconRightClass: computed(() => {
         if (props.state) {
           return `has-text-${props.state.substring(3)}`
         }
-        return ""
+        return ''
       }),
     }
   },
@@ -103,7 +105,7 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
-@import "src/styles/utilities/all";
+@import 'src/styles/utilities/all';
 
 .copa-field {
   position: relative;
@@ -141,7 +143,7 @@ export default defineComponent({
 
   .control {
     &::after {
-      content: "";
+      content: '';
       position: absolute;
       bottom: 0;
       height: 0;
