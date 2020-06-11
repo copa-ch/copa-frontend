@@ -4,6 +4,8 @@
     :items="$i18n.availableLocales"
     v-model="$i18n.locale"
     v-on:change="onLocaleChange($i18n.locale)"
+    dense
+    hide-details
   >
     <font-awesome-icon slot="prepend" icon="globe" />
   </v-select>
