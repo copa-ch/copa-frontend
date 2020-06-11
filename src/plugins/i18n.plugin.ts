@@ -15,8 +15,10 @@ import en from '@/i18n/en'
 
 Vue.use(VueI18n)
 
+const savedLanguage = localStorage && localStorage.getItem('userLanguage');
+
 export const i18n = new VueI18n({
-  locale: 'en',
+  locale: savedLanguage || 'en',
   fallbackLocale: 'en',
   silentTranslationWarn: true,
   messages: { de, en },

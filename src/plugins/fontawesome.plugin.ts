@@ -9,6 +9,8 @@ import {
   faUsers,
   faCog,
   faBasketballBall,
+  faGlobe,
+  faCaretDown,
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
@@ -21,6 +23,8 @@ library.add(
   faUsers,
   faCog,
   faBasketballBall,
+  faGlobe,
+  faCaretDown,
 )
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
