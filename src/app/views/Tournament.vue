@@ -29,7 +29,9 @@
               </v-btn></v-col
             >
             <v-col class="d-flex justify-start"
-              ><v-btn color="primary">Start Tournament</v-btn></v-col
+              ><v-btn color="primary" @click="goToPlayState()"
+                >Start Tournament</v-btn
+              ></v-col
             >
           </v-row>
           <InvitationCard
@@ -59,6 +61,8 @@ import { useTournament } from '../reactive/tournament.state'
 import Banner from '../components/tournament/Banner.vue'
 import NavBar from '../components/tournament/NavBar.vue'
 import InvitationCard from '../components/tournament/InvitationCard.vue'
+import { API } from '../api'
+import { TournamentState } from '../dto/tournament-state'
 
 export default defineComponent({
   components: { Banner, NavBar, InvitationCard },
@@ -69,6 +73,7 @@ export default defineComponent({
       loadTournament,
       tournament,
       loadTournamentIsLoading,
+      setTournament,
     } = useTournament()
 
     const showInviationCard = ref(false)
@@ -92,6 +97,16 @@ export default defineComponent({
       copySnackbar.value = true
     }
 
+    async function goToPlayState() {
+      const response = await API.Tournament.update(root.$route.params.hash, {
+        ...tournament,
+        state: TournamentState.Playable,
+      })
+      if (response.isSuccessful && response.data) {
+        setTournament(response.data)
+      }
+    }
+
     return {
       title,
       subtitle,
@@ -99,6 +114,7 @@ export default defineComponent({
       visitorId,
       isOpen,
       isAdmin,
+      goToPlayState,
       hasTournament,
       loadTournamentIsLoading,
       showInviationCard,

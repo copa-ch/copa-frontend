@@ -1,20 +1,8 @@
 <template>
   <v-container>
     <v-tabs centered fixed-tabs background-color="transparent" dark>
-      <v-tab
-        v-if="isOpen || isPlanable"
-        link
-        :to="{ name: 'tournament.teams', params: { hash: hash } }"
-      >
+      <v-tab link :to="{ name: 'tournament.teams', params: { hash: hash } }">
         {{ $t('teams.title') }}
-      </v-tab>
-
-      <v-tab
-        v-if="isPlanable && isAdmin"
-        link
-        :to="{ name: 'tournament.generator', params: { hash: hash } }"
-      >
-        {{ $t('generator.title') }}
       </v-tab>
 
       <v-tab
@@ -53,7 +41,6 @@ export default defineComponent({
     const {
       tournament,
       isOpen,
-      isPlanable,
       isPlayable,
       isClosed,
       isAdmin,
@@ -65,7 +52,6 @@ export default defineComponent({
       hash,
       tournament,
       isOpen,
-      isPlanable,
       isPlayable,
       isClosed,
       isAdmin,

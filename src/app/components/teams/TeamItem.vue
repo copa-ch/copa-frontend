@@ -6,7 +6,7 @@
     <v-list-item-content>
       <v-list-item-title>{{ team.name }}</v-list-item-title>
     </v-list-item-content>
-    <v-list-item-action class="team-item__action">
+    <v-list-item-action class="team-item__action" v-if="isOpen">
       <v-btn text color="primary" v-if="!isRemoving" @click="remove(team)">{{
         $t('common.delete')
       }}</v-btn>
@@ -24,6 +24,7 @@
 import { defineComponent, ref } from '@vue/composition-api'
 import { TeamDto } from '../../dto/team.dto'
 import { API } from '../../api'
+import { useTournament } from '../../reactive/tournament.state'
 
 export default defineComponent({
   props: {
@@ -34,6 +35,7 @@ export default defineComponent({
     },
   },
   setup(props, { root, emit }) {
+    const { isOpen } = useTournament()
     const isRemoving = ref(false)
 
     function initials(name: string): string {
@@ -56,7 +58,7 @@ export default defineComponent({
       isRemoving.value = false
     }
 
-    return { initials, isRemoving, remove }
+    return { initials, isRemoving, remove, isOpen }
   },
 })
 </script>

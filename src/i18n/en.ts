@@ -71,6 +71,10 @@ export default {
         label: 'Open',
         hint: 'Tournament is in pre configure and registraion phase',
       },
+      playable: {
+        label: 'Ready to play',
+        hint: 'All teams are set so enter the game results',
+      },
     },
     invitation: {
       title: 'Invite Participant',
@@ -86,6 +90,9 @@ export default {
   },
   ranking: {
     title: 'Ranking',
+  },
+  generator: {
+    title: 'Generator',
   },
   games: {
     title: 'Fixtures',

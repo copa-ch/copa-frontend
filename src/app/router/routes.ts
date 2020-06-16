@@ -43,11 +43,6 @@ export const routes: RouteConfig[] = [
         component: () => import('../views/TournamentTeams.vue'),
       },
       {
-        path: '/tournament/:hash/generator',
-        name: 'tournament.generator',
-        component: () => import('../views/TournamentGenerator.vue'),
-      },
-      {
         path: '/tournament/:hash/games',
         name: 'tournament.games',
         component: () => import('../views/TournamentGames.vue'),

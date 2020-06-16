@@ -1,8 +1,11 @@
 <template>
   <section>
-    <AddTeam @input="newTeam => addNewTeam(newTeam)" :is-loading="isLoading" />
-    <br />
-    <br />
+    <AddTeam
+      v-if="isOpen"
+      @input="newTeam => addNewTeam(newTeam)"
+      :is-loading="isLoading"
+      style="margin-button: 30px;"
+    />
     <TeamList
       :teams="teams"
       @removed="teamIndex => removed(teamIndex)"
@@ -17,10 +20,12 @@ import AddTeam from './AddTeam.vue'
 import TeamList from './TeamList.vue'
 import { TeamDto } from '../../dto/team.dto'
 import { API } from '../../api'
+import { useTournament } from '../../reactive/tournament.state'
 
 export default defineComponent({
   components: { AddTeam, TeamList },
   setup(props, { root }) {
+    const { isOpen } = useTournament()
     const isLoading = ref(false)
     const teams = ref<TeamDto[]>([])
 
@@ -52,6 +57,7 @@ export default defineComponent({
       removed,
       addNewTeam,
       isLoading,
+      isOpen,
     }
   },
 })
